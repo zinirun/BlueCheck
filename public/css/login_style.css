@@ -1,76 +1,10 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-@media screen and (-webkit-min-device-pixel-ratio:0){#header {width:100px}}
-html[xmlns*=""] body:last-child #header{width:100px}
-/* Safari 6.1+ (9.0 is the latest version of Safari at this time) */
-
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) 
-{ @media {
-    .safari_only { 
-
-        color:#0000FF; 
-        background-color:#CCCCCC; 
-
-    }
-}}
-/* Safari 9.0+ */
-
-_::-webkit-:not(:root:root), .safari_only {
-
-  color:#0000FF; 
-  background-color:#CCCCCC; 
-
-}
-/* Safari 9 */
-
-@supports (overflow:-webkit-marquee) and (justify-content:inherit) 
-{
-
-  .safari_only {
-    color:#0000FF; 
-    background-color:#CCCCCC; 
-  }
-
-}
-/* Safari 9.0+ (iOS Only) */
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true))
-and (not (-moz-appearance:none))
-{
-
-  .safari_only {
-    color:#0000FF; 
-    background-color:#CCCCCC; 
-  }
-
-}
-/* Safari 6.1-7.0 */
-
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-color-index:0)
-{  
-   .safari_only {(;
-
-      color:#0000FF; 
-      background-color:#CCCCCC; 
-
-    );}
-}
-/* Safari 7.1+ */
-
-_::-webkit-full-page-media, _:future, :root .safari_only {
-
-  color:#0000FF; 
-  background-color:#CCCCCC; 
-
-}
-
-
-
 html {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 13px;
 }
-
+input {-webkit-appearance:none;}
 input {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 13px;
