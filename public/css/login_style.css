@@ -16,8 +16,9 @@ input {
 }
 
 .div-title {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
+    color: #333;
     text-align: center;
 }
 
@@ -47,12 +48,12 @@ input {
 }
 
 .div-login-left-input {
-    margin-left: 50px;
+    margin-left: 40px;
     width: 180px;
 }
 
 .div-login-right-input {
-    width: 50px;
+    width: 65px;
 }
 
 .div-wrapper-input {
@@ -60,18 +61,21 @@ input {
 }
 
 #login-submit-bt {
-    font-size: 25px;
-    color: dodgerblue;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    background: dodgerblue;
+    color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 75px; /*make circle*/
     margin-top: 20px;
 }
 
 .div-join-bt {
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
-.div-join-bt input[type="button"] {
+.login-bt{
     background: inherit;
     border: none;
     border-bottom: 2px solid dodgerblue;
