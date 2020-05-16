@@ -1,0 +1,54 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+}
+input {-webkit-appearance:none;}
+input {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+}
+
+.div-view {
+    width: 320px;
+    margin: 0 auto;
+}
+
+.div-title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.div-select-box {
+    background: #eee;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + div {
+    display: inline-block;
+    background-color: deepskyblue;
+}
+
+.div-dong-list{
+    margin: 15px 0 30px 15px;
+}
+
+.div-dong-bt{
+    width: 85px;
+    height: 50px;
+    text-align: center;
+    padding-top: 12px;
+    font-size: 22px;
+    font-weight: 600;
+    display: inline-block;
+    background: white;
+    margin: 5px;
+}
