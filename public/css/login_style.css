@@ -1,43 +1,44 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-html{
+html {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 13px;
 }
 
-input{
+input {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 13px;
 }
 
-.div-view{
+.div-view {
     width: 320px;
     margin: 0 auto;
 }
 
-.div-title{
+.div-title {
     font-size: 20px;
     font-weight: 600;
     text-align: center;
 }
 
-.div-login-box{
+.div-login-box {
     background: #eee;
     padding-top: 30px;
     padding-bottom: 30px;
 }
 
-.div-login-form{
+.div-login-form {
     padding: 10px;
     margin-top: 10px;
     text-align: center;
 }
 
-.form-login{
+.form-login {
     display: flex;
 }
 
-.form-login #login_id, .form-login #login_pw{
+.form-login #login_id,
+.form-login #login_pw {
     font-size: 17px;
     font-weight: 500;
     width: 170px;
@@ -45,20 +46,20 @@ input{
     padding: 7px;
 }
 
-.div-login-left-input{
+.div-login-left-input {
     margin-left: 50px;
     width: 180px;
 }
 
-.div-login-right-input{
+.div-login-right-input {
     width: 50px;
 }
 
-.div-wrapper-input{
+.div-wrapper-input {
     margin-top: 4px;
 }
 
-#login-submit-bt{
+#login-submit-bt {
     font-size: 25px;
     color: dodgerblue;
     border: none;
@@ -66,17 +67,17 @@ input{
     margin-top: 20px;
 }
 
-.div-join-bt{
+.div-join-bt {
     margin-top: 15px;
 }
 
-.div-join-bt input[type="button"]{
+.div-join-bt input[type="button"] {
     background: inherit;
     border: none;
     border-bottom: 2px solid dodgerblue;
     font-size: 15px;
     font-weight: 600;
-    color: #999;
+    color: #444;
     padding: 4px 5px;
-    margin: 0 3px 0 3px;
+    margin: 0 5px 0 5px;
 }
