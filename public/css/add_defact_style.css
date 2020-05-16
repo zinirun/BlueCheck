@@ -1,0 +1,111 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+}
+input {-webkit-appearance:none;}
+input {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+}
+
+.div-view {
+    width: 320px;
+    margin: 0 auto;
+}
+
+.div-title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.div-add-defact-box {
+    background: #eee;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + div {
+    display: inline-block;
+    background-color: deepskyblue;
+}
+
+.div-defact-list{
+    margin-top: 20px;
+}
+
+.div-wrapper-defact{
+    margin-bottom: 6px;
+}
+
+.div-defact-title{
+    width: 80px;
+    padding: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    display: inline-block;
+}
+
+.div-defact-detail{
+    width: 200px;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    background: white;
+    display: inline-block;
+}
+
+#div-defact-type{
+    width: 170px;
+}
+
+.defact-select-bt{
+    width: 10px;
+    background: white;
+    padding: 5px;
+    color: dimgray;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.div-camera-box{
+    margin-top: 20px;
+}
+
+.div-camera-bt{
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+}
+
+#camera-upload-bt{
+    background: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #777;
+}
+
+#div-image-box{
+    background: #999;
+    margin: 15px auto;
+    width: 250px;
+    height: 200px;
+}
+
+input[type="submit"]{
+    font-size: 19px;
+    font-weight: 600;
+    background: dodgerblue;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+}
