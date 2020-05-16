@@ -67,7 +67,8 @@ input {
     background: dodgerblue;
     color: white;
     border: none;
-    border-radius: 75px; /*make circle*/
+    border-radius: 50%; /*make circle*/
+    padding: 0px;
     margin-top: 20px;
 }
 
