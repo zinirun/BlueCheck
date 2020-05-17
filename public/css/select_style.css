@@ -1,13 +1,16 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
+*{
+    cursor: default;
+}
 html {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 13px;
 }
-input {-webkit-appearance:none;}
+input {-webkit-appearance:none;
+    -webkit-border-radius: 0;}
 input {
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
+    font-size: 17px;
 }
 
 .div-view {
