@@ -1,0 +1,48 @@
+.div-defact-box{
+    padding-top: 30px;
+}
+
+.div-defact-image-box{
+    margin: 10px auto 15px;
+    width: 250px;
+    height: 250px;
+    background: #eee;
+}
+
+li{
+    margin-left: -40px;
+    list-style-type: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.hr-line{
+    border: 0.5px solid #ccc;
+}
+
+.div-comment-title{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: -5px;
+}
+
+#comment-input{
+    border: 1px solid #888;
+    font-size: 16px;
+    font-weight: 500;
+    width: 250px;
+    height: 30px;
+    padding-left: 3px;
+}
+
+#add-comment-bt{
+    width: 60px;
+    vertical-align: top;
+    height: 34px;
+    font-size: 16px;
+    font-weight: 500;
+    background: dodgerblue;
+    color: white;
+    border: none;
+}

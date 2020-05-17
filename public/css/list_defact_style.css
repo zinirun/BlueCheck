@@ -1,5 +1,5 @@
 .div-defact-box{
-    margin-top: 30px;
+    padding-top: 30px;
 }
 
 .div-wrapper-add{
@@ -7,7 +7,6 @@
 }
 
 .div-title{
-    margin-left: 20px;
 }
 
 .div-wrapper-add #span-defact-add-bt{
@@ -37,7 +36,7 @@
 .div-defact-list, .div-end-list{
     padding-top: 7px;
     width: 100%;
-    height: 140px;
+    height: 150px;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;

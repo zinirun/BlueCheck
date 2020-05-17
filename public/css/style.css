@@ -1,25 +1,45 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-*{
+
+* {
     cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
+
 html {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 13px;
 }
-input {-webkit-appearance:none;
-    -webkit-border-radius: 0;}
+
+input {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+}
+
 input {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 17px;
 }
 
-.div-wrapper-backward{
+input:focus {
+    outline: none;
+}
+
+input[type="button"] {
+    cursor: pointer !important;
+}
+
+.div-wrapper-backward {
     margin-top: -23px;
     margin-left: 5px;
     float: left;
 }
 
-.div-wrapper-backward #backward-bt{
+.div-wrapper-backward #backward-bt {
     position: absolute;
     font-size: 18px;
     font-weight: 600;
