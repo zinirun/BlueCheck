@@ -1,29 +1,4 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-html {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-}
-input {-webkit-appearance:none;}
-input {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-}
-
-.div-view {
-    width: 320px;
-    margin: 0 auto;
-}
-
-.div-title {
-    font-size: 25px;
-    font-weight: 600;
-    color: #333;
-    text-align: center;
-}
-
 .div-select-box {
-    background: #eee;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -49,6 +24,35 @@ input[type="radio"]:checked + div {
     font-size: 22px;
     font-weight: 600;
     display: inline-block;
-    background: white;
-    margin: 5px;
+    background: #eee;
+    margin: 5px 5px 10px 5px;
+}
+
+.div-ho-list{
+    margin: 15px 0 30px 15px;
+}
+
+.div-ho-bt{
+    width: 64px;
+    height: 40px;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    display: inline-block;
+    background: #eee;
+    margin: 3px 3px 6px 3px;
+}
+
+#div-ho-box{
+    display: none;
+}
+
+#span_dong{
+    margin-left: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 2px 3px;
 }

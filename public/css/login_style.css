@@ -1,29 +1,4 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-html {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-}
-input {-webkit-appearance:none;}
-input {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-}
-
-.div-view {
-    width: 320px;
-    margin: 0 auto;
-}
-
-.div-title {
-    font-size: 25px;
-    font-weight: 600;
-    color: #333;
-    text-align: center;
-}
-
 .div-login-box {
-    background: #eee;
     padding-top: 30px;
     padding-bottom: 30px;
 }
@@ -45,6 +20,8 @@ input {
     width: 170px;
     border: none;
     padding: 7px;
+    border: none;
+    border-bottom: 1px solid #999;
 }
 
 .div-login-left-input {
@@ -67,8 +44,9 @@ input {
     background: dodgerblue;
     color: white;
     border: none;
-    border-radius: 75px; /*make circle*/
-    margin-top: 20px;
+    border-radius: 50%; /*make circle*/
+    padding: 0px;
+    margin-top: 37%;
 }
 
 .div-join-bt {
