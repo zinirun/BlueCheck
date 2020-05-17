@@ -64,6 +64,14 @@ router.route('/defact/drawing/').get(function (req, res) {
     });
 });
 
+//회원가입 이동 라우터
+router.route('/register').get(function (req, res) {
+    fs.readFile('./public/register.html', 'utf8', function (error, data) {
+        res.send(ejs.render(data, {
+        }));
+    });
+});
+
 app.use('/', router);
 
 // 404 에러 페이지 처리
