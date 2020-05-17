@@ -22,24 +22,20 @@ li{
     width: 90%;
 }
 
-#comment-input{
-    border: 1px solid dodgerblue;
+#comment_input{
+    border: 1px solid #bbb;
     font-size: 16px;
     font-weight: 500;
-    width: 250px;
+    width: 280px;
     height: 30px;
     padding-left: 3px;
 }
 
 #add-comment-bt{
-    margin-left: -5px;
-    width: 55px;
-    border: 1px solid dodgerblue;
-    vertical-align: top;
-    height: 34px;
-    font-size: 16px;
-    font-weight: 500;
-    background: dodgerblue;
-    color: white;
+    height: 36px;
+    font-size: 19px;
+    font-weight: 800;
+    background: white;
+    color: dodgerblue;
     border: none;
 }
