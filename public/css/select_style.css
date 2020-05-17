@@ -43,3 +43,16 @@ input[type="radio"]:checked + div {
     background: #eee;
     margin: 3px 3px 6px 3px;
 }
+
+#div-ho-box{
+    display: none;
+}
+
+#span_dong{
+    margin-left: 10px;
+    font-size: 19px;
+    font-weight: 600;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 2px 3px;
+}
