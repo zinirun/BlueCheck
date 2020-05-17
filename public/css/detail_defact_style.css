@@ -10,9 +10,9 @@
 }
 
 li{
-    margin-left: -40px;
+    margin-left: -25px;
     list-style-type: none;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     color: #333;
 }
@@ -22,18 +22,22 @@ li{
     width: 90%;
 }
 
+form{
+    text-align: center;
+}
+
 #comment_input{
     border: 1px solid #bbb;
     font-size: 16px;
     font-weight: 500;
-    width: 270px;
+    width: 260px;
     height: 30px;
     padding-left: 3px;
 }
 
 #add-comment-bt{
     padding: 0px;
-    width: 30px;
+    width: 25px;
     font-size: 19px;
     font-weight: 800;
     background: white;
