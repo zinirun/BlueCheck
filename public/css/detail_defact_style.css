@@ -19,16 +19,11 @@ li{
 
 .hr-line{
     border: 0.5px solid #ccc;
-}
-
-.div-comment-title{
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: -5px;
+    width: 90%;
 }
 
 #comment-input{
-    border: 1px solid #888;
+    border: 1px solid dodgerblue;
     font-size: 16px;
     font-weight: 500;
     width: 250px;
@@ -37,7 +32,9 @@ li{
 }
 
 #add-comment-bt{
-    width: 60px;
+    margin-left: -5px;
+    width: 55px;
+    border: 1px solid dodgerblue;
     vertical-align: top;
     height: 34px;
     font-size: 16px;
