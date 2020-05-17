@@ -4,8 +4,8 @@
 
 .div-defact-image-box{
     margin: 10px auto 15px;
-    width: 250px;
-    height: 250px;
+    width: 310px;
+    height: 300px;
     background: #eee;
 }
 
@@ -20,6 +20,29 @@ li{
 .hr-line{
     border: 0.5px solid #ccc;
     width: 90%;
+}
+
+.div-defact-table-box{
+    position: absolute;
+    margin-left: 7px;
+    margin-top: 203px;
+    display: inline-block;
+    border: 1px solid white;
+}
+
+.table-defact{
+    background: white;
+    border-spacing: 0;
+}
+
+td{
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.td-title{
+    font-weight: 500;
 }
 
 form{
