@@ -53,9 +53,9 @@ router.route('/').get(function (req, res) {
 router.route('/defact/drawing/').get(function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho;
-    
+
     console.log(selected_dong + selected_ho);
-    
+
     fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {
             dong: selected_dong,
@@ -64,11 +64,13 @@ router.route('/defact/drawing/').get(function (req, res) {
     });
 });
 
-//회원가입 라우터
-router.route('/process/register').post(function(req,res){
-    console.log('회원가입 처리');
-    var userId = req.body.
-}
+//회원가입 이동 라우터
+router.route('/register').get(function (req, res) {
+    fs.readFile('./public/register.html', 'utf8', function (error, data) {
+        res.send(ejs.render(data, {
+        }));
+    });
+});
 
 app.use('/', router);
 
