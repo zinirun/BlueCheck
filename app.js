@@ -49,6 +49,21 @@ router.route('/').get(function (req, res) {
     });
 });
 
+//MainPage 라우터
+router.route('/defact/drawing/').get(function (req, res) {
+    var selected_dong = req.query.dong,
+        selected_ho = req.query.ho;
+    
+    console.log(selected_dong + selected_ho);
+    
+    fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
+        res.send(ejs.render(data, {
+            dong: selected_dong,
+            ho: selected_ho
+        }));
+    });
+});
+
 app.use('/', router);
 
 // 404 에러 페이지 처리
