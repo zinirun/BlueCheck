@@ -1,0 +1,73 @@
+.div-login-box {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.div-login-form {
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form-login {
+    display: flex;
+}
+
+.form-login #login_id,
+.form-login #login_pw {
+    font-size: 17px;
+    font-weight: 500;
+    width: 170px;
+    border: none;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+.div-login-left-input {
+    margin-left: 40px;
+    width: 180px;
+}
+
+.div-login-right-input {
+    width: 65px;
+}
+
+.div-wrapper-input {
+    margin-top: 20px;
+}
+
+#login-submit-bt {
+    font-size: 15px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 2px solid #4bb23a;
+    border-radius: 50%;
+    /*make circle*/
+    padding: 0px;
+    margin-top: 37%;
+}
+
+.div-tool-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.div-tool-bt {
+    margin-top: 25px;
+}
+
+.div-wrapper-tool-bt{
+    margin-top: 20px;
+}
+
+.tool-bt {
+    background: #4bb23a;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 4px 7px;
+    margin: 0 5px 0 5px;
+    border-radius: 5px;
+}
