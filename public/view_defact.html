@@ -26,9 +26,30 @@
                     <%= dong %></span>동 <span id="span_defact_ho"><%= ho %></span>호
             </div>
             
-            <div class="div-drawing-box" onclick="location.href = '/public/list_defact.html'">
-                <!--Apartment drawing here-->
+            <div class="div-drawing-box" id="div_drawing">
+                <!--Apartment drawing point here-->
+                <div class="px-point"><div class="px-point-title">주방/식당</div></div>
+                
             </div>
+            
+            <p id="xy" style="font-size: 20px; margin-top: 10px;">Image Pixel:</p>
+            <ul id="point" style="font-size: 20px; color: crimson"></ul>
         </div>
     </div>
+    
+    <!--temp script for capture x, y-->
+    <script>
+        var cs = document.getElementById("div_drawing");
+        var csXY = document.getElementById("xy");
+        var val;
+        document.onmousemove = function(e){
+            cs.style.top = e.offsetY + "px";
+            cs.style.left = e.offsetX + "px";
+            val = e.offsetX + ", " + e.offsetY;
+            csXY.innerHTML = val;
+        }
+        document.onkeypress = function(e){
+            document.getElementById("point").innerHTML += "<li>"+val;
+        }
+    </script>
 </body></html>
