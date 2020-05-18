@@ -49,7 +49,7 @@ router.route('/').get(function (req, res) {
     });
 });
 
-//MainPage 라우터
+//도면 이동 라우터
 router.route('/defact/drawing/').get(function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho;
@@ -60,6 +60,21 @@ router.route('/defact/drawing/').get(function (req, res) {
         res.send(ejs.render(data, {
             dong: selected_dong,
             ho: selected_ho
+        }));
+    });
+});
+
+//하자 리스트 이동 라우터
+router.route('/defact/list/').get(function (req, res) {
+    var selected_dong = req.query.dong,
+        selected_ho = req.query.ho,
+        selected_loc = req.query.loc;
+    
+    fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
+        res.send(ejs.render(data, {
+            dong: selected_dong,
+            ho: selected_ho,
+            loc: selected_loc
         }));
     });
 });
