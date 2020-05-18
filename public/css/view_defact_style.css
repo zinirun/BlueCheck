@@ -21,8 +21,8 @@
 .px-point{
     display: inline-block;
     position: absolute;
-    width: 13px;
-    height: 13px;
+    width: 16px;
+    height: 16px;
     background: dodgerblue;
     border: 2px solid white;
     border-radius: 50%;
@@ -30,8 +30,8 @@
 
 .px-point-title{
     display: inline-block;
-    margin-left: -20px;
-    margin-top: 14px;
+    margin-left: -18px;
+    margin-top: 17px;
     width: 45px;
     background: white;
     border: 1px solid #aaa;
