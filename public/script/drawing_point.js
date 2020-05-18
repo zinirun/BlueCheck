@@ -12,6 +12,8 @@ const pixel_point = [
     ["욕실2", 230, 143]
 ];
 
+let selected_loc = -1;
+
 function loadDrawingPoint(){
     var drawTarget = document.getElementById('div_drawing');
     
@@ -26,4 +28,23 @@ function loadDrawingPoint(){
         pixelTarget.style.left = pixel_point[i][1] + 'px';
         pixelTarget.style.top = pixel_point[i][2] + 'px';
     }
+}
+
+function locSelected(user_selected_loc) {
+    if (user_selected_loc.target.getAttribute('value')) {
+        selected_loc = user_selected_loc.target.getAttribute('value');
+        selected_dong = document.getElementById('span_defact_dong').innerHTML;
+        selected_ho = document.getElementById('span_defact_ho').innerHTML;
+        
+        location.href = "/defact/list?dong=" + selected_dong + "&ho=" + selected_ho + "&loc=" + selected_loc;
+    }
+}
+
+function addClickEvent() {
+    var pointTarget = document.getElementById('div_drawing');
+
+    pointTarget.addEventListener('click',
+        function (e) {
+            locSelected(e);
+        });
 }
