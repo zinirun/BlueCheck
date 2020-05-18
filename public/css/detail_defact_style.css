@@ -1,0 +1,93 @@
+.div-defact-box{
+    padding-top: 30px;
+}
+
+.div-wrapper-finish{
+    float: left;
+}
+
+.div-wrapper-finish #span-defact-finish-bt, #span-defact-saw-bt{
+    position: absolute;
+    margin-top: -5px;
+    margin-left: 285px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    padding: 2px 5px 4px 5px;
+    background: dodgerblue;
+    border: none;
+    text-align: center;
+}
+
+#span-defact-saw-bt{
+    margin-top: 47px;
+    margin-left: 276px;
+    background: crimson;
+}
+
+
+.div-defact-image-box{
+    margin: 10px auto 15px;
+    width: 310px;
+    height: 300px;
+    background: #eee;
+}
+
+li{
+    margin-left: -25px;
+    list-style-type: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+.hr-line{
+    border: 0.5px solid #ddd;
+    width: 80%;
+}
+
+.div-defact-table-box{
+    position: absolute;
+    margin-left: 7px;
+    margin-top: 203px;
+    display: inline-block;
+    border: 1px solid white;
+}
+
+.table-defact{
+    background: white;
+    border-spacing: 0;
+}
+
+td{
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.td-title{
+    font-weight: 500;
+}
+
+form{
+    text-align: center;
+}
+
+#comment_input{
+    border: 1px solid #bbb;
+    font-size: 16px;
+    font-weight: 500;
+    width: 260px;
+    height: 30px;
+    padding-left: 3px;
+}
+
+#add-comment-bt{
+    padding: 0px;
+    width: 25px;
+    font-size: 19px;
+    font-weight: 800;
+    background: white;
+    color: dodgerblue;
+    border: none;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>베스트웨이</title>
+    <link rel="stylesheet" type="text/css" href="css/list_defact_style.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/list_defact_style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="div-view">
+        <div class="div-defact-box">
+            <div class="div-wrapper-backward">
+                <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
+            </div>
+
+            <div class="div-wrapper-add">
+                <span id="span-defact-add-bt" onclick="location.href = '/public/add_defact.html'">＋</span>
+            </div>
+
+            <div class="div-title">
+                <span id="span_defact_loc">침실2</span>
+            </div>
+            
+            <div class="div-defact-list-box">
+                <div class="div-list-title">하자</div>
+                <div id="div_defact_list" class="div-defact-list">
+                    <div class="div-defact-item" defact-id="" onclick="location.href = '/public/detail_defact.html'">1</div>
+                    <div class="div-defact-item" defact-id="">2</div>
+                    <div class="div-defact-item" defact-id="">3</div>
+                    <div class="div-defact-item" defact-id="">4</div>
+                    <div class="div-defact-item" defact-id="">5</div>
+                </div>
+            </div>
+            
+            <div class="div-end-list-box">
+                <div class="div-list-title">보수 완료</div>
+                <div id="div_end_list" class="div-end-list">
+                    <div class="div-defact-item" defact-id="">1</div>
+                    <div class="div-defact-item" defact-id="">2</div>
+                    <div class="div-defact-item" defact-id="">3</div>
+                    <div class="div-defact-item" defact-id="">4</div>
+                    <div class="div-defact-item" defact-id="">5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body></html>

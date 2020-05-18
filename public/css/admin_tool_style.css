@@ -34,32 +34,40 @@
 }
 
 .div-wrapper-input {
-    margin-top: 4px;
+    margin-top: 20px;
 }
 
 #login-submit-bt {
-    font-size: 20px;
+    font-size: 15px;
     width: 40px;
     height: 40px;
-    background: #4bb23a;
-    color: white;
-    border: none;
-    border-radius: 50%; /*make circle*/
+    background: white;
+    border: 2px solid #4bb23a;
+    border-radius: 50%;
+    /*make circle*/
     padding: 0px;
     margin-top: 37%;
 }
 
-.div-join-bt {
+.div-tool-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.div-tool-bt {
     margin-top: 25px;
 }
 
-.login-bt{
-    background: inherit;
-    border: none;
-    border-bottom: 2px solid #4bb23a;
-    font-size: 15px;
-    font-weight: 600;
-    color: #444;
-    padding: 4px 5px;
+.div-wrapper-tool-bt{
+    margin-top: 20px;
+}
+
+.tool-bt {
+    background: #4bb23a;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 4px 7px;
     margin: 0 5px 0 5px;
+    border-radius: 5px;
 }

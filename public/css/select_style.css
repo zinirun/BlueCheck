@@ -1,5 +1,5 @@
 .div-select-box {
-    padding-top: 20px;
+    padding-top: 30px;
     padding-bottom: 20px;
 }
 
@@ -9,11 +9,12 @@ input[type="radio"] {
 
 input[type="radio"]:checked + div {
     display: inline-block;
-    background-color: deepskyblue;
+    background-color: dodgerblue;
+    color: white;
 }
 
 .div-dong-list{
-    margin: 15px 0 30px 15px;
+    margin: 30px 0 30px 15px;
 }
 
 .div-dong-bt{
@@ -29,7 +30,7 @@ input[type="radio"]:checked + div {
 }
 
 .div-ho-list{
-    margin: 15px 0 30px 15px;
+    margin: 30px 0 30px 15px;
 }
 
 .div-ho-bt{
@@ -50,9 +51,9 @@ input[type="radio"]:checked + div {
 
 #span_dong{
     margin-left: 10px;
-    font-size: 19px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
     background-color: cornflowerblue;
     color: white;
-    padding: 2px 3px;
+    padding: 1px 3px;
 }
