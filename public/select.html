@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="/public/script/select_and_route.js" type="text/javascript"></script>
-    <script src="script/select_and_route.js" type="text/javascript"></script>
 </head>
 
 <body onload="addList(); appendDongHo();">
@@ -32,7 +31,10 @@
                     <input type="button" id="backward-bt" value="＜" onclick="backToDong()">
                 </div>
                 <div class="div-title">
-                    호 선택 <span id="span_dong"></span>
+                    호 선택
+                    <div class="div-wrapper-ho">
+                        <span id="span_dong"></span>
+                    </div>
                 </div>
 
                 <div id="div_ho_target" class="div-ho-list">
