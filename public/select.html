@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>베스트웨이</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/select_style.css">
     <link rel="stylesheet" type="text/css" href="/public/css/select_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,7 +14,12 @@
 
 <body onload="addList(); appendDongHo();">
     <div class="div-view">
+       <div id="div_user_info">
+               <%if(locals.name){%> <%=name%> <%}%> 
+               <%if(locals.type){%> <%=type%> <%}%>님
+           </div>
         <div class="div-select-box">
+           
             <div id="div-dong-box">
                 <div class="div-title">
                     동 선택

@@ -18,23 +18,25 @@
                 Bestway System
             </div>
             <div class="div-login-form">
-                <form class="form-login">
+                <form class="form-login" method="post" action="/process/login">
                     <div class="div-login-left-input">
                         <div class="div-wrapper-input">
-                            <input id="login_id" placeholder="아이디" autocomplete="off">
+                            <input id="login_id" name="id" placeholder="아이디" autocomplete="off">
                         </div>
                         <div class="div-wrapper-input">
-                            <input type="password" id="login_pw" placeholder="비밀번호" autocomplete="off">
+                            <input type="password" name="password" id="login_pw" placeholder="비밀번호" autocomplete="off">
                         </div>
 
                     </div>
                     <div class="div-login-right-input">
-                        <input id="login-submit-bt" type="button" value="→" onclick="location.href = 'public/select.html'">
+                        <input id="login-submit-bt" type="submit" value="→" >
                     </div>
+                    
                 </form>
                 <div class="div-join-bt">
                     <span class="login-bt" onclick="location.href = '/register'">관계자 회원가입</span>
-                    <span class="login-bt" onclick="location.href = '/public/admin_tool.html'">관리자 페이지</span>
+                    <span class="login-bt" onclick="location.href = '/public/select.html'">관리자 페이지</span>
+                    <!--<span class="login-bt" onclick="location.href = '/public/admin_tool.html'">관리자 페이지</span> -->
                 </div>
             </div>
         </div>
