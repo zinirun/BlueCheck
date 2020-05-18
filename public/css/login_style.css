@@ -41,7 +41,7 @@
     font-size: 20px;
     width: 40px;
     height: 40px;
-    background: dodgerblue;
+    background: #4bb23a;
     color: white;
     border: none;
     border-radius: 50%; /*make circle*/
@@ -56,7 +56,7 @@
 .login-bt{
     background: inherit;
     border: none;
-    border-bottom: 2px solid dodgerblue;
+    border-bottom: 2px solid #4bb23a;
     font-size: 15px;
     font-weight: 600;
     color: #444;
