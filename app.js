@@ -72,6 +72,72 @@ router.route('/register').get(function (req, res) {
     });
 });
 
+//회원가입 라우터
+router.route('/reg_submit').post(function(req,res){
+    var id = req.body.id;
+    var pw = req.body.pw;
+    var name = req.body.name;
+    var tel = req.body.tel;
+    var auth = req.body.auth;
+    var type = req.body.type;
+    
+    var params = [id,pw,name,tel,type];
+    var result="";
+    console.log('요청 파라미터:'+id+', '+pw+', '+name+', '+tel+', '+auth+', '+type);
+    if(auth==='1234'){
+        checkIfUsed(params,result,res);
+        }
+    
+    else{
+        res.send('<script type="text/javascript">alert("인증코드가 일치하지 않습니다."); window.location="/register";</script>');
+         res.end();
+    }
+   
+});
+
+function checkIfUsed(params,result,res){
+     mySqlClient.connect();
+     var checkIdSql = 'SELECT * FROM user WHERE user_id = ?;';
+    mySqlClient.query(checkIdSql,params[0],function(err,rows){
+        if(err){
+            console.log("Search Error>>"+err);
+            mySqlClient.end(); return;
+        }
+        else{
+            if(rows.length>0){
+                result = "이미 사용중인 아이디입니다.";
+                printRegisterResult(result,res);
+            }
+            else{
+                addUser(params,result,res);
+            }
+        }
+    });
+}
+
+
+function addUser(params,result,res){
+    var insertSql = 'INSERT INTO user (user_id, password, name,tel, type) VALUES (?,?,?,?,?);';
+    mySqlClient.query(insertSql,params,function(err){
+        if(err) 
+            console.log("Insert Error>>"+err); 
+        else {
+            result = "회원가입이 완료되었습니다.";
+            console.log(result);
+            printRegisterResult(result,res);
+        }
+    });
+}
+
+
+function printRegisterResult(result,res){
+    res.send('<script type="text/javascript">alert("'+result+'"); window.location="/register";</script>');
+    mySqlClient.end();
+    res.end();
+}
+
+//-------------------------Mysql------------------------------------
+
 app.use('/', router);
 
 // 404 에러 페이지 처리
