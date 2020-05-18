@@ -16,6 +16,9 @@ span, p, table, hr, input[type="button"], ul{
 html {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 13px;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 input {
