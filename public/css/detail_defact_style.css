@@ -2,6 +2,30 @@
     padding-top: 30px;
 }
 
+.div-wrapper-finish{
+    float: left;
+}
+
+.div-wrapper-finish #span-defact-finish-bt, #span-defact-saw-bt{
+    position: absolute;
+    margin-top: -5px;
+    margin-left: 285px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    padding: 2px 5px 4px 5px;
+    background: dodgerblue;
+    border: none;
+    text-align: center;
+}
+
+#span-defact-saw-bt{
+    margin-top: 47px;
+    margin-left: 276px;
+    background: crimson;
+}
+
+
 .div-defact-image-box{
     margin: 10px auto 15px;
     width: 310px;
@@ -18,8 +42,8 @@ li{
 }
 
 .hr-line{
-    border: 0.5px solid #ccc;
-    width: 90%;
+    border: 0.5px solid #ddd;
+    width: 80%;
 }
 
 .div-defact-table-box{
