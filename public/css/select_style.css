@@ -51,9 +51,15 @@ input[type="radio"]:checked + div {
 
 #span_dong{
     margin-left: 10px;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
-    background-color: cornflowerblue;
-    color: white;
-    padding: 1px 3px;
+    color: #555;
+    padding: 2px 5px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.div-wrapper-ho{
+    margin-top: -3px;
+    margin-bottom: -15px;
 }
