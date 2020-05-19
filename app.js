@@ -15,15 +15,10 @@ var path = require('path'),
 
 var mysql = require('mysql');
 
-var mySqlClient = mysql.createConnection({
-    connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: 'wjswls1',
-    database: 'bestwaydb',
-    dateStrings: 'date',
-    debug: false
-});
+var mySqlClient = mysql.createConnection(require('./config/db_config'));
+
+const authConfig = require('./config/auth_config');
+const superPassword = authConfig.super_password;
 
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.urlencoded({
@@ -103,9 +98,8 @@ router.route('/reg_submit').post(function (req, res) {
         tel: tel,
         type: type
     };
-   
     var alertMsg = "";
-    if (auth === '1234') {
+    if (auth == superPassword) {
         result = checkInput(params);
         if (result == 2) {
             alertMsg = '연락처 입력이 잘못되었습니다.';
