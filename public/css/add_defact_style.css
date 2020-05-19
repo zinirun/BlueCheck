@@ -3,15 +3,6 @@
     padding-bottom: 20px;
 }
 
-input[type="radio"] {
-    display: none;
-}
-
-input[type="radio"]:checked + div {
-    display: inline-block;
-    background-color: deepskyblue;
-}
-
 .div-defact-list{
     margin-top: 20px;
 }
@@ -46,7 +37,7 @@ input[type="radio"]:checked + div {
     width: 10px;
     background: white;
     padding: 5px;
-    color: dodgerblue;
+    color: #4bb23a;
     font-size: 16px;
     font-weight: 600;
 }
@@ -77,7 +68,7 @@ input[type="radio"]:checked + div {
 input[type="submit"]{
     font-size: 19px;
     font-weight: 500;
-    background: dodgerblue;
+    background: #4bb23a;
     color: white;
     padding: 6px 10px;
     border: none;
