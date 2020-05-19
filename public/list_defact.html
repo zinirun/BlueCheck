@@ -37,9 +37,9 @@
             <div class="div-defact-list-box">
                 <div class="div-list-title">하자</div>
                 <div id="div_defact_list" class="div-defact-list">
-                   <% if(!solvedDefact.length ==0){ unsolvedDefact.forEach(function(element, index) { %>
-                    <div class="div-defact-item" defact-id="<%=element.id%>" onclick="location.href = '/public/detail_defact.html'">
-                    <%=element.construction_name %></div>
+                   <% if(!unsolvedDefact.length ==0){ unsolvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images/'+element.img+'.png'; %>
+                   <!----이미지 확장자 변경될시 수정할 것---->
+                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>');" onclick="location.href = '/public/detail_defact.html'"><%=element.d%></div>
                     <% }); } else {%>
                     <div class="div-if-none"><p>유지/보수 건이 없습니다
                     </p><% } %>
@@ -49,9 +49,8 @@
             <div class="div-end-list-box">
                 <div class="div-list-title">보수 완료</div>
                 <div id="div_end_list" class="div-end-list">
-                    <% if(!solvedDefact.length ==0){ solvedDefact.forEach(function(element, index) { %>
-                    <div class="div-defact-item" defact-id="<%=element.id%>" onclick="location.href = '/public/detail_defact.html'">
-                    <%=element.construction_name %></div>
+                    <% if(!solvedDefact.length ==0){ solvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images/'+element.img+'.png'; %>
+                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>');" onclick="location.href = '/public/detail_defact.html'"></div>
                     <% }); } else {%>
                     <div class="div-if-none"><p>완료 건이 없습니다
                     </p><% } %>
