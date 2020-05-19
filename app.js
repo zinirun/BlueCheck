@@ -78,6 +78,7 @@ router.route('/defact/add/').get(function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho,
         selected_loc = req.query.loc;
+    console.log(req.query.dong);
     
     fs.readFile('./public/add_defact.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {
