@@ -60,17 +60,38 @@ router.route('/defact/drawing/').get(function (req, res) {
 
 //하자 리스트 이동 라우터
 router.route('/defact/list/').get(function (req, res) {
-    var selected_dong = req.query.dong,
-        selected_ho = req.query.ho,
-        selected_loc = req.query.loc;
+    var selected_dong = req.query.dong.trim(),
+        selected_ho = req.query.ho.trim(),
+        selected_loc = req.query.loc.trim();
+    console.log(selected_dong,selected_ho);
+    var selectDefactSql = 'select * from defact where dong=? and ho=? and room=?';
 
-    fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
+    mySqlClient.query(selectDefactSql,[selected_dong,selected_ho,selected_loc], function(err, rows, fields){
+       if(err) {
+           console.log("ERROR>>"+err);
+       } 
+        else{
+            var unsolvedDefact = [];
+            var solvedDefact = [];
+            rows.forEach(function(element){
+                if(element.is_solved==0){
+                    unsolvedDefact.push(element);
+                }
+                else{
+                    solvedDefact.push(element);
+                }
+            });
+            fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {
             dong: selected_dong,
             ho: selected_ho,
-            loc: selected_loc
+            loc: selected_loc,
+            unsolvedDefact : unsolvedDefact,
+            solvedDefact : solvedDefact
         }));
-    });
+                
+        });
+    }});
 });
 
 //하자 등록 이동 라우터
