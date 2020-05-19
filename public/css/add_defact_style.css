@@ -37,7 +37,7 @@
     width: 10px;
     background: white;
     padding: 5px;
-    color: #4bb23a;
+    color: dodgerblue;;
     font-size: 16px;
     font-weight: 600;
 }
@@ -68,7 +68,7 @@
 input[type="submit"]{
     font-size: 19px;
     font-weight: 500;
-    background: #4bb23a;
+    background: dodgerblue;;
     color: white;
     padding: 6px 10px;
     border: none;

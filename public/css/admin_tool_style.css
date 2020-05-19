@@ -42,7 +42,7 @@
     width: 40px;
     height: 40px;
     background: white;
-    border: 2px solid #4bb23a;
+    border: 2px solid dodgerblue;
     border-radius: 50%;
     /*make circle*/
     padding: 0px;
@@ -63,7 +63,7 @@
 }
 
 .tool-bt {
-    background: #4bb23a;
+    background: dodgerblue;
     color: white;
     font-size: 16px;
     font-weight: 500;

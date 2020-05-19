@@ -14,7 +14,7 @@
     font-weight: 500;
     color: white;
     padding: 2px 5px 4px 5px;
-    background: #4bb23a;
+    background: dodgerblue;
     border: none;
     text-align: center;
 }
@@ -88,6 +88,6 @@ form{
     font-size: 19px;
     font-weight: 800;
     background: white;
-    color: #4bb23a;
+    color: dodgerblue;
     border: none;
 }
