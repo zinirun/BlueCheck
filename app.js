@@ -74,6 +74,21 @@ router.route('/defact/list/').get(function (req, res) {
     });
 });
 
+//하자 등록 이동 라우터
+router.route('/defact/add/').get(function (req, res) {
+    var selected_dong = req.query.dong,
+        selected_ho = req.query.ho,
+        selected_loc = req.query.loc;
+    
+    fs.readFile('./public/add_defact.html', 'utf8', function (error, data) {
+        res.send(ejs.render(data, {
+            dong: selected_dong,
+            ho: selected_ho,
+            loc: selected_loc
+        }));
+    });
+});
+
 //회원가입 이동 라우터
 router.route('/register').get(function (req, res) {
     fs.readFile('./public/register.html', 'utf8', function (error, data) {
