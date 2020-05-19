@@ -51,7 +51,7 @@
                 유지보수 등록
             </div>
             <div class="div-defact-list">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="/defact/add_submit/" method="POST" enctype="multipart/form-data">
                     <div class="div-wrapper-defact">
                         <div class="div-defact-title">공사명</div>
                         <input class="input-defact-detail" name="construction_name" value="베스트웨이 미사역" readonly required>
@@ -82,13 +82,13 @@
                         <div class="div-camera-bt">
                             <div class="filebox preview-image">
                                 <label for="input-file">사진 업로드</label>
-                                <input type="file" id="input-file" class="upload-hidden">
+                                <input type="file" id="input-file" class="upload-hidden" required>
                             </div>
                         </div>
                     </div>
 
                     <div class="div-camera-bt">
-                        <input type="submit" value="유지보수 등록">
+                        <input type="submit" value="유지보수 등록" onclick="if (confirm('유지보수를 등록할까요?') == true){return true;} else return false;">
                     </div>
                 </form>
 
