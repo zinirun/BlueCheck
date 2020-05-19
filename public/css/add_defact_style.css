@@ -23,14 +23,19 @@
 
 .input-defact-detail {
     width: 200px;
-    padding: 5px;
+    padding: 5px 6px;
     font-size: 16px;
     font-weight: 500;
     display: inline-block;
     border: 1px solid #d1d1d1;
     border-bottom-color: #c5c5c5;
     border-radius: .25em;
+    text-align: left;
+}
+
+.input-defact-detail::placeholder{
     text-align: center;
+    color: #777;
 }
 
 #div-defact-type {
