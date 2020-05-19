@@ -3,15 +3,6 @@
     padding-bottom: 20px;
 }
 
-input[type="radio"] {
-    display: none;
-}
-
-input[type="radio"]:checked + div {
-    display: inline-block;
-    background-color: deepskyblue;
-}
-
 .div-defact-list{
     margin-top: 20px;
 }
@@ -29,13 +20,15 @@ input[type="radio"]:checked + div {
     display: inline-block;
 }
 
-.div-defact-detail{
+.input-defact-detail{
     width: 200px;
     padding: 5px;
     font-size: 16px;
     font-weight: 500;
     display: inline-block;
+    border: none;
     border-bottom: 1px solid #777;
+    text-align: center;
 }
 
 #div-defact-type{
@@ -81,4 +74,25 @@ input[type="submit"]{
     color: white;
     padding: 6px 10px;
     border: none;
+}
+
+.div-ctype-list{
+    padding-top: 10px;
+}
+
+.li-type{
+    list-style-type: none;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    width: 130px;
+    padding: 2px 0px;
+    border: 1px solid #ccc;
+    margin: 4px auto;
+    background: #f2f2f2;
+}
+
+.div-hide-ctype-box{
+    padding-top: 30px;
+    display: none;
 }
