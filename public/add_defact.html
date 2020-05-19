@@ -13,7 +13,7 @@
     <script src="/public/script/add_defact.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body onload="addLoadDate()">
     <div class="div-view">
         <div class="div-add-defact-box" id="div_add_defact_box">
             <div class="div-wrapper-backward">
@@ -41,15 +41,15 @@
                     </div>
 
                     <div class="div-wrapper-defact">
-                        <div class="div-defact-title">내용</div>
+                        <div class="div-defact-title">하자내용</div>
                         <!--Need JS-->
-                        <input class="input-defact-detail" name="construction_type" placeholder="선택" readonly required>
+                        <input id="input_dtype" class="input-defact-detail" name="construction_type" placeholder="선택" onclick="loadDefactInfo()" readonly required>
                     </div>
 
                     <div class="div-wrapper-defact">
                         <div class="div-defact-title">기한</div>
                         <!--Need Date input-->
-                        <input class="input-defact-detail" type="date" name="due_date" min="2020-01-01" max="2025-01-01" required>
+                        <input class="input-defact-detail" type="date" id="input_due_date" name="due_date" min="2020-01-01" max="2025-01-01" required>
                     </div>
 
                     <div class="div-camera-box">
@@ -71,9 +71,34 @@
             </div>
         </div>
         <div id="div_hide_ctype_box" class="div-hide-ctype-box">
+           <div class="div-wrapper-backward">
+                <input type="button" id="backward-bt" value="＜" onclick="hide_ctype_box()">
+            </div>
             <div class="div-title">공종 선택</div>
             <div class="div-ctype-list" id="div_ctype_list">
-                
+
+            </div>
+        </div>
+
+        <div id="div_hide_info_box" class="div-hide-ctype-box">
+           <div class="div-wrapper-backward">
+                <input type="button" id="backward-bt" value="＜" onclick="hide_info_box()">
+            </div>
+            <div class="div-title">하자내용 선택</div>
+            <div class="div-defact-info-list" id="div_defact_info_list">
+                <div class="div-d-item" id="div_s1">
+
+                </div>
+                <div class="div-d-item" id="div_s2">
+
+                </div>
+                <div class="div-d-item" id="div_s3">
+
+                </div>
+            </div>
+            <div id="div_user_type_box">
+                <input type="text" id="input_typing" placeholder="직접 입력하세요." autocomplete="off">
+                <input id="submit_type_input" type="button" value="입력" onclick="user_typed()">
             </div>
         </div>
     </div>
