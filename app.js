@@ -58,10 +58,10 @@ router.route('/defact/drawing/').get(function (req, res) {
 
 //하자 리스트 이동 라우터
 router.route('/defact/list/').get(function (req, res) {
-    var selected_dong = req.query.dong.trim(),
-        selected_ho = req.query.ho.trim(),
-        selected_loc = req.query.loc.trim();
-    var selectDefactSql = "select *, concat(dong,'/',ho,'/',dong,'_',ho,'_',room,'_',id) img from defact where dong=? and ho = ? and room=?;";
+    var selected_dong = req.query.dong,
+        selected_ho = req.query.ho,
+        selected_loc = req.query.loc;
+    var selectDefactSql = "select * from defact where dong=? and ho = ? and room=?;";
 
     mySqlClient.query(selectDefactSql, [selected_dong, selected_ho, selected_loc], function (err, rows, fields) {
         if (err) {
@@ -94,8 +94,34 @@ router.route('/defact/list/').get(function (req, res) {
 });
 
 //하자 세부 페이지 라우터
-router.route('/defact/detail/').get(function (req, res){ 
+router.route('/defact/detail/').get(function (req, res){
     
+    var defactId = req.query.id;
+
+    var selectDetailSql = 'select d.img, d.construction_name, d.construction_type, d.info, d.due_date, d.is_read, d.is_solved from defact d where d.id = ?';
+    
+    var selectCommentSql = 'select u.name, u.type user_type,  c.comment from comment c, user u where c.defact_id = ? and u.id = c.user_id;';
+    mySqlClient.query(selectDetailSql,defactId,function(err, row){
+        if(err){
+            console.log("ERROR>> "+err);
+        }
+        else{
+            var detailInfo = row[0];
+            var commentInfo = [];
+            mySqlClient.query(selectCommentSql,defactId,function(err,rows){
+                rows.forEach(function(element){
+                    commentInfo.push(element);
+                });
+                fs.readFile('./public/detail_defact.html','utf8',function(err,data){
+                    res.send(ejs.render(data,{
+                    detailInfo:detailInfo,
+                        commentInfo : commentInfo
+                }));
+                });
+                
+            });
+        }
+    });
 });
 
 //하자 등록 이동 라우터
