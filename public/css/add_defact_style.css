@@ -39,7 +39,7 @@
     width: 10px;
     background: white;
     padding: 5px;
-    color: dodgerblue;
+    color: dodgerblue;;
     font-size: 16px;
     font-weight: 600;
 }
@@ -70,7 +70,7 @@
 input[type="submit"]{
     font-size: 19px;
     font-weight: 500;
-    background: dodgerblue;
+    background: dodgerblue;;
     color: white;
     padding: 6px 10px;
     border: none;

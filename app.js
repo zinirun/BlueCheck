@@ -15,10 +15,15 @@ var path = require('path'),
 
 var mysql = require('mysql');
 
-var mySqlClient = mysql.createConnection(require('./config/db_config'));
-
-const authConfig = require('./config/auth_config');
-const superPassword = authConfig.super_password;
+var mySqlClient = mysql.createConnection({
+    connectionLimit: 10,
+    host: 'localhost',
+    user: 'bestwayuser',
+    password: '1234',
+    database: 'bestwaydb',
+    dateStrings: 'date',
+    debug: false
+});
 
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.urlencoded({
@@ -64,7 +69,7 @@ router.route('/defact/list/').get(function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho,
         selected_loc = req.query.loc;
-    
+
     fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {
             dong: selected_dong,
@@ -113,8 +118,9 @@ router.route('/reg_submit').post(function (req, res) {
         tel: tel,
         type: type
     };
+
     var alertMsg = "";
-    if (auth == superPassword) {
+    if (auth === '1234') {
         result = checkInput(params);
         if (result == 2) {
             alertMsg = '연락처 입력이 잘못되었습니다.';
@@ -142,7 +148,7 @@ router.route('/reg_submit').post(function (req, res) {
                                 res.send('<script type="text/javascript">alert("' + alertMsg + '"); window.location="/register";</script>');
                             } else {
                                 alertMsg = "회원가입이 완료되었습니다.";
-                                res.send('<script type="text/javascript">alert("' + alertMsg + '"); window.location="/register";</script>');
+                                res.send('<script type="text/javascript">alert("' + alertMsg + '"); window.location="/";</script>');
 
                             }
                         });
@@ -155,6 +161,13 @@ router.route('/reg_submit').post(function (req, res) {
         res.send('<script type="text/javascript">alert("인증코드가 일치하지 않습니다."); window.location="/register";</script>');
         res.end();
     }
+});
+
+//회원가입 이동 라우터
+router.route('/register').get(function (req, res) {
+    fs.readFile('./public/register.html', 'utf8', function (error, data) {
+        res.send(ejs.render(data, {}));
+    });
 });
 
 function checkInput(params) {
@@ -178,7 +191,59 @@ function checkInput(params) {
 }
 
 
-//-------------------------Mysql------------------------------------
+//-------------------------회원가입------------------------------------
+
+
+//--------------------------로그인-------------------------------------
+router.route('/process/login').post(function (req, res) {
+    if (req.session.user) {
+        console.log('세션 유저데이터 있음');
+        res.redirect('/select');
+    } else {
+        var checkId = req.body.id;
+        var checkPwd = req.body.password;
+
+        console.log("processlogin 도착");
+        fs.readFile('./public/select.html', 'utf8', function (err, data) {
+            var selectPwdSql = "select * from user where user_id = ? && password=?";
+            mySqlClient.query(selectPwdSql, [checkId,checkPwd], function (err, row) {
+                if (err) {
+                    console.log("ERROR>>" + err);
+                } else {
+                    if (row[0]) {
+                        console.log("sql 반환 됨");
+                        req.session.user = {
+                            id: row[0].id,
+                            userId: checkId,
+                            userName: row[0].name,
+                            userType: row[0].type
+                        };
+                        console.log("리다이렉트시도");
+                        res.redirect('/select');
+                        return true;
+                    } else {
+                        res.send('<script type="text/javascript">alert("아이디와 비밀번호가 일치하지 않습니다."); window.location="/";</script>');
+                    }
+                }
+            });
+
+
+        });
+    }
+});
+
+//동/호 선택 페이지
+router.route('/select').get(function (req, res) {
+    if(req.session.user){
+    fs.readFile('./public/select.html', 'utf8', function (error, data) {
+        res.send(ejs.render(data, {}));
+    });
+    }
+    else{
+        res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
+    }
+});
+
 
 app.use('/', router);
 
