@@ -5,3 +5,12 @@ function go_add_defact(){
     
     location.href = '/defact/add?dong='+dong+'&ho='+ho+'&loc='+loc;
 }
+
+document.querySelector("#div_defact_list").addEventListener('click', go_detail_defact);
+function go_detail_defact(e){
+    var defactId = e.target.getAttribute('defact-id');
+    if(defactId){
+        location.href = '/defact/detail?id='+defactId;
+    }
+    
+}

@@ -63,36 +63,39 @@ router.route('/defact/list/').get(function (req, res) {
         selected_loc = req.query.loc.trim();
     var selectDefactSql = "select *, concat(dong,'/',ho,'/',dong,'_',ho,'_',room,'_',id) img from defact where dong=? and ho = ? and room=?;";
 
-    mySqlClient.query(selectDefactSql,[selected_dong,selected_ho,selected_loc], function(err, rows, fields){
-       if(err) {
-           console.log("ERROR>>"+err);
-       } 
-        else{
+    mySqlClient.query(selectDefactSql, [selected_dong, selected_ho, selected_loc], function (err, rows, fields) {
+        if (err) {
+            console.log("ERROR>>" + err);
+        } else {
             var unsolvedDefact = [];
             var solvedDefact = [];
-    
-            rows.forEach(function(element){
-            
-                if(element.is_solved=='0'){
+
+            rows.forEach(function (element) {
+
+                if (element.is_solved == '0') {
                     unsolvedDefact.push(element);
-                }
-                else{
+                } else {
                     solvedDefact.push(element);
                 }
-               
+
             });
-            console.log("unsolve:",unsolvedDefact);
-                console.log("solve:",solvedDefact); fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
-        res.send(ejs.render(data, {
-            dong: selected_dong,
-            ho: selected_ho,
-            loc: selected_loc,
-            unsolvedDefact : unsolvedDefact,
-            solvedDefact : solvedDefact
-        }));
-                
-        });
-    }});
+            fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
+                res.send(ejs.render(data, {
+                    dong: selected_dong,
+                    ho: selected_ho,
+                    loc: selected_loc,
+                    unsolvedDefact: unsolvedDefact,
+                    solvedDefact: solvedDefact
+                }));
+
+            });
+        }
+    });
+});
+
+//하자 세부 페이지 라우터
+router.route('/defact/detail/').get(function (req, res){ 
+    
 });
 
 //하자 등록 이동 라우터
@@ -100,7 +103,7 @@ router.route('/defact/add/').get(function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho,
         selected_loc = req.query.loc;
-    
+
     fs.readFile('./public/add_defact.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {
             dong: selected_dong,
@@ -221,19 +224,19 @@ router.route('/process/login').post(function (req, res) {
 
         fs.readFile('./public/select.html', 'utf8', function (err, data) {
             var selectPwdSql = "select * from user where user_id = ? && password=?";
-            mySqlClient.query(selectPwdSql, [checkId,checkPwd], function (err, row) {
+            mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
                 if (err) {
                     console.log("ERROR>>" + err);
                 } else {
                     if (row[0]) {
-           
+
                         req.session.user = {
                             id: row[0].id,
                             userId: checkId,
                             userName: row[0].name,
                             userType: row[0].type
                         };
-          
+
                         res.redirect('/select');
                         return true;
                     } else {
@@ -249,12 +252,11 @@ router.route('/process/login').post(function (req, res) {
 
 //동/호 선택 페이지
 router.route('/select').get(function (req, res) {
-    if(req.session.user){
-    fs.readFile('./public/select.html', 'utf8', function (error, data) {
-        res.send(ejs.render(data, {}));
-    });
-    }
-    else{
+    if (req.session.user) {
+        fs.readFile('./public/select.html', 'utf8', function (error, data) {
+            res.send(ejs.render(data, {}));
+        });
+    } else {
         res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
     }
 });
