@@ -1,4 +1,5 @@
 let selected_ctype_index;
+let s1, s2, s3;
 
 const d_construct_type = [
     "조적공사",
@@ -94,7 +95,7 @@ function loadDefactInfo() {
         for (var i in loadTarget) {
             loadTarget[i].innerHTML = '';
         }
-
+        document.getElementById('div_now_info').innerHTML = "세부 공종을 선택하세요.";
         d_select(selected_ctype_index, 1);
     } else {
         alert('공종을 먼저 선택하세요.');
@@ -108,7 +109,13 @@ function addClickListener(dom, nextFunction, nextIndex) {
                 if (e.target.getAttribute('value')) {
                     document.getElementById('div_user_type_box').style.display = 'none';
                     if (nextIndex == 2) {
+                        document.getElementById('div_now_info').innerHTML = "하자 위치를 선택하세요";
+                        s1 = e.target.getAttribute('value');
                         document.getElementById('div_s3').innerHTML = '';
+                    }
+                    if(nextIndex == 3){
+                        document.getElementById('div_now_info').innerHTML = "하자 종류를 선택하세요";
+                        s2 = e.target.getAttribute('value');
                     }
                     prevDom = document.getElementsByClassName('li-type-' + (nextIndex - 1));
                     for (var i = 0; i < prevDom.length; i++) {
@@ -165,18 +172,19 @@ function d_select(typeIndex, index) {
     addClickListener(loadTarget, d_select, index + 1);
 }
 
-function selectedFinalValue(defactValue) {
+function selectedFinalValue(finalValue) {
+    document.getElementById('div_now_info').innerHTML = "";
+    s3 = finalValue;
+    value = s1 + "-" + s2 + "-" + s3;
     document.getElementById('div_add_defact_box').style.display = 'block';
     document.getElementById('div_hide_info_box').style.display = 'none';
-    document.getElementById('input_dtype').setAttribute('value', defactValue);
+    document.getElementById('input_dtype').setAttribute('value', value);
 }
 
 function user_typed() {
     typedValue = document.getElementById('input_typing').value;
     if (typedValue.length > 0) {
-        document.getElementById('div_add_defact_box').style.display = 'block';
-        document.getElementById('div_hide_info_box').style.display = 'none';
-        document.getElementById('input_dtype').setAttribute('value', typedValue);
+        selectedFinalValue(typedValue);
     } else {
         alert("1자 이상 입력하세요.");
     }
@@ -191,3 +199,4 @@ function hide_info_box() {
     document.getElementById('div_add_defact_box').style.display = 'block';
     document.getElementById('div_hide_info_box').style.display = 'none';
 }
+
