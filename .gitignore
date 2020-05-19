@@ -1,4 +1,6 @@
-    password: 'wjswls1',
+# Database, Auth Configs
+/config
+
 # Logs
 logs
 *.log
