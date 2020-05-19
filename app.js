@@ -18,8 +18,8 @@ var mysql = require('mysql');
 var mySqlClient = mysql.createConnection({
     connectionLimit: 10,
     host: 'localhost',
-    user: 'root',
-    password: 'wjswls1',
+    user: 'bestwayuser',
+    password: '1234',
     database: 'bestwaydb',
     dateStrings: 'date',
     debug: false
