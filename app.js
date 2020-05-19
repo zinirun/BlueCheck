@@ -15,15 +15,9 @@ var path = require('path'),
 
 var mysql = require('mysql');
 
-var mySqlClient = mysql.createConnection({
-    connectionLimit: 10,
-    host: 'localhost',
-    user: 'bestwayuser',
-    password: '1234',
-    database: 'bestwaydb',
-    dateStrings: 'date',
-    debug: false
-});
+const mySqlClient = mysql.createConnection(require('./config/db_config'));
+const authConfig = require('./config/auth_config');
+const superPassword = authConfig.super_password;
 
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.urlencoded({
@@ -120,7 +114,7 @@ router.route('/reg_submit').post(function (req, res) {
     };
 
     var alertMsg = "";
-    if (auth === '1234') {
+    if (auth == superPassword) {
         result = checkInput(params);
         if (result == 2) {
             alertMsg = '연락처 입력이 잘못되었습니다.';
@@ -203,7 +197,6 @@ router.route('/process/login').post(function (req, res) {
         var checkId = req.body.id;
         var checkPwd = req.body.password;
 
-        console.log("processlogin 도착");
         fs.readFile('./public/select.html', 'utf8', function (err, data) {
             var selectPwdSql = "select * from user where user_id = ? && password=?";
             mySqlClient.query(selectPwdSql, [checkId,checkPwd], function (err, row) {
@@ -211,18 +204,16 @@ router.route('/process/login').post(function (req, res) {
                     console.log("ERROR>>" + err);
                 } else {
                     if (row[0]) {
-                        console.log("sql 반환 됨");
                         req.session.user = {
                             id: row[0].id,
                             userId: checkId,
                             userName: row[0].name,
                             userType: row[0].type
                         };
-                        console.log("리다이렉트시도");
                         res.redirect('/select');
                         return true;
                     } else {
-                        res.send('<script type="text/javascript">alert("아이디와 비밀번호가 일치하지 않습니다."); window.location="/";</script>');
+                        res.send('<script type="text/javascript">alert("아이디 또는 비밀번호가 일치하지 않습니다."); window.location="/";</script>');
                     }
                 }
             });
