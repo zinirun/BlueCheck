@@ -3,15 +3,15 @@
     padding-bottom: 20px;
 }
 
-.div-defact-list{
+.div-defact-list {
     margin-top: 20px;
 }
 
-.div-wrapper-defact{
+.div-wrapper-defact {
     margin-bottom: 6px;
 }
 
-.div-defact-title{
+.div-defact-title {
     width: 80px;
     padding: 6px;
     font-size: 17px;
@@ -20,7 +20,7 @@
     display: inline-block;
 }
 
-.input-defact-detail{
+.input-defact-detail {
     width: 200px;
     padding: 5px;
     font-size: 16px;
@@ -31,56 +31,59 @@
     text-align: center;
 }
 
-#div-defact-type{
+#div-defact-type {
     width: 170px;
 }
 
-.defact-select-bt{
+.defact-select-bt {
     width: 10px;
     background: white;
     padding: 5px;
-    color: dodgerblue;;
+    color: dodgerblue;
+    ;
     font-size: 16px;
     font-weight: 600;
 }
 
-.div-camera-box{
+.div-camera-box {
     margin-top: 30px;
 }
 
-.div-camera-bt{
+.div-camera-bt {
     font-size: 17px;
     font-weight: 500;
     text-align: center;
 }
 
-#camera-upload-bt{
+#camera-upload-bt {
     background: white;
     padding: 5px 10px;
     border: 1px solid #777;
 }
 
-#div-image-box{
+#div-image-box {
     background: #eee;
     margin: 15px auto;
     width: 250px;
     height: 200px;
 }
 
-input[type="submit"]{
+input[type="submit"] {
     font-size: 19px;
     font-weight: 500;
-    background: dodgerblue;;
+    background: dodgerblue;
+    ;
     color: white;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border: none;
+    border-radius: 4px;
 }
 
-.div-ctype-list{
+.div-ctype-list {
     padding-top: 10px;
 }
 
-.li-type{
+.li-type {
     list-style-type: none;
     font-size: 17px;
     font-weight: 500;
@@ -92,22 +95,20 @@ input[type="submit"]{
     background: #f2f2f2;
 }
 
-.div-hide-ctype-box{
+.div-hide-ctype-box {
     padding-top: 30px;
     display: none;
 }
 
-.div-defact-info-list{
+.div-defact-info-list {
     display: flex;
     padding-left: 10px;
     padding-top: 20px;
 }
 
-.div-d-item{
-    
-}
+.div-d-item {}
 
-.div-d-item li{
+.div-d-item li {
     list-style-type: none;
     font-size: 15px;
     font-weight: 500;
@@ -119,13 +120,13 @@ input[type="submit"]{
     background: #f2f2f2;
 }
 
-#div_user_type_box{
+#div_user_type_box {
     display: none;
     text-align: center;
     padding-top: 15px;
 }
 
-#input_typing{
+#input_typing {
     font-size: 16px;
     font-weight: 500;
     padding-left: 2px;
@@ -134,7 +135,7 @@ input[type="submit"]{
     border: 1px solid #bbb;
 }
 
-#submit_type_input{
+#submit_type_input {
     vertical-align: top;
     width: 45px;
     height: 34px;
@@ -146,10 +147,74 @@ input[type="submit"]{
     border: none;
 }
 
-#div_now_info{
+#div_now_info {
     font-size: 18px;
     font-weight: 500;
     text-align: center;
     padding-top: 10px;
     color: #666;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.filebox label {
+    display: inline-block;
+    width: 100px;
+    padding: 5px 12px;
+    color: dodgerblue;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+    margin-bottom: 15px;
+}
+
+.filebox .upload-display {
+    /* 이미지가 표시될 지역 */
+    margin-bottom: 5px;
+}
+
+@media(min-width: 768px) {
+    .filebox .upload-display {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 0;
+    }
+}
+
+.filebox .upload-thumb-wrap {
+    /* 추가될 이미지를 감싸는 요소 */
+    display: inline-block;
+    width: 270px;
+    padding: 2px;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.filebox .upload-display img {
+    /* 추가될 이미지 */
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.div-camera-bt{
+    padding-bottom: 25px;
 }
