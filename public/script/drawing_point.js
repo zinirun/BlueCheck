@@ -33,8 +33,8 @@ function loadDrawingPoint() {
 function locSelected(user_selected_loc) {
     if (user_selected_loc.target.getAttribute('value')) {
         selected_loc = user_selected_loc.target.getAttribute('value');
-        selected_dong = document.getElementById('span_defact_dong').innerHTML;
-        selected_ho = document.getElementById('span_defact_ho').innerHTML;
+        selected_dong = document.getElementById('span_defact_dong').innerHTML.trim();
+        selected_ho = document.getElementById('span_defact_ho').innerHTML.trim();
 
         location.href = "/defact/list?dong=" + selected_dong + "&ho=" + selected_ho + "&loc=" + selected_loc;
     }

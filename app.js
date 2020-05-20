@@ -49,8 +49,6 @@ router.route('/defact/drawing/').get(function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho;
 
-    console.log(selected_dong + selected_ho);
-
     fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {
             dong: selected_dong,
@@ -64,14 +62,71 @@ router.route('/defact/list/').get(function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho,
         selected_loc = req.query.loc;
+    var selectDefactSql = "select * from defact where dong=? and ho = ? and room=?;";
 
-    fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
-        res.send(ejs.render(data, {
-            dong: selected_dong,
-            ho: selected_ho,
-            loc: selected_loc
-        }));
+    mySqlClient.query(selectDefactSql, [selected_dong, selected_ho, selected_loc], function (err, rows, fields) {
+        if (err) {
+            console.log("ERROR>>" + err);
+        } else {
+            var unsolvedDefact = [];
+            var solvedDefact = [];
+
+            rows.forEach(function (element) {
+
+                if (element.is_solved == '0') {
+                    unsolvedDefact.push(element);
+                } else {
+                    solvedDefact.push(element);
+                }
+
+            });
+            fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
+                res.send(ejs.render(data, {
+                    dong: selected_dong,
+                    ho: selected_ho,
+                    loc: selected_loc,
+                    unsolvedDefact: unsolvedDefact,
+                    solvedDefact: solvedDefact
+                }));
+
+            });
+        }
     });
+});
+
+//하자 세부 페이지 라우터
+router.route('/defact/detail/').get(function (req, res){
+    
+    var defactId = req.query.id;
+
+    var selectDetailSql = 'select d.img, d.construction_name, d.construction_type, d.info, d.due_date, d.is_read, d.is_solved from defact d where d.id = ?';
+    
+    var selectCommentSql = 'select u.name, u.type user_type,  c.comment from comment c, user u where c.defact_id = ? and u.id = c.user_id;';
+    mySqlClient.query(selectDetailSql,defactId,function(err, row){
+        if(err){
+            console.log("ERROR>> "+err);
+        }
+        else{
+            var detailInfo = row[0];
+            var commentInfo = [];
+            mySqlClient.query(selectCommentSql,defactId,function(err,rows){
+                rows.forEach(function(element){
+                    commentInfo.push(element);
+                });
+                fs.readFile('./public/detail_defact.html','utf8',function(err,data){
+                    res.send(ejs.render(data,{
+                    detailInfo:detailInfo,
+                        commentInfo : commentInfo
+                }));
+                });
+                
+            });
+        }
+    });
+});
+
+router.route('/defact/add/comment/').post(function(req,res){
+    console.log(req.body);
 });
 
 //하자 등록 이동 라우터
@@ -202,7 +257,7 @@ router.route('/process/login').post(function (req, res) {
 
         fs.readFile('./public/select.html', 'utf8', function (err, data) {
             var selectPwdSql = "select * from user where user_id = ? && password=?";
-            mySqlClient.query(selectPwdSql, [checkId,checkPwd], function (err, row) {
+            mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
                 if (err) {
                     console.log("ERROR>>" + err);
                 } else {
@@ -228,12 +283,11 @@ router.route('/process/login').post(function (req, res) {
 
 //동/호 선택 페이지
 router.route('/select').get(function (req, res) {
-    if(req.session.user){
-    fs.readFile('./public/select.html', 'utf8', function (error, data) {
-        res.send(ejs.render(data, {}));
-    });
-    }
-    else{
+    if (req.session.user) {
+        fs.readFile('./public/select.html', 'utf8', function (error, data) {
+            res.send(ejs.render(data, {}));
+        });
+    } else {
         res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
     }
 });

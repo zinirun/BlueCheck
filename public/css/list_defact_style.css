@@ -52,6 +52,12 @@
     margin-bottom: -5px;
 }
 
+.div-if-none{
+    text-align:center;
+    font-weight: 500;
+    padding-top:20px;
+}
+
 #span_defact_dongho{
     font-size: 15px;
     font-weight: 500;
