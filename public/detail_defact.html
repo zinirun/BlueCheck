@@ -17,35 +17,39 @@
             <div class="div-wrapper-backward">
                 <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
             </div>
+            <% if (detailInfo.is_solved==1){%>
             <div class="div-wrapper-finish">
                 <span id="span-defact-finish-bt">완료</span>
             </div>
+            <% }%>
+            <% if(detailInfo.is_read==0){%>
             <div class="div-wrapper-finish">
                 <span id="span-defact-saw-bt">확인</span>
             </div>
+            <% }%>
             <div class="div-title">
                 하자 상세
             </div>
-            <div class="div-defact-image-box">
+            <div class="div-defact-image-box" style="background-image: url('/public/resources/defact_images<%= detailInfo.img %>');">
                 <!--defact image here-->
                 <div class="div-defact-table-box">
                 <!--defact detail here-->
                 <table class="table-defact">
                     <tr>
                         <td class="td-title">공사명</td>
-                        <td id="c_name">경희건설</td>
+                        <td id="c_name"><%=detailInfo.construction_name%></td>
                     </tr>
                     <tr>
                         <td class="td-title">공종</td>
-                        <td id="c_type">마감공사</td>
+                        <td id="c_type"><%=detailInfo.construction_type%></td>
                     </tr>
                     <tr>
                         <td class="td-title">내용</td>
-                        <td id="d_type">ALC공사</td>
+                        <td id="d_type"><%=detailInfo.info%></td>
                     </tr>
                     <tr>
                         <td class="td-title">일자</td>
-                        <td id="date">20.04.14</td>
+                        <td id="date"><%=detailInfo.due_date%></td>
                     </tr>
                 </table>
             </div>
@@ -53,14 +57,16 @@
             <div class="div-comment-box">
                <hr class="hr-line">
                 <ul class="ul-comment-view-box">
-                    <li class="li-comment">기사 곽철용: 마감 신경써주세요.
-                    <li class="li-comment">반장 조두팔: 확인했습니다.
-                        <!--comment here-->
+                   <% commentInfo.forEach(function(element){ if(element.user_type==1) u_type='기사'; else u_type='반장'%>
+                    <li class="li-comment">
+                    <%=u_type%> <%=element.name%>:  <%=element.comment%>
+                    <% }); %>
+                
                 </ul>
                 <div class="div-comment-bt-box">
-                    <form id="comment_form">
-                        <input id="comment_input" required autocomplete="off" maxlength="40">
-                        <input type="submit" id="add-comment-bt" value="＋">
+                    <form id="comment_form" action="/defact/add/comment" method="post">
+                        <input type="text" id="comment_input" name="addComment" required autocomplete="off" maxlength="40">
+                        <input type="submit" id="add-comment-bt" value="＋" >
                     </form>
                 </div>
             </div>

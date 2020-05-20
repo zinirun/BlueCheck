@@ -124,6 +124,10 @@ router.route('/defact/detail/').get(function (req, res){
     });
 });
 
+router.route('/defact/add/comment/').post(function(req,res){
+    console.log(req.body);
+});
+
 //하자 등록 이동 라우터
 router.route('/defact/add/').get(function (req, res) {
     var selected_dong = req.query.dong,
