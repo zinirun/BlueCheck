@@ -11,7 +11,8 @@ var path = require('path'),
     ejs = require('ejs'),
     fs = require('fs'),
     url = require('url'),
-    cors = require('cors'); //ajax 요청시 cors 지원
+    cors = require('cors'), //ajax 요청시 cors 지원
+    multer = require('multer') //사진 업로드
 
 var mysql = require('mysql');
 
@@ -133,6 +134,7 @@ router.route('/defact/add/').get(function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho,
         selected_loc = req.query.loc;
+    console.log(req.query.dong);
     
     fs.readFile('./public/add_defact.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {
@@ -219,6 +221,7 @@ router.route('/register').get(function (req, res) {
     });
 });
 
+//회원가입 체크 라우터
 function checkInput(params) {
     var result;
     var pattern_eng = /[a-zA-Z]/; //영어 입력 체크 패턴
@@ -259,14 +262,12 @@ router.route('/process/login').post(function (req, res) {
                     console.log("ERROR>>" + err);
                 } else {
                     if (row[0]) {
-
                         req.session.user = {
                             id: row[0].id,
                             userId: checkId,
                             userName: row[0].name,
                             userType: row[0].type
                         };
-
                         res.redirect('/select');
                         return true;
                     } else {
@@ -289,6 +290,26 @@ router.route('/select').get(function (req, res) {
     } else {
         res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
     }
+});
+
+//하자 등록 라우터
+router.route('/defact/add_submit').post(function (req, res) {
+    var c_name = req.body.construction_name; //공사명
+    var loc = req.body.loc; //dong,ho,room 쪼개야함
+    var c_type = req.body.construction_type; //공종
+    var info = req.body.defact_info; //하자 정보
+    var due_date = req.body.due_date; //기한
+    //이미지 파일 ?
+    var type = req.body.type;
+    var result;
+    var params = {
+        user_id: id,
+        password: pw,
+        name: name,
+        tel: tel,
+        type: type
+    };
+    
 });
 
 
