@@ -56,6 +56,11 @@
                         <div class="div-defact-title">공사명</div>
                         <input class="input-defact-detail" name="construction_name" value="베스트웨이 미사역" readonly required>
                     </div>
+                    
+                    <div class="div-wrapper-defact">
+                        <div class="div-defact-title">위치</div>
+                        <input class="input-defact-detail" name="loc" value="<%=dong%>동 <%=ho%>호 <%=loc%>" readonly required>
+                    </div>
 
                     <div class="div-wrapper-defact">
                         <div class="div-defact-title">공종</div>
@@ -64,19 +69,15 @@
                     </div>
 
                     <div class="div-wrapper-defact">
-                        <div class="div-defact-title">위치</div>
-                        <input class="input-defact-detail" name="loc" value="<%=dong%>동 <%=ho%>호 <%=loc%>" readonly required>
-                    </div>
-
-                    <div class="div-wrapper-defact">
                         <div class="div-defact-title">하자내용</div>
-                        <input id="input_dtype" class="input-defact-detail" name="construction_type" placeholder="선택" onclick="loadDefactInfo()" readonly required>
+                        <input id="input_dtype" class="input-defact-detail" name="defact_info" placeholder="선택" onclick="loadDefactInfo()" readonly required>
                     </div>
 
                     <div class="div-wrapper-defact">
                         <div class="div-defact-title">기한</div>
                         <input class="input-defact-detail" type="date" id="input_due_date" name="due_date" min="2020-01-01" max="2025-01-01" required>
                     </div>
+                    
 
                     <div class="div-camera-box">
                         <div class="div-camera-bt">
@@ -112,7 +113,7 @@
                 <input type="button" id="backward-bt" value="＜" onclick="hide_info_box()">
             </div>
             <div class="div-title">하자내용 선택</div>
-            <div id="div_now_info">123</div>
+            <div id="div_now_info"></div>
             <div class="div-defact-info-list" id="div_defact_info_list">
                 <div class="div-d-item" id="div_s1">
 
