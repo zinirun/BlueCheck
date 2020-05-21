@@ -81,6 +81,7 @@ router.route('/defact/list/').get(function (req, res) {
 
             });
             fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
+            
                 res.send(ejs.render(data, {
                     dong: selected_dong,
                     ho: selected_ho,
@@ -99,34 +100,66 @@ router.route('/defact/detail/').get(function (req, res){
     
     var defactId = req.query.id;
 
-    var selectDetailSql = 'select d.img, d.construction_name, d.construction_type, d.info, d.due_date, d.is_read, d.is_solved from defact d where d.id = ?';
+    var selectDetailSql = 'select d.id, d.img, d.construction_name, d.construction_type, d.info, d.due_date, d.is_read, d.is_solved from defact d where d.id = ?';
     
     var selectCommentSql = 'select u.name, u.type user_type,  c.comment from comment c, user u where c.defact_id = ? and u.id = c.user_id;';
     mySqlClient.query(selectDetailSql,defactId,function(err, row){
         if(err){
-            console.log("ERROR>> "+err);
+            console.log("select detail sql ERROR>> "+err);
         }
         else{
             var detailInfo = row[0];
             var commentInfo = [];
             mySqlClient.query(selectCommentSql,defactId,function(err,rows){
+                if(err){
+                    console.log('select comment sql error>'+err);
+                }
+                else{
                 rows.forEach(function(element){
                     commentInfo.push(element);
                 });
-                fs.readFile('./public/detail_defact.html','utf8',function(err,data){
+               fs.readFile('./public/detail_defact.html','utf8',function(err,data){
+    
                     res.send(ejs.render(data,{
                     detailInfo:detailInfo,
                         commentInfo : commentInfo
                 }));
-                });
-                
+                });}
+            
             });
         }
     });
 });
 
+//하자 상세 페이지 댓글 등록 라우터
 router.route('/defact/add/comment/').post(function(req,res){
-    console.log(req.body);
+    if(req.session.user){
+        var user = {
+            userId : req.session.user.id,
+            userType : req.session.user.userType,
+            userName : req.session.user.userName
+        };
+       var defactId = req.body.defact_id;
+        var inputComment = req.body.inputComment;
+        var insertCommentSql = 'insert into comment  (user_id, defact_id, comment )values (?,?,?)';
+   
+        var params = [user.userId, defactId, inputComment ];
+        mySqlClient.query(insertCommentSql,params,function(err){
+            if(err){
+                console.log("Comment Sql Error>>"+err);
+            }
+            else{
+                //나중에 Ajax로 바꿔볼것!!!!!!
+                res.writeHead(302,{'Location': '/defact/detail?id='+defactId});
+                res.end();
+                
+                
+            }
+        });
+    }
+    else{
+        res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
+    }
 });
 
 //하자 등록 이동 라우터
@@ -259,7 +292,7 @@ router.route('/process/login').post(function (req, res) {
             var selectPwdSql = "select * from user where user_id = ? && password=?";
             mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
                 if (err) {
-                    console.log("ERROR>>" + err);
+                    console.log("dong/ho select page sql ERROR>>" + err);
                 } else {
                     if (row[0]) {
                         req.session.user = {
@@ -268,6 +301,7 @@ router.route('/process/login').post(function (req, res) {
                             userName: row[0].name,
                             userType: row[0].type
                         };
+                        
                         res.redirect('/select');
                         return true;
                     } else {
@@ -285,6 +319,8 @@ router.route('/process/login').post(function (req, res) {
 router.route('/select').get(function (req, res) {
     if (req.session.user) {
         fs.readFile('./public/select.html', 'utf8', function (error, data) {
+            res.locals={name:req.session.user.userName, type:req.session.user.userType};
+            console.log(res.locals);
             res.send(ejs.render(data, {}));
         });
     } else {

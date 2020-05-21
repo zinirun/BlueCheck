@@ -17,6 +17,7 @@
             <div class="div-wrapper-backward">
                 <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
             </div>
+            
             <% if (detailInfo.is_solved==1){%>
             <div class="div-wrapper-finish">
                 <span id="span-defact-finish-bt">완료</span>
@@ -57,15 +58,16 @@
             <div class="div-comment-box">
                <hr class="hr-line">
                 <ul class="ul-comment-view-box">
-                   <% commentInfo.forEach(function(element){ if(element.user_type==1) u_type='기사'; else u_type='반장'%>
+                   <% commentInfo.forEach(function(element){ %>
                     <li class="li-comment">
-                    <%=u_type%> <%=element.name%>:  <%=element.comment%>
+                    <%=element.type%> <%=element.name%>:  <%=element.comment%>
                     <% }); %>
                 
                 </ul>
                 <div class="div-comment-bt-box">
                     <form id="comment_form" action="/defact/add/comment" method="post">
-                        <input type="text" id="comment_input" name="addComment" required autocomplete="off" maxlength="40">
+                       <input id="hide_defact_id" value='<%= detailInfo.id %>' name="defact_id">
+                        <input type="text" id="comment_input" name="inputComment" required autocomplete="off" maxlength="40">
                         <input type="submit" id="add-comment-bt" value="＋" >
                     </form>
                 </div>

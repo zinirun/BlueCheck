@@ -1,3 +1,3 @@
 module.exports = {
-    super_password: "admin"
+    super_password: "1234"
 }
