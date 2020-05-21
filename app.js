@@ -283,12 +283,11 @@ function checkInput(params) {
 router.route('/process/login').post(function (req, res) {
     if (req.session.user) {
         console.log('세션 유저데이터 있음');
-        res.redirect('/select');
+        res.redirect('/selectc');
     } else {
         var checkId = req.body.id;
         var checkPwd = req.body.password;
 
-        fs.readFile('./public/select.html', 'utf8', function (err, data) {
             var selectPwdSql = "select * from user where user_id = ? && password=?";
             mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
                 if (err) {
@@ -302,16 +301,26 @@ router.route('/process/login').post(function (req, res) {
                             userType: row[0].type
                         };
                         
-                        res.redirect('/select');
+                        res.redirect('/selectc');
                         return true;
                     } else {
                         res.send('<script type="text/javascript">alert("아이디 또는 비밀번호가 일치하지 않습니다."); window.location="/";</script>');
                     }
                 }
             });
+    }
+});
+//공사종류 선택페이지
+router.route('/selectc').get(function (req, res) {
+    if (req.session.user) {
+        fs.readFile('./public/select_const.html', 'utf8', function (error, data) {
+            var ctype = req.query.ctype;
+            console.log(ctype);
 
-
+            res.send(ejs.render(data, {name:req.session.user.userName, type:req.session.user.userType}));
         });
+    } else {
+        res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
     }
 });
 
@@ -319,9 +328,10 @@ router.route('/process/login').post(function (req, res) {
 router.route('/select').get(function (req, res) {
     if (req.session.user) {
         fs.readFile('./public/select.html', 'utf8', function (error, data) {
-            res.locals={name:req.session.user.userName, type:req.session.user.userType};
-            console.log(res.locals);
-            res.send(ejs.render(data, {}));
+            var ctype = req.query.ctype;
+            console.log(ctype);
+
+            res.send(ejs.render(data, {name:req.session.user.userName, type:req.session.user.userType}));
         });
     } else {
         res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
