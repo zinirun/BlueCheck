@@ -15,11 +15,12 @@
 <body onload="addList(); appendDongHo();">
     <div class="div-view">
        <div id="div_user_info">
-               <%if(locals.name){%> <%=name%> <%}%> 
-               <%if(locals.type){%> <%=type%> <%}%>님
+               <% if(locals.name){ %> <%=locals.name%> <% } %> 
+               <% if(locals.type){ %> <%=locals.type%> 님<% }%>
            </div>
+
         <div class="div-select-box">
-           
+          
             <div id="div-dong-box">
                 <div class="div-title">
                     동 선택
