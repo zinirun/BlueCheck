@@ -18,16 +18,12 @@
                 <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
             </div>
             
-            <% if (detailInfo.is_solved==1){%>
+            <% if (detailInfo.is_solved==0){%>
             <div class="div-wrapper-finish">
-                <span id="span-defact-finish-bt">완료</span>
+                <span id="span-defact-finish-bt">보수완료</span>
             </div>
             <% }%>
-            <% if(detailInfo.is_read==0){%>
-            <div class="div-wrapper-finish">
-                <span id="span-defact-saw-bt">확인</span>
-            </div>
-            <% }%>
+            
             <div class="div-title">
                 하자 상세
             </div>

@@ -308,7 +308,8 @@ router.route('/process/login').post(function (req, res) {
         });
     }
 });
-//공사종류 선택페이지
+
+//공사종류, 동, 호  선택페이지
 router.route('/select').get(function (req, res) {
     if (req.session.user) {
         if (req.query.ctype) {
