@@ -28,7 +28,7 @@ var defactList = function (req, res) {
 
             });
             fs.readFile('./public/list_defact.html', 'utf8', function (error, data) {
-
+                res.cookie('loc',selected_loc);
                 res.send(ejs.render(data, {
                     dong: selected_dong,
                     ho: selected_ho,
