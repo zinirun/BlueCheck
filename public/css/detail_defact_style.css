@@ -8,8 +8,8 @@
 
 .div-wrapper-finish #span-defact-finish-bt, #span-defact-saw-bt{
     position: absolute;
-    margin-top: -5px;
-    margin-left: 285px;
+    margin-top: 5px;
+    margin-left: 246px;
     font-size: 16px;
     font-weight: 500;
     color: white;
@@ -17,12 +17,6 @@
     background: dodgerblue;
     border: none;
     text-align: center;
-}
-
-#span-defact-saw-bt{
-    margin-top: 47px;
-    margin-left: 276px;
-    background: crimson;
 }
 
 
@@ -48,8 +42,8 @@ li{
 
 .div-defact-table-box{
     position: absolute;
-    margin-left: 7px;
-    margin-top: 203px;
+    margin-left: 5px;
+    margin-top: 213px;
     display: inline-block;
     border: 1px solid white;
 }
@@ -60,12 +54,13 @@ li{
 }
 
 td{
-    font-size: 12px;
-    text-align: center;
+    font-size: 11px;
+/*    text-align: center;*/
     border: 1px solid #eee;
 }
 
 .td-title{
+    text-align: center;
     font-weight: 500;
 }
 

@@ -14,13 +14,17 @@
 
 <body onload="addList(); appendDongHo();">
     <div class="div-view">
-       <div id="div_user_info">
-               <% if(locals.name){ %> <%=locals.name%> <% } %> 
-               <% if(locals.type){ %> <%=locals.type%> 님<% }%>
-           </div>
+        <div id="div_user_info">
+            <span id="span_user">
+                <% if(locals.name){ %> <%=locals.name%> <% } %>
+                <% if(locals.type){ %> <%=locals.type%>님<% }%>
+            </span>
+        </div>
 
         <div class="div-select-box">
-          
+            <div class="div-wrapper-backward">
+                <input type="button" id="backward-bt" value="＜" onclick="location.href = '/'">
+            </div>
             <div id="div-dong-box">
                 <div class="div-title">
                     동 선택
@@ -48,4 +52,6 @@
             </div>
         </div>
     </div>
-</body></html>
+</body>
+
+</html>
