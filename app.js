@@ -36,19 +36,6 @@ var router = express.Router();
 
 
 
-//도면 이동 라우터
-router.route('/defact/drawing/').get(function (req, res) {
-    var selected_dong = req.query.dong,
-        selected_ho = req.query.ho;
-
-    fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
-        res.send(ejs.render(data, {
-            dong: selected_dong,
-            ho: selected_ho
-        }));
-    });
-});
-
 
 
 //하자 등록 이동 라우터
@@ -99,6 +86,10 @@ router.route('/process/login').post(login);
 //공사종류, 동, 호  선택페이지
 var select = require('./routes/select.js');
 router.route('/select').get(select);
+
+//도면 이동 라우터
+var drawing = require('./routes/drawing.js');
+router.route('/defact/drawing/').get(drawing);
 
 //하자 리스트 이동 라우터
 var defact = require('./routes/defact.js');

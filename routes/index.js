@@ -1,6 +1,5 @@
 //MainPage 라우터
-var express = require('express');
-var router = express.Router();
+
 var ejs = require('ejs'),
     fs = require('fs');
 function index(req, res) {
