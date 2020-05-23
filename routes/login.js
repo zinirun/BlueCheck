@@ -1,4 +1,3 @@
-//회원가입 이동 라우터
 var ejs = require('ejs'),
     fs = require('fs');
 var mysql = require('mysql');

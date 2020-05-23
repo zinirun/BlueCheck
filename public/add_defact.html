@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>베스트웨이</title>
+    <title>BlueCheck</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <link rel="stylesheet" type="text/css" href="css/add_defact_style.css">
@@ -51,10 +51,10 @@
                 유지보수 등록
             </div>
             <div class="div-defact-list">
-                <form action="/defact/add_submit/" method="POST" enctype="multipart/form-data">
+                <form action="/defact/add_submit" method="POST" enctype="multipart/form-data">
                     <div class="div-wrapper-defact">
                         <div class="div-defact-title">공사명</div>
-                        <input class="input-defact-detail" name="construction_name" value="베스트웨이 미사역" readonly required>
+                        <input class="input-defact-detail" name="construction_name" value="경희건설 베스트웨이" readonly required>
                     </div>
                     
                     <div class="div-wrapper-defact">
@@ -64,13 +64,12 @@
 
                     <div class="div-wrapper-defact">
                         <div class="div-defact-title">공종</div>
-                        <!--Need JS-->
-                        <input id="input_ctype" class="input-defact-detail" name="construction_type" placeholder="선택" onclick="load_construction_type()" readonly required>
+                        <input id="input_ctype" class="input-defact-detail" name="construction_type" value="<%=ctype%>" readonly required>
                     </div>
 
                     <div class="div-wrapper-defact">
                         <div class="div-defact-title">하자내용</div>
-                        <input id="input_dtype" class="input-defact-detail" name="defact_info" placeholder="선택" onclick="loadDefactInfo()" readonly required>
+                        <input id="input_dtype" class="input-defact-detail" name="defact_info" placeholder="선택" onclick="ctypeSelected(); loadDefactInfo();" readonly required>
                     </div>
 
                     <div class="div-wrapper-defact">
@@ -83,7 +82,7 @@
                         <div class="div-camera-bt">
                             <div class="filebox preview-image">
                                 <label for="input-file">사진 업로드</label>
-                                <input type="file" id="input-file" class="upload-hidden" required>
+                                <input type="file" name="img" id="input-file" class="upload-hidden" required>
                             </div>
                         </div>
                     </div>
@@ -93,16 +92,6 @@
                     </div>
                 </form>
 
-
-            </div>
-        </div>
-        <div id="div_hide_ctype_box" class="div-hide-ctype-box">
-            <div class="div-wrapper-backward">
-                <!--하자 입력으로 이동-->
-                <input type="button" id="backward-bt" value="＜" onclick="hide_ctype_box()">
-            </div>
-            <div class="div-title">공종 선택</div>
-            <div class="div-ctype-list" id="div_ctype_list">
 
             </div>
         </div>
