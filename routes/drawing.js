@@ -5,6 +5,8 @@ var drawing = function (req, res) {
         selected_ho = req.query.ho;
 
     fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
+        res.cookie('dong',selected_dong);
+        res.cookie('ho',selected_ho);
         res.send(ejs.render(data, {
             dong: selected_dong,
             ho: selected_ho
