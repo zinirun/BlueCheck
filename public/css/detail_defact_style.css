@@ -25,6 +25,7 @@
     width: 310px;
     height: 300px;
     background: #eee;
+    background-size: 310px 300px;
 }
 
 li{
