@@ -24,7 +24,7 @@ var drawing = function (req, res) {
                 var data_cnt = [];
 
                 for (var i = 0; i < 11; i++) {
-                    data_cnt.push([i, 0]);
+                    data_cnt.push(0);
                 }
 
                 rows.forEach(function (element) {
@@ -34,11 +34,10 @@ var drawing = function (req, res) {
                 for (var i = 0 in rooms) {
                     for (var j = 0 in d_data) {
                         if (d_data[j][0] == rooms[i]) {
-                            data_cnt[i][1] = d_data[j][1];
+                            data_cnt[i] = d_data[j][1];
                         }
                     }
                 }
-                console.log(data_cnt);
                 res.send(ejs.render(data, {
                     dong: selected_dong,
                     ho: selected_ho,
