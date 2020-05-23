@@ -26,12 +26,14 @@
     background: dodgerblue;
     border: 2px solid white;
     border-radius: 50%;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
 }
 
 .px-point-title{
     display: inline-block;
     margin-left: -18px;
-    margin-top: 17px;
     width: 45px;
     background: white;
     border: 1px solid #aaa;
