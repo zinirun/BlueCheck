@@ -18,13 +18,19 @@
 
     <!--Floating Unsolved Defact Icon-->
     <script>
+        const room_name = ["현관", "거실", "발코니1", "발코니2", "발코니3", "침실1", "침실2", "침실3", "주방,식당", "욕실1", "욕실2"];
+
         function showIcon() {
-            var data = <%=data_cnt%>;
-            for (var i = 0; i < 11; i++) {
+            var test = [<%= data_cnt %>];
+            test.forEach(function(e, i) {
                 target = document.getElementById('point' + i);
-                console.log(target.innerHTML);
-                target.innerHTML = data[i][1];
-            }
+
+                if (e != 0) {
+                    target.innerHTML = e + '<div class="px-point-title">' + room_name[i] + '</div>';
+                    target.style.backgroundColor = 'crimson';
+                }
+
+            });
         }
 
     </script>
@@ -40,6 +46,7 @@
                 <span id="span_defact_dong">
                     <%= dong %></span>동 <span id="span_defact_ho"><%= ho %></span>호
             </div>
+
 
             <div class="div-drawing-box" id="div_drawing">
                 <!--Apartment drawing point here-->
