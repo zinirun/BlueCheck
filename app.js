@@ -64,6 +64,8 @@ router.route('/defact/list/').get(defact.defactList);
 router.route('/defact/detail/').get(defact.defactDetailList);
 //하자 상세 페이지 댓글 등록 라우터
 router.route('/defact/add/comment/').post(defact.defactAddComment);
+//
+router.route('/defact/make_solved').get(defact.defactMakeSolved);
 
 //하자 등록 라우터 (submit)
 var addDefact = require('./routes/add_defact.js');

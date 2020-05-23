@@ -21,7 +21,7 @@
     <div class="div-view">
         <div class="div-defact-box">
            <div class="div-wrapper-backward">
-                    <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
+                    <input type="button" id="backward-bt" value="＜" onclick="location.href='/select';">
                 </div>
             <div class="div-title">
                 <span id="span_defact_dong">
@@ -36,17 +36,5 @@
             <ul id="point" style="font-size: 20px; color: crimson"></ul>
         </div>
     </div>
-    
-    <!--temp script for capture x, y-->
-    <script>
-        var cs = document.getElementById("div_drawing");
-        var csXY = document.getElementById("xy");
-        var val;
-        document.onmousemove = function(e){
-            val = e.offsetX + ", " + e.offsetY;
-            csXY.innerHTML = '임시 - 개발용 픽셀: '+ val;
-        }
-        document.onkeypress = function(e){ document.getElementById("point").innerHTML += "<li>"+val;
-        }
-    </script>
+
 </body></html>

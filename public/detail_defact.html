@@ -15,12 +15,17 @@
     <div class="div-view">
         <div class="div-defact-box">
             <div class="div-wrapper-backward">
-                <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
+                <input type="button" id="backward-bt" value="＜" onclick=" location.href='/defact/list?dong=<%=dong%>&ho=<%=ho%>&loc=<%=loc%>'; ">
             </div>
             
             <% if (detailInfo.is_solved==0){%>
             <div class="div-wrapper-finish">
                 <span id="span-defact-finish-bt">보수완료</span>
+            </div>
+            <% }%>
+            <% if (detailInfo.is_solved==1&&detailInfo.is_reject==0){%>
+            <div class="div-wrapper-finish">
+                <span id="span-defact-finish-bt">재보수 요청</span>
             </div>
             <% }%>
             
@@ -70,4 +75,6 @@
             </div>
         </div>
     </div>
-</body></html>
+</body>
+<script type="text/javascript" src="/public/script/detail_defact.js"></script>
+</html>

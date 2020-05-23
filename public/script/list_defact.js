@@ -7,7 +7,7 @@ function go_add_defact() {
 }
 
 function addEvent() {
- document.querySelector(".div-defact-list-box").addEventListener('click', function(e){
+ document.querySelector("#div-defact-container").addEventListener('click', function(e){
      var defactId = e.target.getAttribute('defact-id');
     if (defactId) {
         location.href = '/defact/detail?id=' + defactId;
