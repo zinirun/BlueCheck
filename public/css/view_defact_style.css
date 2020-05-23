@@ -29,11 +29,13 @@
     text-align: center;
     font-size: 10px;
     font-weight: 600;
+    color: white;
 }
 
 .px-point-title{
     display: inline-block;
     margin-left: -18px;
+    margin-top: 1px;
     width: 45px;
     background: white;
     border: 1px solid #aaa;
@@ -43,4 +45,5 @@
     letter-spacing: -1px;
     padding: 0px 2px;
     text-align: center;
+    color: black;
 }
