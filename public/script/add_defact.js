@@ -47,42 +47,14 @@ function addLoadDate() {
     document.getElementById('input_due_date').value = new Date().toISOString().substring(0, 10);
 }
 
-function load_construction_type() {
-    document.getElementById('div_add_defact_box').style.display = 'none';
-    document.getElementById('div_hide_ctype_box').style.display = 'block';
-
-    loadTarget = document.getElementById('div_ctype_list');
-
-    loadTarget.innerHTML = '';
-
+function ctypeSelected() {
+    selected_ctype = document.getElementById('input_ctype').value;
     for (var i in d_construct_type) {
-        innerItem = '<li class="li-type" value="' + d_construct_type[i] + '">' + d_construct_type[i];
-        loadTarget.innerHTML += innerItem;
-    }
-
-    addClickEvent();
-}
-
-function ctypeSelected(user_selected_ctype) {
-    if (user_selected_ctype.target.getAttribute('value')) {
-        selected_ctype = user_selected_ctype.target.getAttribute('value');
-        for (var i in d_construct_type) {
-            if (d_construct_type[i] == selected_ctype) selected_ctype_index = i;
+        if (d_construct_type[i] == selected_ctype){
+            selected_ctype_index = i;
+            break;
         }
-        document.getElementById('input_ctype').setAttribute('value', selected_ctype);
-        document.getElementById('div_hide_ctype_box').style.display = 'none';
-        document.getElementById('div_add_defact_box').style.display = 'block';
     }
-}
-
-
-function addClickEvent() {
-    var pointTarget = document.getElementById('div_ctype_list');
-
-    pointTarget.addEventListener('click',
-        function (e) {
-            ctypeSelected(e);
-        });
 }
 
 function loadDefactInfo() {
@@ -113,7 +85,7 @@ function addClickListener(dom, nextFunction, nextIndex) {
                         s1 = e.target.getAttribute('value');
                         document.getElementById('div_s3').innerHTML = '';
                     }
-                    if(nextIndex == 3){
+                    if (nextIndex == 3) {
                         document.getElementById('div_now_info').innerHTML = "하자 종류를 선택하세요";
                         s2 = e.target.getAttribute('value');
                     }
@@ -199,4 +171,3 @@ function hide_info_box() {
     document.getElementById('div_add_defact_box').style.display = 'block';
     document.getElementById('div_hide_info_box').style.display = 'none';
 }
-
