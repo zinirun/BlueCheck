@@ -21,8 +21,8 @@
         const room_name = ["현관", "거실", "발코니1", "발코니2", "발코니3", "침실1", "침실2", "침실3", "주방,식당", "욕실1", "욕실2"];
 
         function showIcon() {
-            var test = [<%= data_cnt %>];
-            test.forEach(function(e, i) {
+            var data = [<%= data_cnt %>];
+            data.forEach(function(e, i) {
                 target = document.getElementById('point' + i);
 
                 if (e != 0) {
