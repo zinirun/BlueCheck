@@ -125,3 +125,7 @@ input[type="radio"]:checked + div {
     width: 85px;
     text-align: center;
 }
+
+#div_add_defact_box{
+    padding-top: 30px;
+}
