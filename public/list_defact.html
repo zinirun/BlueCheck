@@ -53,7 +53,9 @@
                 <div class="div-list-title">보수 완료</div>
                 <div id="div_end_list" class="div-end-list">
                     <% if(!solvedDefact.length ==0){ solvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images/'+element.img; %>
-                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>');"></div>
+                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>');">
+                        <div class="div_red_btn"></div>
+                    </div>
                     <% }); } else {%>
                     <div class="div-if-none">
                         <p>완료 건이 없습니다
