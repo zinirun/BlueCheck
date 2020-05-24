@@ -40,6 +40,11 @@ var router = express.Router();
 var index = require('./routes/index.js');
 router.route('/').get(index);
 
+//관리자 페이지 라우터
+var admin = require('./routes/admin.js');
+router.route('/admin').get(admin.admin);
+router.route('/admin/auth').post(admin.admin_auth);
+
 //회원가입 라우터
 var register = require('./routes/register.js');
 router.route('/register').get(register.register);
