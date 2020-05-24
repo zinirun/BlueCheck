@@ -5,7 +5,7 @@
 /public/resources/defact_images/
 
 # Config files
-/config
+/config/
 
 # Logs
 logs
