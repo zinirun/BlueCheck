@@ -125,7 +125,27 @@ var defactMakeSolved = function(req, res){
     });
 };
 
+var rejectOrPass = function(req,res){
+    var defactId = req.query.defactId;
+    var reject = req.query.reject;
+
+    //reject ==1 이면 red reject==2 면 green
+    var rejectSql = 'update defact set is_reject = ? where id = ?;';
+    mySqlClient.query(rejectSql,[reject, defactId],function(err){
+       if(err){
+           console.log('Reject error>>'+err);
+       } 
+        else{
+            dong = req.cookies.dong;
+            ho =req.cookies.ho;
+            loc = req.cookies.loc;
+            res.redirect('/defact/list?dong='+dong+'&ho='+ho+'&loc='+loc);
+        }
+    });
+};
+
 module.exports.defactMakeSolved = defactMakeSolved;
 module.exports.defactList = defactList;
 module.exports.defactDetailList = defactDetailList;
 module.exports.defactAddComment = addComment;
+module.exports.rejectOrPass = rejectOrPass;
