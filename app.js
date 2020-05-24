@@ -13,9 +13,6 @@ var path = require('path'),
     url = require('url'),
     cors = require('cors'); //ajax 요청시 cors 지원
 
-var mysql = require('mysql');
-const mySqlClient = mysql.createConnection(require('./config/db_config'));
-
 //이미지 업로드 모듈 (POST)
 var imgUpload = require('./routes/img_upload').imgUpload;
 
