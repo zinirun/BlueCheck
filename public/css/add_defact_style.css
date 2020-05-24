@@ -96,19 +96,6 @@ input[type="submit"] {
     padding-top: 10px;
 }
 
-.li-type {
-    list-style-type: none;
-    font-size: 17px;
-    font-weight: 500;
-    text-align: center;
-    width: 130px;
-    padding: 6px;
-    margin: 4px auto;
-    border: 1px solid #d1d1d1;
-    border-bottom-color: #c5c5c5;
-    border-radius: .25em;
-}
-
 .div-hide-ctype-box {
     padding-top: 30px;
     display: none;
@@ -118,9 +105,6 @@ input[type="submit"] {
     display: flex;
     padding-top: 20px;
     vertical-align: middle;
-}
-
-.div-d-item{
 }
 
 .div-d-item li {

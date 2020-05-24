@@ -7,7 +7,7 @@ const pixel_point = [
     ["침실1", 188, 205],
     ["침실2", 57, 88],
     ["침실3", 203, 61],
-    ["주방/식당", 130, 76],
+    ["주방,식당", 130, 76],
     ["욕실1", 182, 130],
     ["욕실2", 225, 143]
 ];
@@ -20,7 +20,7 @@ function loadDrawingPoint() {
     //<div class="px-point"><div class="px-point-title"></div></div>
 
     for (var i = 0; i < 11; i++) {
-        var innerCode = '<div class="px-point" id="' + 'point' + i + '" value="' + pixel_point[i][0] + '"><div class="px-point-title">' + pixel_point[i][0] + '</div></div>'
+        var innerCode = '<div class="px-point" id="' + 'point' + i + '" value="' + pixel_point[i][0] + '">&nbsp;<div class="px-point-title">' + pixel_point[i][0] + '</div></div>'
 
         drawTarget.innerHTML += innerCode;
 

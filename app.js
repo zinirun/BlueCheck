@@ -13,9 +13,6 @@ var path = require('path'),
     url = require('url'),
     cors = require('cors'); //ajax 요청시 cors 지원
 
-var mysql = require('mysql');
-const mySqlClient = mysql.createConnection(require('./config/db_config'));
-
 //이미지 업로드 모듈 (POST)
 var imgUpload = require('./routes/img_upload').imgUpload;
 
@@ -39,6 +36,19 @@ var router = express.Router();
 //메인 페이지 라우터
 var index = require('./routes/index.js');
 router.route('/').get(index);
+
+//관리자 페이지 라우터
+var admin = require('./routes/admin.js');
+router.route('/admin').get(admin.admin);
+router.route('/admin/auth').post(admin.admin_auth);
+
+//이미지 다운로드 라우터
+var down_zip = require('./routes/download_zip.js');
+router.route('/download/images').get(down_zip.toZip);
+
+//하자 리스트 엑셀 다운로드 라우터
+var down_csv = require('./routes/download_csv.js');
+router.route('/download/csv').get(down_csv.toCsv);
 
 //회원가입 라우터
 var register = require('./routes/register.js');

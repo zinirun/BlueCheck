@@ -1,6 +1,12 @@
-/config
+# Download Temp Files
+/temp/*
+
 # Defact IMG Files
 /public/resources/defact_images/
+
+# Config files
+/config
+
 # Logs
 logs
 *.log
