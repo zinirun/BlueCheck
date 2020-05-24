@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
-const rooms = ["현관", "거실", "발코니1", "발코니2", "발코니3", "침실1", "침실2", "침실2", "침실3", "주방,식당", "욕실1", "욕실2"];
+const rooms = ["현관", "거실", "발코니1", "발코니2", "발코니3", "침실1", "침실2", "침실3", "주방,식당", "욕실1", "욕실2"];
 
 var drawing = function (req, res) {
     var selected_dong = req.query.dong,
