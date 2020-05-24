@@ -41,7 +41,6 @@ const upload = multer({
                     console.log("selectLastIdSql ERROR>>"+err);
                 }
                 else if(row[0]){
-                    console.log('last id 조회: '+ row[0]);
                     lastId = parseInt(row[0].id);
                     currentId = lastId;
                     currentFileName = dong + '_' + ho + '_' + loc + '_' + (lastId + 1) + '.png';

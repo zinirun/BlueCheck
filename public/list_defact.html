@@ -18,7 +18,7 @@
     <div class="div-view">
         <div class="div-defact-box">
             <div class="div-wrapper-backward">
-                <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
+                <input type="button" id="backward-bt" value="＜" onclick="location.href='/defact/drawing/?dong=<%=dong%>&ho=<%=ho%>'">
             </div>
 
             <div class="div-wrapper-add">
@@ -33,10 +33,11 @@
                     </span>
                 </div>
             </div>
-
-            <div class="div-defact-list-box" id="div_defact_list_box">
+        </div>
+        <div id="div-defact-container">
+            <div class="div-defact-list-box">
                 <div class="div-list-title">하자</div>
-                <div class="div-defact-list">
+                <div id="div_defact_list" class="div-defact-list">
                     <% if(!unsolvedDefact.length ==0){ unsolvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images/'+element.img; %>
                     <!----이미지 확장자 변경될시 수정할 것---->
                     <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>');"><%=element.d%></div>
@@ -45,22 +46,28 @@
                         <p>유지/보수 건이 없습니다
                         </p><% } %>
                     </div>
+                </div>
+       
 
-                    <div class="div-list-title">보수 완료</div>
-                    <div class="div-defact-list">
-                        <% if(!solvedDefact.length ==0){ solvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images/'+element.img; %>
-                        <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>');"></div>
-                        <% }); } else {%>
-                        <div class="div-if-none">
-                            <p>완료 건이 없습니다
-                            </p><% } %>
-                        </div>
-
+            <div class="div-end-list-box">
+                <div class="div-list-title">보수 완료</div>
+                <div id="div_end_list" class="div-end-list">
+                    <% if(!solvedDefact.length ==0){ solvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images/'+element.img; %>
+                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>');">
+                        <div class="div_red_btn"></div>
                     </div>
+                    <% }); } else {%>
+                    <div class="div-if-none">
+                        <p>완료 건이 없습니다
+                        </p><% } %>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
                         </div>
+
 </body>
 
 </html>

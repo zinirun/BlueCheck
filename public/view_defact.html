@@ -39,9 +39,10 @@
 <body onload="loadDrawingPoint(); addClickEvent(); showIcon();">
     <div class="div-view">
         <div class="div-defact-box">
-            <div class="div-wrapper-backward">
-                <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
-            </div>
+           <div class="div-wrapper-backward">
+                    <input type="button" id="backward-bt" value="＜" onclick="location.href='/select';">
+                </div>
+
             <div class="div-title">
                 <span id="span_defact_dong">
                     <%= dong %></span>동 <span id="span_defact_ho"><%= ho %></span>호

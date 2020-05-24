@@ -27,7 +27,6 @@ var select = function (req, res) {
     if (req.session.user) {
         //동, 호 선택
         if (req.query.ctype) {
-
             var selectUnsolvedDefactSql_dong = 'select dong, count(*) as cnt from defact where construction_type = ? and is_solved = 0 group by dong order by dong';
 
             var selectUnsolvedDefactSql_ho = 'select ho, count(*) as cnt from defact where construction_type = ? and is_solved = 0 group by dong order by dong';
@@ -98,7 +97,6 @@ var select = function (req, res) {
             var selectUnsolvedDefactSql_ctype = 'select construction_type as c, count(*) as cnt from defact where is_solved = 0 group by construction_type order by construction_type';
 
             fs.readFile('./public/select_const.html', 'utf8', function (error, data) {
-
                 mySqlClient.query(selectUnsolvedDefactSql_ctype, function (err, rows) {
 
                     var c_data = [];

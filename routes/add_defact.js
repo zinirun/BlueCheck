@@ -10,7 +10,6 @@ var loadAddDefact = function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho,
         selected_loc = req.query.loc;
-    console.log(req.query.dong);
 
     fs.readFile('./public/add_defact.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {
@@ -23,12 +22,9 @@ var loadAddDefact = function (req, res) {
 };
 
 var addDefact = function (req, res) {
-    console.log(req.body);
-    console.log(req.file);
     var c_name = req.body.construction_name; //공사명
     var loc = req.body.loc; //dong,ho,room 쪼개야함
     var dong = loc.substring(0, loc.lastIndexOf("동"));
-    console.log("동 " + dong);
     var ho = loc.substring(loc.lastIndexOf("동") + 2, loc.lastIndexOf("호"));
     var room = loc.substring(loc.lastIndexOf("호") + 2);
 
