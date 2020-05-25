@@ -18,15 +18,18 @@ input[type="radio"]:checked + div {
 }
 
 .div-dong-bt{
-    width: 70px;
-    height: 50px;
+    width: 72px;
+    height: 45px;
     padding-left: 15px;
     padding-top: 12px;
     font-size: 22px;
     font-weight: 600;
     display: inline-block;
-    background: #eee;
-    margin: 5px 5px 10px 5px;
+    color: #333;
+    border: 1px solid #c6c6c6;
+    border-bottom-color: #c1c1c1;
+    border-radius: .25em;
+    margin: 5px 3px 10px 3px;
 }
 
 .div-ho-list{
@@ -41,7 +44,10 @@ input[type="radio"]:checked + div {
     text-align: center;
     font-weight: 600;
     display: inline-block;
-    background: #eee;
+    color: #333;
+    border: 1px solid #c6c6c6;
+    border-bottom-color: #c1c1c1;
+    border-radius: .25em;
     margin: 3px 3px 6px 3px;
 }
 
