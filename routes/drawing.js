@@ -10,7 +10,7 @@ var drawing = function (req, res) {
     var selected_dong = req.query.dong,
         selected_ho = req.query.ho;
 
-    var selectUnsolvedDefactSql = 'select room, count(*) as cnt from defact where dong = ? and ho = ? and construction_type = ? and is_solved = 0 group by room order by room';
+    var selectUnsolvedDefactSql = 'select room, count(*) as cnt from defact where dong = ? and ho = ? and construction_type = ? and is_reject < 2 group by room order by room';
 
     fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
         res.cookie('dong', selected_dong);
