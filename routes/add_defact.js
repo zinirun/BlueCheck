@@ -22,6 +22,7 @@ var loadAddDefact = function (req, res) {
 };
 
 var addDefact = function (req, res) {
+    if(req.session.user){
     var c_name = req.body.construction_name; //공사명
     var loc = req.body.loc; //dong,ho,room 쪼개야함
     var dong = loc.substring(0, loc.lastIndexOf("동"));
@@ -54,10 +55,13 @@ var addDefact = function (req, res) {
             alertMsg = "하자 등록이 완료되었습니다.";
             backUrl = '/defact/list?dong='+dong+'&ho='+ho+'&loc='+room;
             res.send('<script type="text/javascript">alert("' + alertMsg + '"); location.href = "'+backUrl+'";</script>');
-
         }
     });
-}
+    }
+    else{
+        res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
+    }
+};
 
 module.exports.loadAddDefact = loadAddDefact;
 module.exports.addDefact = addDefact;

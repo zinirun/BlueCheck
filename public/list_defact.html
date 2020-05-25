@@ -42,6 +42,7 @@
                     <!----이미지 확장자 변경될시 수정할 것---->
                     <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>');"><%=element.d%></div>
                     <% }); } else {%>
+                    
                     <div class="div-if-none">
                         <p>유지/보수 건이 없습니다
                         </p><% } %>
@@ -52,11 +53,10 @@
             <div class="div-end-list-box">
                 <div class="div-list-title">보수 완료</div>
                 <div id="div_end_list" class="div-end-list">
-                    <% if(!solvedDefact.length ==0){ solvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images'+element.img; %>
-                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>'); <%if(element.is_reject==1){ %><%}%> <%if (element.is_reject==2){%><%}%>">
+                    <% if(!solvedDefact.length ==0){ solvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images'+element.img; if(element.is_reject==0){rejectText='미확인'; rejectCol='#1B4C7A';} else if(element.is_reject==1){rejectText='반려됨'; rejectCol='crimson';} else if(element.is_reject==2){rejectText='승인됨';rejectCol='#33AC27';}%>
+                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>'); ">
                        <div class="div-bt-wrapper">
-                           <div class="div-status-bar">
-                               미확인<!--innerHTML Here(미확인, 반려, 승인)-->
+                           <div class="div-status-bar" style="background-color:<%=rejectCol%>"><%=rejectText%>
                            </div>
                         <div class="div-commit-bt" id="div_green_bt">
                         </div>

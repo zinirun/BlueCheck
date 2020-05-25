@@ -1,6 +1,4 @@
-# Download Temp Files
-/temp/*
-
+/config
 # Defact IMG Files
 /public/resources/defact_images/
 
