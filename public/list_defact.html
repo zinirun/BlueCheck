@@ -53,8 +53,11 @@
                 <div class="div-list-title">보수 완료</div>
                 <div id="div_end_list" class="div-end-list">
                     <% if(!solvedDefact.length ==0){ solvedDefact.forEach(function(element, index) { img_location='/public/resources/defact_images'+element.img; %>
-                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>'); <%if(element.is_reject==1){ %>border:2px solid crimson;<%}%> <%if (element.is_reject==2){%>border:2px solid #2FD61F;<%}%>">
+                    <div class="div-defact-item" defact-id="<%=element.id%>" style="background-image:url('<%=img_location%>'); <%if(element.is_reject==1){ %><%}%> <%if (element.is_reject==2){%><%}%>">
                        <div class="div-bt-wrapper">
+                           <div class="div-status-bar">
+                               미확인<!--innerHTML Here(미확인, 반려, 승인)-->
+                           </div>
                         <div class="div-commit-bt" id="div_green_bt">
                         </div>
                         <div class="div-commit-bt" id="div_red_bt">

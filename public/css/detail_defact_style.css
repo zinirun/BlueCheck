@@ -43,10 +43,9 @@ li{
 
 .div-defact-table-box{
     position: absolute;
-    margin-left: 5px;
+    margin-left: 3px;
     margin-top: 213px;
     display: inline-block;
-    border: 1px solid white;
 }
 
 .table-defact{
@@ -57,7 +56,7 @@ li{
 td{
     font-size: 11px;
 /*    text-align: center;*/
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
 }
 
 .td-title{
