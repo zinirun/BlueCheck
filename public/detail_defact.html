@@ -29,6 +29,9 @@
                 하자 상세
             </div>
             <div class="div-defact-image-box" style="background-image: url('/public/resources/defact_images<%= detailInfo.img %>');">
+               <div class="div-defact-due-box">
+                    <span class="span-due-title">기한</span><span id="span_due"><%=detailInfo.due_date%></span>
+                </div>
                 <!--defact image here-->
                 <div class="div-defact-table-box">
                 <!--defact detail here-->
@@ -46,8 +49,8 @@
                         <td id="d_type"><%=detailInfo.info%></td>
                     </tr>
                     <tr>
-                        <td class="td-title">기한</td>
-                        <td id="date"><%=detailInfo.due_date%></td>
+                        <td class="td-title">일자</td>
+                        <td id="date"><%=detailInfo.create_date%></td>
                     </tr>
                 </table>
             </div>
