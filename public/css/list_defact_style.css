@@ -77,10 +77,9 @@
 
 .div-commit-bt{
     display: inline-block;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 1px solid white;
+    width: 19px;
+    height: 19px;
+    border-radius: 4px;
     background: #2FD61F;
 }
 
@@ -90,7 +89,7 @@
 
 .div-status-bar{
     float: left;
-    margin-right: 30px;
+    margin-right: 32px;
     font-size: 13px;
     font-weight: 500;
     color: white;
