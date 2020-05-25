@@ -1,8 +1,8 @@
 module.exports = {
-    connectionLimit: 10,
+    connectionLimit: 20,
     host: 'localhost',
-    user: 'bestwayuser',
-    password: '1234',
+    user: 'root',
+    password: 'wjswls1',
     database: 'bestwaydb',
     dateStrings: 'date',
     debug: false
