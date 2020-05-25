@@ -121,7 +121,7 @@ input[type="radio"]:checked + div {
 
 .span-c-li{
     display: inline-block;
-    margin-left: 23px;
+    padding-left: 23px;
     width: 85px;
     text-align: center;
 }
