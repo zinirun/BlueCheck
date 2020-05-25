@@ -18,9 +18,9 @@ input[type="radio"]:checked + div {
 }
 
 .div-dong-bt{
-    width: 85px;
+    width: 70px;
     height: 50px;
-    text-align: center;
+    padding-left: 15px;
     padding-top: 12px;
     font-size: 22px;
     font-weight: 600;
@@ -34,11 +34,11 @@ input[type="radio"]:checked + div {
 }
 
 .div-ho-bt{
-    width: 64px;
-    height: 40px;
+    width: 65px;
+    height: 38px;
     padding-top: 8px;
+    font-size: 18px;
     text-align: center;
-    font-size: 19px;
     font-weight: 600;
     display: inline-block;
     background: #eee;
@@ -62,4 +62,70 @@ input[type="radio"]:checked + div {
 .div-wrapper-ho{
     margin-top: -3px;
     margin-bottom: -15px;
+}
+
+.div-dong-float-icon{
+    display: none;
+    float: right;
+    margin-top: -50px;
+    font-size: 11px;
+    font-weight: 500;
+    width: 16px;
+    height: 16px;
+    background: crimson;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.div-ho-float-icon{
+    position: absolute;
+    display: none;
+    margin-top: -12px;
+    font-size: 11px;
+    font-weight: 500;
+    width: 16px;
+    height: 16px;
+    background: crimson;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.div-c-float-icon{
+    position: absolute;
+    display: none;
+    margin-top: -10px;
+    margin-left: 13px;
+    font-size: 11px;
+    font-weight: 500;
+    width: 16px;
+    height: 16px;
+    background: crimson;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.li-type {
+    list-style-type: none;
+    font-size: 17px;
+    font-weight: 500;
+    width: 130px;
+    padding: 6px;
+    margin: 4px auto;
+    border: 1px solid #d1d1d1;
+    border-bottom-color: #c5c5c5;
+    border-radius: .25em;
+}
+
+.span-c-li{
+    display: inline-block;
+    margin-left: 23px;
+    width: 85px;
+    text-align: center;
+}
+
+#div_add_defact_box{
+    padding-top: 30px;
 }

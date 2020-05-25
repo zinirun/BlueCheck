@@ -4,25 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <title>BlueCheck</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/admin_tool_style.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/admin_tool_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        function loadAdmin() {
+            pwm = document.getElementById('div_login_form');
+            adm = document.getElementById('hide_tool');
+            if ('<%= auth %>' == '1') {
+                pwm.style.display = 'none';
+                adm.style.display = 'block';
+            } else if ('<%= auth %>' == '0') {
+                pwm.style.display = 'block';
+                adm.style.display = 'none';
+                document.getElementById('div_auth_message').innerHTML = "비밀번호가 틀렸습니다.";
+            }
+        }
+
+    </script>
 </head>
 
-<body>
+<body onload="loadAdmin();">
     <div class="div-view">
         <div class="div-login-box">
-           <div class="div-wrapper-backward">
-                <input type="button" id="backward-bt" value="＜" onclick="window.history.back();">
+            <div class="div-wrapper-backward">
+                <input type="button" id="backward-bt" value="＜" onclick="location.href='/';">
             </div>
             <div class="div-title">
                 Admin Page
             </div>
-            <div class="div-login-form">
-                <form class="form-login">
+            <div class="div-login-form" id="div_login_form">
+                <form class="form-login" action="/admin/auth" method="post">
                     <div class="div-login-left-input">
                         <div class="div-wrapper-input">
-                            <input type="password" id="login_pw" placeholder="관리자 비밀번호" autocomplete="off" required>
+                            <input type="password" id="login_pw" name="user_pw" placeholder="관리자 비밀번호" autocomplete="off" required>
                         </div>
 
                     </div>
@@ -30,17 +46,20 @@
                         <input id="login-submit-bt" type="submit" value="🔑">
                     </div>
                 </form>
+                <div id="div_auth_message">
 
-                <div class="div-tool-bt">
-                   <div class="div-tool-title">
-                       관리자 도구
-                   </div>
-                    <div class="div-wrapper-tool-bt">
-                        <span class="tool-bt">유지보수 리스트 .xls 다운로드</span>
-                    </div>
-                    <div class="div-wrapper-tool-bt">
-                        <span class="tool-bt">이미지 통합 다운로드</span>
-                    </div>
+                </div>
+
+            </div>
+            <div class="div-tool-bt" id="hide_tool">
+                <div class="div-tool-title">
+                    관리자 도구
+                </div>
+                <div class="div-wrapper-tool-bt">
+                    <span class="tool-bt" onclick="location.href='/download/csv';">유지보수 리스트 엑셀(.csv) 다운로드</span>
+                </div>
+                <div class="div-wrapper-tool-bt">
+                    <span class="tool-bt" onclick="location.href='/download/images';">이미지 통합 압축파일 다운로드</span>
                 </div>
             </div>
         </div>

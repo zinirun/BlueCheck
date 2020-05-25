@@ -40,7 +40,7 @@ input[type="button"] {
 }
 
 .div-wrapper-backward {
-    margin-top: -23px;
+    margin-top: -30px;
     margin-left: 5px;
     float: left;
 }
@@ -78,10 +78,23 @@ input[type="button"] {
 
 #div_user_info #span_user{
     background-color: #c3e6c7;
-    padding: 1px 4px;
-    border: 1px solid #ccc;
+    padding: 2px 5px;
     color: #333;
     border-radius: 3px;
     font-size:11px;
     font-weight: 500;
+}
+
+.div-logout-wrapper{
+    position: absolute;
+    margin-left: 130px;
+}
+
+#span_logout_bt{
+    font-size: 13px;
+    font-weight: 500;
+    background: dodgerblue;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 2px;
 }

@@ -10,9 +10,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="/public/script/select_and_route.js" type="text/javascript"></script>
+
+    <!--Floating Unsolved Defact Icon-->
+    <script>
+        function showIcon() {
+            var dong_data = [<%= dong_data %>];
+                dong_data.forEach(function(e, i) {
+                    target = document.getElementById('d' + i);
+                    if (e != 0) {
+                        target.style.display = 'inline-block';
+                        target.innerHTML = e;
+                    }
+
+                });
+            var ho_data = [<%= ho_data %>];
+                ho_data.forEach(function(e, i) {
+                    target = document.getElementById('h' + i);
+                    if (e != 0) {
+                        target.style.display = 'inline-block';
+                        target.innerHTML = e;
+                    }
+
+                });
+        }
+    </script>
+
 </head>
 
-<body onload="addList(); appendDongHo();">
+<body onload="addList(); appendDongHo(); showIcon();">
     <div class="div-view">
         <div id="div_user_info">
             <span id="span_user">
@@ -23,7 +48,7 @@
 
         <div class="div-select-box">
             <div class="div-wrapper-backward">
-                <input type="button" id="backward-bt" value="＜" onclick="location.href = '/'">
+                <input type="button" id="backward-bt" value="＜" onclick="location.href = '/select'">
             </div>
             <div id="div-dong-box">
                 <div class="div-title">

@@ -25,13 +25,13 @@ function appendDongHo() {
     ho_target = document.getElementById("div_ho_target");
 
     for (var i in dong_list) {
-        var dong_HTML = '<label><input type="radio" name="div-dong-bt" value="' + dong_list[i] + '"> <div class="div-dong-bt">' + dong_list[i] + '동 </div></label>';
+        var dong_HTML = '<label><input type="radio" name="div-dong-bt" value="' + dong_list[i] + '"> <div class="div-dong-bt">'+ dong_list[i] +'동<div class="div-dong-float-icon" id="d'+i+'">0</div></div></label>';
 
         dong_target.innerHTML += dong_HTML;
     }
 
     for (var j in ho_list) {
-        var ho_HTML = '<label><input type="radio" name="div-ho-bt" value="' + ho_list[j] + '"> <div class="div-ho-bt">' + ho_list[j] + '</div></label>';
+        var ho_HTML = '<label><input type="radio" name="div-ho-bt" value="' + ho_list[j] + '"> <div class="div-ho-bt" >'+ ho_list[j] +'<div class="div-ho-float-icon" id="h'+j+'">0</div></div></label>';
 
         ho_target.innerHTML += ho_HTML;
     }

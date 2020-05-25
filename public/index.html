@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body onload="document.getElementById('login_id').focus()">
     <div class="div-view">
         <div class="div-login-box">
             <div class="div-title">
@@ -35,8 +35,7 @@
                 </form>
                 <div class="div-join-bt">
                     <span class="login-bt" onclick="location.href = '/register'">관계자 회원가입</span>
-                    <span class="login-bt" onclick="location.href = '/public/select.html'">관리자 페이지</span>
-                    <!--<span class="login-bt" onclick="location.href = '/public/admin_tool.html'">관리자 페이지</span> -->
+                    <span class="login-bt" onclick="location.href = '/admin'">관리자 페이지</span>
                 </div>
             </div>
         </div>
