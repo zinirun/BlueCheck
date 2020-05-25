@@ -59,6 +59,10 @@ router.route('/reg_submit').post(register.reg_submit);
 var login = require('./routes/login.js');
 router.route('/process/login').post(login);
 
+//로그아웃 라우터
+var logout = require('./routes/logout.js');
+router.route('/logout').get(logout);
+
  //공사종류, 동, 호  선택페이지
 var select = require('./routes/select.js');
 router.route('/select').get(select);
