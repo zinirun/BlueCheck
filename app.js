@@ -80,12 +80,14 @@ router.route('/defact/detail/').get(defact.defactDetailList);
 router.route('/defact/add/comment/').post(defact.defactAddComment);
 //
 router.route('/defact/make_solved').get(defact.defactMakeSolved);
+router.route('/defact/make_reject/').get(defact.rejectOrPass);
 
 //하자 등록 라우터 (submit)
 var addDefact = require('./routes/add_defact.js');
 router.route('/defact/add_submit').post(imgUpload.single('img'), addDefact.addDefact);
 //하자 등록 이동 라우터
 router.route('/defact/add/').get(addDefact.loadAddDefact);
+
 
 app.use('/', router);
 
