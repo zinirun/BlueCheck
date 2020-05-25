@@ -45,6 +45,7 @@
     height: 120px;
     background: #eee;
     border: 1px solid #ccc;
+    border-radius: 5px;
     margin-right: 3px;
     background-size: 120px 120px;
 }
@@ -85,4 +86,15 @@
 
 #div_red_bt{
     background: crimson;
+}
+
+.div-status-bar{
+    float: left;
+    margin-right: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    background: #1B4C7A;
+    padding: 1px 3px;
+    border-radius: 2px;
 }
