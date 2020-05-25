@@ -40,12 +40,31 @@ input[type="button"] {
 }
 
 .div-wrapper-backward {
-    margin-top: -23px;
+    margin-top: -1px;
     margin-left: 5px;
     float: left;
 }
 
 .div-wrapper-backward #backward-bt {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: #777;
+    width: 40px;
+    height: 40px;
+    padding: 0px 1px 0px 0px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+}
+
+.div-wrapper-user {
+    margin-top: -33px;
+    margin-left: 5px;
+    float: left;
+}
+
+.div-wrapper-user #user-bt {
     position: absolute;
     font-size: 18px;
     font-weight: 600;
@@ -78,8 +97,7 @@ input[type="button"] {
 
 #div_user_info #span_user{
     background-color: #c3e6c7;
-    padding: 1px 4px;
-    border: 1px solid #ccc;
+    padding: 2px 5px;
     color: #333;
     border-radius: 3px;
     font-size:11px;
