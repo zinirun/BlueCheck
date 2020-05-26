@@ -31,32 +31,37 @@ var select = function (req, res) {
                 fs.readFile('./public/select_ho.html', 'utf8', function (err, data) {
                     var selectUnsolvedDefactSql_ho = 'select ho, count(*) as cnt from defact where dong = ? and construction_type = ? and is_reject < 2';
                     mySqlClient.query(selectUnsolvedDefactSql_ho, [req.query.dong, req.query.ctype], function (err, rows) {
-                        var h_data = [];
-                        var ho_data_cnt = [];
+                        if (err) {
+                            console.log('Sql Error: ' + err);
+                            res.redirect('/');
+                        } else {
+                            var h_data = [];
+                            var ho_data_cnt = [];
 
-                        for (var i = 0 in ho_list) {
-                            ho_data_cnt.push(0);
-                        }
+                            for (var i = 0 in ho_list) {
+                                ho_data_cnt.push(0);
+                            }
 
-                        rows.forEach(function (element) {
-                            h_data.push([element.ho, element.cnt]);
-                        });
+                            rows.forEach(function (element) {
+                                h_data.push([element.ho, element.cnt]);
+                            });
 
-                        for (var i = 0 in ho_list) {
-                            for (var j = 0 in h_data) {
-                                if (h_data[j][0] == ho_list[i]) {
-                                    ho_data_cnt[i] = h_data[j][1];
+                            for (var i = 0 in ho_list) {
+                                for (var j = 0 in h_data) {
+                                    if (h_data[j][0] == ho_list[i]) {
+                                        ho_data_cnt[i] = h_data[j][1];
+                                    }
                                 }
                             }
-                        }
 
-                        res.send(ejs.render(data, {
-                            name: req.session.user.userName,
-                            type: req.session.user.userType,
-                            ctype: req.query.ctype,
-                            dong: req.query.dong,
-                            ho_data: ho_data_cnt
-                        }));
+                            res.send(ejs.render(data, {
+                                name: req.session.user.userName,
+                                type: req.session.user.userType,
+                                ctype: req.query.ctype,
+                                dong: req.query.dong,
+                                ho_data: ho_data_cnt
+                            }));
+                        }
                     });
                 });
 
