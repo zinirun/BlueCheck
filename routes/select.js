@@ -29,7 +29,7 @@ var select = function (req, res) {
         if (req.query.ctype) {
             if (req.query.dong) { // 호 선택
                 fs.readFile('./public/select_ho.html', 'utf8', function (err, data) {
-                    var selectUnsolvedDefactSql_ho = 'select ho, count(*) as cnt from defact where dong = ? and construction_type = ? and is_reject < 2';
+                    var selectUnsolvedDefactSql_ho = 'select ho, count(*) as cnt from defact where dong = ? and construction_type = ? and is_reject < 2 group by ho';
                     mySqlClient.query(selectUnsolvedDefactSql_ho, [req.query.dong, req.query.ctype], function (err, rows) {
                         if (err) {
                             console.log('Sql Error: ' + err);
