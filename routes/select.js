@@ -27,55 +27,62 @@ var select = function (req, res) {
     if (req.session.user) {
         //동, 호 선택
         if (req.query.ctype) {
-            var selectUnsolvedDefactSql_dong = 'select dong, count(*) as cnt from defact where construction_type = ? and is_reject < 2 group by dong order by dong';
+            if (req.query.dong) { // 호 선택
+                fs.readFile('./public/select_ho.html', 'utf8', function (err, data) {
+                    var selectUnsolvedDefactSql_ho = 'select ho, count(*) as cnt from defact where dong = ? and construction_type = ? and is_reject < 2';
+                    mySqlClient.query(selectUnsolvedDefactSql_ho, [req.query.dong, req.query.ctype], function (err, rows) {
+                        var h_data = [];
+                        var ho_data_cnt = [];
 
-            var selectUnsolvedDefactSql_ho = 'select ho, count(*) as cnt from defact where construction_type = ? and is_reject < 2 group by dong order by dong';
-
-            fs.readFile('./public/select.html', 'utf8', function (err, data) {
-                //선택한 공사종류를 쿠키에 저장
-                res.cookie('ctype', req.query.ctype);
-
-                mySqlClient.query(selectUnsolvedDefactSql_dong, [req.query.ctype], function (err, rows) {
-                    if (err) {
-                        console.log('Sql Error: ' + err);
-                        res.redirect('/');
-                    } else {
-                        var d_data = [];
-                        var dong_data_cnt = [];
-
-                        for (var i = 0 in dong_list) {
-                            dong_data_cnt.push(0);
+                        for (var i = 0 in ho_list) {
+                            ho_data_cnt.push(0);
                         }
 
                         rows.forEach(function (element) {
-                            d_data.push([element.dong, element.cnt]);
+                            h_data.push([element.ho, element.cnt]);
                         });
 
-                        for (var i = 0 in dong_list) {
-                            for (var j = 0 in d_data) {
-                                if (d_data[j][0] == dong_list[i]) {
-                                    dong_data_cnt[i] = d_data[j][1];
+                        for (var i = 0 in ho_list) {
+                            for (var j = 0 in h_data) {
+                                if (h_data[j][0] == ho_list[i]) {
+                                    ho_data_cnt[i] = h_data[j][1];
                                 }
                             }
                         }
 
-                        mySqlClient.query(selectUnsolvedDefactSql_ho, [req.query.ctype], function (err, rows) {
+                        res.send(ejs.render(data, {
+                            name: req.session.user.userName,
+                            type: req.session.user.userType,
+                            ctype: req.query.ctype,
+                            dong: req.query.dong,
+                            ho_data: ho_data_cnt
+                        }));
+                    });
+                });
 
-                            var h_data = [];
-                            var ho_data_cnt = [];
+            } else { //동 선택
+                fs.readFile('./public/select_dong.html', 'utf8', function (err, data) {
+                    var selectUnsolvedDefactSql_dong = 'select dong, count(*) as cnt from defact where construction_type = ? and is_reject < 2 group by dong';
+                    mySqlClient.query(selectUnsolvedDefactSql_dong, [req.query.ctype], function (err, rows) {
+                        if (err) {
+                            console.log('Sql Error: ' + err);
+                            res.redirect('/');
+                        } else {
+                            var d_data = [];
+                            var dong_data_cnt = [];
 
-                            for (var i = 0 in ho_list) {
-                                ho_data_cnt.push(0);
+                            for (var i = 0 in dong_list) {
+                                dong_data_cnt.push(0);
                             }
 
                             rows.forEach(function (element) {
-                                h_data.push([element.ho, element.cnt]);
+                                d_data.push([element.dong, element.cnt]);
                             });
 
-                            for (var i = 0 in ho_list) {
-                                for (var j = 0 in h_data) {
-                                    if (h_data[j][0] == ho_list[i]) {
-                                        ho_data_cnt[i] = h_data[j][1];
+                            for (var i = 0 in dong_list) {
+                                for (var j = 0 in d_data) {
+                                    if (d_data[j][0] == dong_list[i]) {
+                                        dong_data_cnt[i] = d_data[j][1];
                                     }
                                 }
                             }
@@ -84,16 +91,16 @@ var select = function (req, res) {
                                 name: req.session.user.userName,
                                 type: req.session.user.userType,
                                 dong_data: dong_data_cnt,
-                                ho_data: ho_data_cnt
+                                ctype: req.query.ctype
                             }));
-                        });
-                    }
-                });
-            });
-        }
-        //공사종류 선택
-        else {
 
+                        }
+                    });
+                });
+            }
+        }
+        //공사종류 선택 (첫번재로 실행)
+        else {
             var selectUnsolvedDefactSql_ctype = 'select construction_type as c, count(*) as cnt from defact where is_reject < 2 group by construction_type order by construction_type';
 
             fs.readFile('./public/select_const.html', 'utf8', function (error, data) {
@@ -121,12 +128,12 @@ var select = function (req, res) {
                     res.send(ejs.render(data, {
                         name: req.session.user.userName,
                         type: req.session.user.userType,
-                        c_data: c_data_cnt
+                        c_data: c_data_cnt,
+
                     }));
                 });
             });
         }
-
     } else {
         res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
     }

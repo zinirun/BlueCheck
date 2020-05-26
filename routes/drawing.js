@@ -8,14 +8,17 @@ const rooms = ["현관", "거실", "발코니1", "발코니2", "발코니3", "�
 
 var drawing = function (req, res) {
     var selected_dong = req.query.dong,
-        selected_ho = req.query.ho;
+        selected_ho = req.query.ho,
+        selected_ctype = req.query.ctype;
 
     var selectUnsolvedDefactSql = 'select room, count(*) as cnt from defact where dong = ? and ho = ? and construction_type = ? and is_reject < 2 group by room order by room';
 
     fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
+        res.cookie('ctype', selected_ctype);
         res.cookie('dong', selected_dong);
         res.cookie('ho', selected_ho);
-        mySqlClient.query(selectUnsolvedDefactSql, [selected_dong, selected_ho, req.cookies.ctype], function (err, rows) {
+        
+        mySqlClient.query(selectUnsolvedDefactSql, [selected_dong, selected_ho, selected_ctype], function (err, rows) {
             if (err) {
                 console.log('Sql Error: ' + err);
                 res.redirect('/');
@@ -41,10 +44,12 @@ var drawing = function (req, res) {
                 res.send(ejs.render(data, {
                     dong: selected_dong,
                     ho: selected_ho,
+                    ctype: selected_ctype,
                     data_cnt: data_cnt
                 }));
             }
         });
     });
 };
+
 module.exports = drawing;
