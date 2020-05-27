@@ -44,7 +44,7 @@ li{
 .div-defact-table-box{
     position: absolute;
     margin-left: 3px;
-    margin-top: 213px;
+    margin-top: 194px;
     display: inline-block;
 }
 
@@ -89,4 +89,23 @@ form{
 
 #hide_defact_id{
     display:none;
+}
+
+.div-defact-due-box{
+}
+
+.span-due-title{
+    background: #DC6373;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 1px 4px;
+}
+
+#span_due{
+    background: #F8CAD0;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 1px 4px;
+    border-radius: 0px 0px 4px 0px;
 }

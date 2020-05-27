@@ -51,10 +51,6 @@ input[type="radio"]:checked + div {
     margin: 3px 3px 6px 3px;
 }
 
-#div-ho-box{
-    display: none;
-}
-
 #span_dong{
     margin-left: 10px;
     font-size: 15px;

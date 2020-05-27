@@ -65,11 +65,13 @@ router.route('/logout').get(logout);
 
  //공사종류, 동, 호  선택페이지
 var select = require('./routes/select.js');
-router.route('/select').get(select);
+router.route('/select/const').get(select.select_const);
+router.route('/select/dong/:ctype').get(select.select_dong);
+router.route('/select/ho/:dong').get(select.select_ho);
 
-//도면 이동 라우터
+//도면 이동 라우터 (호 선택 후)
 var drawing = require('./routes/drawing.js');
-router.route('/defact/drawing/').get(drawing);
+router.route('/defact/drawing/:ho').get(drawing);
 
 //하자 리스트 이동 라우터
 var defact = require('./routes/defact.js');

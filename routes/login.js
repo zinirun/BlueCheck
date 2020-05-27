@@ -16,6 +16,7 @@ var login = function (req, res) {
                 console.log("dong/ho select page sql ERROR>>" + err);
             } else {
                 if (row[0]) {
+                    console.log('login sql - name:'+row[0].name + 'type:'+ row[0].type);
                     req.session.user = {
                         id: row[0].id,
                         userId: checkId,
@@ -23,8 +24,7 @@ var login = function (req, res) {
                         userType: row[0].type
                     };
 
-                    res.redirect('/select');
-                    return true;
+                    res.redirect('/select/const/');
                 } else {
                     res.send('<script type="text/javascript">alert("아이디 또는 비밀번호가 일치하지 않습니다."); window.location="/";</script>');
                 }

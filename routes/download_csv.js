@@ -72,8 +72,10 @@ function download_csv(req, res) {
                     res.json({
                         err: err
                     });
+                    return;
                 } else {
                     res.end();
+                    return;
                 }
             });
         });
