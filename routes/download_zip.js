@@ -12,8 +12,10 @@ function download_redirect(req, res) {
                 res.json({
                     err: err
                 });
+                return;
             } else {
                 res.end();
+                return;
             }
         });
     });
