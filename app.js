@@ -88,22 +88,6 @@ router.route('/defact/add_submit').post(imgUpload.single('img'), addDefact.addDe
 //하자 등록 이동 라우터
 router.route('/defact/add/').get(addDefact.loadAddDefact);
 
-//const Push = require('push.js');
-//const PushFCM = require('push-fcm-plugin');
-//
-//Push.extend(PushFCM);
-//
-//Push.FCM().then(function(FCM) {
-//    FCM.getToken().then(function(token) {
-//        console.log("Initialized with token " + token);
-//    }).catch(function(tokenError) {
-//       throw tokenError; 
-//    });
-//}).catch(function(initError) {
-//   throw initError; 
-//});
-
-
 app.use('/', router);
 
 // 404 에러 페이지 처리
