@@ -25,7 +25,7 @@ var drawing = function (req, res) {
                 res.redirect('/');
             } else {
                 
-                console.log("Cookie - dong:"req.cookies.dong +"/ho:"+req.cookies.ho +"/ctype:"+req.cookies.ctype);
+                console.log("Cookie - dong:"+req.cookies.dong +"/ho:"+req.cookies.ho +"/ctype:"+req.cookies.ctype);
                 
                 var d_data = [];
                 var data_cnt = [];
