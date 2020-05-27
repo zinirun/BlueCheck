@@ -71,7 +71,7 @@ var select_dong = function (req, res) {
             res.cookie('ctype', req.params.ctype);
 
             fs.readFile('./public/select_dong.html', 'utf8', function (err, data) {
-                mySqlClient.query(selectUnsolvedDefactSql_dong, [req.query.ctype], function (err, rows) {
+                mySqlClient.query(selectUnsolvedDefactSql_dong, [req.params.ctype], function (err, rows) {
                     if (err) {
                         console.log('Sql Error: ' + err);
                         res.redirect('/');
@@ -122,7 +122,7 @@ var select_ho = function (req, res) {
             res.cookie('dong', req.params.dong);
             
             fs.readFile('./public/select_ho.html', 'utf8', function (err, data) {
-                mySqlClient.query(selectUnsolvedDefactSql_ho, [req.query.dong, req.query.ctype], function (err, rows) {
+                mySqlClient.query(selectUnsolvedDefactSql_ho, [req.cookies.dong, req.cookies.ctype], function (err, rows) {
                     if (err) {
                         console.log('Sql Error: ' + err);
                         res.redirect('/');
