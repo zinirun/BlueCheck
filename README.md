@@ -12,9 +12,9 @@ Apartment Hot-Fix System
 ```git clone https://github.com/zinirun.BlueCheck.git```
   
 ### Setup your database at your git repository
-> Edit makeapp.sh  
+Edit makeapp.sh  
 ```vi makeapp.sh```  
-> Edit script at `--link` for running docker container  
+Edit script at `--link` for running docker container  
 ```--link YOUR_DB_NAME:db```
   
 ### Run shellscript at your git repository
