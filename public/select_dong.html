@@ -21,17 +21,8 @@
                     target.style.display = 'inline-block';
                     target.innerHTML = e;
                 }
-
             });
         }
-
-        function dongSelected(user_selected_dong) {
-            if (user_selected_dong.target.getAttribute('value')) {
-
-                location.href = "/select?ctype=<%=ctype%>&dong=" + user_selected_dong.target.getAttribute('value');
-            }
-        }
-
     </script>
 
 </head>
@@ -47,7 +38,7 @@
 
         <div class="div-select-box">
             <div class="div-wrapper-backward">
-                <input type="button" id="backward-bt" value="＜" onclick="location.href = '/select?ctype=<%ctype%>';">
+                <input type="button" id="backward-bt" value="＜" onclick="location.href = '/select/const';">
             </div>
             <div id="div-dong-box">
                 <div class="div-title">

@@ -13,12 +13,6 @@
 
     <!--Floating Unsolved Defact Icon-->
     <script>
-        function hoSelected(user_selected_ho) {
-            if (user_selected_ho.target.getAttribute('value')) {
-                location.href = "/defact/drawing?ctype=<%=ctype%>&dong=<%=dong%>&ho=" + user_selected_ho.target.getAttribute('value');;
-            }
-        }
-
         function showIcon() {
             var ho_data = [<%=ho_data%>];
             ho_data.forEach(function(e, i) {
@@ -30,7 +24,6 @@
 
             });
         }
-
     </script>
 
 </head>
@@ -46,7 +39,7 @@
 
         <div class="div-select-box">
             <div class="div-wrapper-backward">
-                <input type="button" id="backward-bt" value="＜" onclick="location.href = '/select?ctype=<%ctype%>&dong=<%=dong%>';">
+                <input type="button" id="backward-bt" value="＜" onclick="location.href = '/select/dong/<%=ctype%>';">
             </div>
             <div id="div-ho-box">
                 <div class="div-title">
