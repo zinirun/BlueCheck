@@ -5,6 +5,7 @@ module.exports = {
     password: 'q1w2e3r4',
     database: 'bestwaydb',
     dateStrings: 'date',
+    charset  : 'utf8',
     debug: false,
     insecureAuth: true
 }
