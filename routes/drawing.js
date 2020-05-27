@@ -11,9 +11,10 @@ var drawing = function (req, res) {
         selected_ho = req.query.ho,
         selected_ctype = req.query.ctype;
 
-    var selectUnsolvedDefactSql = 'select room, count(*) as cnt from defact where dong = ? and ho = ? and construction_type = ? and is_reject < 2 group by room order by room';
+    var selectUnsolvedDefactSql = 'select room, count(*) as cnt from defact where dong = ? and ho = ? and construction_type = ? and is_reject < 2 group by room';
 
     fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
+        
         res.cookie('ctype', selected_ctype);
         res.cookie('dong', selected_dong);
         res.cookie('ho', selected_ho);
@@ -23,6 +24,9 @@ var drawing = function (req, res) {
                 console.log('Sql Error: ' + err);
                 res.redirect('/');
             } else {
+                
+                console.log("Cookie - dong:"req.cookies.dong +"/ho:"+res.cookies.ho + +'/ctype:'+res.cookies.ctype);
+                
                 var d_data = [];
                 var data_cnt = [];
 
@@ -41,6 +45,7 @@ var drawing = function (req, res) {
                         }
                     }
                 }
+                     
                 res.send(ejs.render(data, {
                     dong: selected_dong,
                     ho: selected_ho,
