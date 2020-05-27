@@ -6,7 +6,7 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 var login = function (req, res) {
     if (req.session.user) {
         console.log('세션 유저데이터 있음');
-        res.redirect('/select');
+        res.redirect('/select/const/');
     } else {
         var checkId = req.body.id;
         var checkPwd = req.body.password;
