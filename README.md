@@ -2,8 +2,11 @@
 🔨아파트 유지보수 시스템  
 Apartment Hot-Fix System
 
+### Stack used
+`Node.js` `VanillaJS` `HTML5/CSS3` `MySQL` `Docker` `React-native` `Firebase`
+
 ### Requirement
-> `git`, `Docker`, `MySQL(or Maria) Database Docker`
+> `git` `Docker` `MySQL(or Maria) Database Docker`
 
 ### Clone this git
 ```git clone https://github.com/zinirun.BlueCheck.git```
