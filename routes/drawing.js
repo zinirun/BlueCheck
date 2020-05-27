@@ -12,8 +12,8 @@ var drawing = function (req, res) {
     if (req.session.user) {
         //ctype(cookie), dong(cookie), ho(params) 모두 있을때만
         if (req.params.ho && req.cookies.ctype && req.cookies.dong) {
-            var selected_ctype = req.query.dong,
-                selected_dong = req.query.ho,
+            var selected_ctype = req.cookies.ctype,
+                selected_dong = req.cookies.dong,
                 selected_ho = req.params.ho;
 
             res.cookie('ho', selected_ho);
