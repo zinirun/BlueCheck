@@ -1,9 +1,5 @@
-/config
-# Defact IMG Files
-/public/resources/defact_images/
-
-# Config files
-/config/
+# Defact IMG Files (only folder pushed)
+defact_images/*/*.png
 
 # Logs
 logs
