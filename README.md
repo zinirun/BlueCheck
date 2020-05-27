@@ -1,7 +1,7 @@
 ## BlueCheck
 🔨아파트 유지보수 시스템  
 Apartment Hot-Fix System
-<hr>
+
 ### Stack used
 `Node.js` `VanillaJS` `HTML5/CSS3` `MySQL` `Docker` `React-native` `Firebase`
 
