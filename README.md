@@ -20,6 +20,7 @@ Apartment Hot-Fix System
 ### Run shellscript at your git repository
 ```chmod +x makeapp.sh; ./makeapp.sh```
 
+### After running service
 #### Attach Docker Container
 ```docker exec -it bc-app```
 
