@@ -1,4 +1,4 @@
-## BlueCheck
+# BlueCheck
 아파트 유지보수 시스템  
 Apartment Hot-Fix System
 
@@ -21,10 +21,8 @@ Apartment Hot-Fix System
 
 
 ### Run shellscript at your git repository
+###### You can easily build docker image and run a container by this sheellscript
 ```chmod +x makeapp.sh; ./makeapp.sh```
-
-###### You can easily build docker image and run a container with this sheellscript
-
 
 ## After running service
 #### Attach Docker Container
