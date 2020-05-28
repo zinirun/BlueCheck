@@ -1,7 +1,6 @@
 ## BlueCheck
-🔨아파트 유지보수 시스템  
+아파트 유지보수 시스템  
 Apartment Hot-Fix System
-
 
 ### Stack used
 `Node.js` `VanillaJS` `HTML5/CSS3` `MySQL` `Docker` `React-native` `Firebase`
@@ -10,10 +9,9 @@ Apartment Hot-Fix System
 ### Requirement
 > `git` `Docker` `MySQL(or Maria) Database Docker`
 
-
+## How to run
 ### Clone this git
 ```git clone https://github.com/zinirun.BlueCheck.git```
-
 
 ### Setup your database at your git repository
 ##### Open vim editor 
@@ -25,8 +23,10 @@ Apartment Hot-Fix System
 ### Run shellscript at your git repository
 ```chmod +x makeapp.sh; ./makeapp.sh```
 
+###### You can easily build docker image and run a container with this sheellscript
 
-### After running service
+
+## After running service
 #### Attach Docker Container
 ```docker exec -it bc-app```
 
