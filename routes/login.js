@@ -4,10 +4,6 @@ var mysql = require('mysql');
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 var login = function (req, res) {
-    if (req.session.user) {
-        console.log('세션 유저데이터 있음');
-        res.redirect('/select');
-    } else {
         var checkId = req.body.id;
         var checkPwd = req.body.password;
         var selectPwdSql = "select * from user where user_id = ? && password=?";
@@ -30,6 +26,5 @@ var login = function (req, res) {
                 }
             }
         });
-    }
 };
 module.exports = login;

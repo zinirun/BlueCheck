@@ -61,7 +61,7 @@ var select_const = function (req, res) {
     } else {
         res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
     }
-}
+};
 
 //query: ctype (make cookie)
 var select_dong = function (req, res) {
@@ -111,7 +111,7 @@ var select_dong = function (req, res) {
     } else {
         res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
     }
-}
+};
 
 //query: dong (make cookie)
 var select_ho = function (req, res) {
@@ -122,7 +122,7 @@ var select_ho = function (req, res) {
             res.cookie('dong', req.params.dong);
             
             fs.readFile('./public/select_ho.html', 'utf8', function (err, data) {
-                mySqlClient.query(selectUnsolvedDefactSql_ho, [req.cookies.dong, req.cookies.ctype], function (err, rows) {
+                mySqlClient.query(selectUnsolvedDefactSql_ho, [req.params.dong, req.cookies.ctype], function (err, rows) {
                     if (err) {
                         console.log('Sql Error: ' + err);
                         res.redirect('/');

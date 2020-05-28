@@ -90,7 +90,6 @@ router.route('/defact/add_submit').post(imgUpload.single('img'), addDefact.addDe
 //하자 등록 이동 라우터
 router.route('/defact/add/').get(addDefact.loadAddDefact);
 
-
 app.use('/', router);
 
 // 404 에러 페이지 처리
