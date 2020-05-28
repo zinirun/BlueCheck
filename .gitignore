@@ -4,7 +4,8 @@ temp/*.csv
 temp/*.zip
 
 # Defact IMG Files (only folder pushed)
-defact_images/*/*.png
+defact_images/*/*/.png
+defact_images/*
 
 # Logs
 logs
