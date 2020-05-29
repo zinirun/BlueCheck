@@ -2,7 +2,7 @@ var tokenArray = [];
 var token = function (req, res) {
     if(req.body.token){
         var tokenValue = req.body.token.value;
-        tokenArray.push({token:tokenValue,type:""});
+        tokenArray.push(tokenValue);
         console.log('token: '+tokenArray);
         res.end();
     }
