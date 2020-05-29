@@ -14,8 +14,8 @@ module.exports = {
 //module.exports = {
 //    connectionLimit: 20,
 //    host: 'localhost',
-//    user: 'root',
-//    password: 'q1w2e3r4',
+//    user: 'bestwayuser',
+//    password: '1234',
 //    database: 'bestwaydb',
 //    dateStrings: 'date',
 //    debug: false
