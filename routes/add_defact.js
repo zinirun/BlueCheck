@@ -7,12 +7,12 @@ var ejs = require('ejs'),
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 //push notification
-var token = require('token.js');
+var token = require('./token.js');
 var deviceToken = token.tokenArray;
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("path/to/serviceAccountKey.json");
+var serviceAccount = require("serviceAccountKey.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),

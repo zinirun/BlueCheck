@@ -93,8 +93,6 @@ router.route('/defact/add/').get(addDefact.loadAddDefact);
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
 var token = require('./routes/token.js');
 router.route('/token').post(token.addToken);
-var deviceToken = token.tokenArray;
-
 
 app.use('/', router);
 
