@@ -70,38 +70,39 @@ var addDefact = function (req, res) {
 
                 alertMsg = "하자 등록이 완료되었습니다.";
                 backUrl = '/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room;
-//                res.send('<script type="text/javascript">alert("' + alertMsg + '"); location.href = "' + backUrl + '";</script>');
-//                var payload = {
-//                    notification: {
-//                        title: "하자 등록 알림",
-//                        body: dong + "동 " + ho + "호에 새로운 하자가 등록되었습니다."
-//                    }
-//                }
-//                var options = {
-//                    priority: "normal",
-//                    timeToLive: 60 * 60
-//                };
-//                admin.messaging().sendToDevice(deviceToken, payload, options)
-//                    .then(function (response) {
-//                        console.log("Successflly sent message:", response);
-//                        res.send('<script type="text/javascript">alert("' + alertMsg + '"); location.href = "' + backUrl + '";</script>');
-//                    })
-//                    .catch(function (err) {
-//                        console.log("Error sending message:", err);
-//                    });
-               res.fetch('https://exp.host/--/api/v2/push/send',{
-method:'POST',
-headers:{
-Accept: 'application/json',
-'Content-Type':'application/json',
-},
-body:JSON.stringify({
-to: token[0] ,
-sound:'default',
-title: 'The title of your message goes here',
-body: 'The body of the message goes here'
-})
-})
+                //                res.send('<script type="text/javascript">alert("' + alertMsg + '"); location.href = "' + backUrl + '";</script>');
+                //                var payload = {
+                //                    notification: {
+                //                        title: "하자 등록 알림",
+                //                        body: dong + "동 " + ho + "호에 새로운 하자가 등록되었습니다."
+                //                    }
+                //                }
+                //                var options = {
+                //                    priority: "normal",
+                //                    timeToLive: 60 * 60
+                //                };
+                //                admin.messaging().sendToDevice(deviceToken, payload, options)
+                //                    .then(function (response) {
+                //                        console.log("Successflly sent message:", response);
+                //                        res.send('<script type="text/javascript">alert("' + alertMsg + '"); location.href = "' + backUrl + '";</script>');
+                //                    })
+                //                    .catch(function (err) {
+                //                        console.log("Error sending message:", err);
+                //                    });
+                req.post({
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    method: 'POST',
+                    body: JSON.stringify({
+                        to: token[0],
+                        sound: 'default',
+                        title: 'The title of your message goes here',
+                        body: 'The body of the message goes here'
+                    })
+                });
+                res.end();
             }
         });
     } else {
