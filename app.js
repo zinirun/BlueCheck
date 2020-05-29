@@ -11,7 +11,7 @@ var path = require('path'),
     ejs = require('ejs'),
     fs = require('fs'),
     url = require('url'),
-    cors = require('cors'); //ajax 요청시 cors 지원
+    cors = require('cors') //ajax 요청시 cors 지원
 
 //이미지 업로드 모듈 (POST)
 var imgUpload = require('./routes/img_upload').imgUpload;
