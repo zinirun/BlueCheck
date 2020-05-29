@@ -3,6 +3,7 @@ var ejs = require('ejs'),
     fs = require('fs'),
     mysql = require('mysql'),
     getCurrentId = require('./img_upload').getCurrentId;
+var request = require('request');
 
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
@@ -89,12 +90,13 @@ var addDefact = function (req, res) {
                 //                    .catch(function (err) {
                 //                        console.log("Error sending message:", err);
                 //                    });
-                req.post({
+                request.post({
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json'
                     },
                     method: 'POST',
+                    url: 'https://exp.host/--/api/v2/push/send',
                     body: JSON.stringify({
                         to: token[0],
                         sound: 'default',
