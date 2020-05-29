@@ -1,4 +1,4 @@
-////FOR SERVER
+//FOR SERVER
 module.exports = {
     connectionLimit: 30,
     host: process.env.DATABASE_HOST,
