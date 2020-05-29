@@ -1,28 +1,30 @@
-//회원가입 이동 라우터
-var ejs = require('ejs'),
-    fs = require('fs');
-var mysql = require('mysql');
+const ejs = require('ejs'),
+    fs = require('fs'),
+    mysql = require('mysql'),
+    crypto = require('crypto');
 
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 const authConfig = require('../config/auth_config');
 const superPassword = authConfig.super_password;
 
-var loadRegister = function(req, res){
+var loadRegister = function (req, res) {
     fs.readFile('./public/register.html', 'utf8', function (error, data) {
         res.send(ejs.render(data, {}));
     });
 };
 
 //회원가입 라우터
-var registerSubmit = function(req, res) {
-    var id = req.body.id;
-    var pw = req.body.pw;
-    var name = req.body.name;
-    var tel = req.body.tel;
-    var auth = req.body.auth;
-    var type = req.body.type;
-    var result;
-    var params = {
+var registerSubmit = function (req, res) {
+    let id = req.body.id,
+        pw = crypto.createHash('sha512').update(req.body.pw).digest('base64'), // Converted hashed pw to save database
+        name = req.body.name,
+        tel = req.body.tel,
+        auth = req.body.auth,
+        type = req.body.type;
+
+    let result; // checking password is valid
+
+    let params = {
         user_id: id,
         password: pw,
         name: name,
@@ -31,6 +33,7 @@ var registerSubmit = function(req, res) {
     };
 
     var alertMsg = "";
+
     if (auth == superPassword) {
         result = checkInput(params);
         if (result == 2) {
@@ -94,6 +97,7 @@ function checkInput(params) {
     }
     return result;
 }
+
 
 module.exports.register = loadRegister;
 module.exports.reg_submit = registerSubmit;
