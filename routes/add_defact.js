@@ -76,6 +76,10 @@ var addDefact = function (req, res) {
                         body: dong + "동 " + ho + "호에 새로운 하자가 등록되었습니다."
                     }
                 }
+                var options = {
+                    priority: "normal",
+                    timeToLive: 60 * 60
+                };
                 admin.messaging().sendToDevice(deviceToken, payload, options)
                     .then(function (response) {
                         console.log("Successflly sent message:", response);

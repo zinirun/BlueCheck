@@ -3,6 +3,7 @@ var token = function (req, res) {
     if(req.body.token){
         var tokenValue = req.body.token.value;
         tokenArray.push({token:tokenValue,type:""});
+        console.log('token: '+tokenArray);
         res.end();
     }
     else{
