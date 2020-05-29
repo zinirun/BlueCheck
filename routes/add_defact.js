@@ -96,15 +96,22 @@ var addDefact = function (req, res) {
                         'Content-Type': 'application/json'
                     },
                     method: 'POST',
-                    url: 'https://exp.host/--/api/v2/push/send',
+                    uri: 'https://exp.host/--/api/v2/push/send',
                     body: JSON.stringify({
                         to: token[0],
                         sound: 'default',
                         title: 'The title of your message goes here',
                         body: 'The body of the message goes here'
                     })
+                }, function(err, response, body){
+                    if(err)
+                        console.log("Push error>>"+err);
+                    else{
+                        console.log("Succesfully sent>>"+response);
+                        res.redirect('/defact/list?dong='+dong+'&ho='+ho+'&loc='+room);
+                    }
                 });
-                res.end();
+                
             }
         });
     } else {
