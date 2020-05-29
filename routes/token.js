@@ -1,10 +1,8 @@
 var tokenArray = [];
 var token = function (req, res) {
     if(req.body.token){
-        var tokenValue = req.body.token;
+        var tokenValue = req.body.token.value;
         tokenArray.push({token:tokenValue,type:""});
-        console.log("Token Value: "+tokenValue+" push 완료");
-        console.log(tokenArray);
         res.end();
     }
     else{
@@ -12,4 +10,5 @@ var token = function (req, res) {
         res.end();
     }
 };
-module.exports = token;
+module.exports.addToken = token;
+module.exports.tokenArray = tokenArray;

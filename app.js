@@ -91,8 +91,10 @@ router.route('/defact/add_submit').post(imgUpload.single('img'), addDefact.addDe
 router.route('/defact/add/').get(addDefact.loadAddDefact);
 
 //FCM 처리 사용자 디바이스 토큰 관리 라우터
-var getToken = require('./routes/token.js');
-router.route('/token').post(getToken);
+var token = require('./routes/token.js');
+router.route('/token').post(token.addToken);
+var deviceToken = token.tokenArray;
+
 
 app.use('/', router);
 
@@ -102,6 +104,7 @@ var errorHandler = expressErrorHandler({
         '404': './public/404.html'
     }
 });
+
 
 app.use(expressErrorHandler.httpError(404));
 app.use(errorHandler);
