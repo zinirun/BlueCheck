@@ -129,22 +129,22 @@ input[type="submit"] {
 }
 
 #input_typing {
-    font-size: 16px;
+    vertical-align: top;
+    font-size: 15px;
     font-weight: 500;
-    padding-left: 2px;
+    padding: 5px 3px;
     width: 170px;
-    height: 30px;
     border: 1px solid #bbb;
+    border-radius: 3px;
 }
 
 #submit_type_input {
     vertical-align: top;
-    width: 45px;
-    height: 34px;
     font-size: 16px;
     font-weight: 500;
-    padding: 0px;
+    padding: 5px 10px;
     background: dodgerblue;
+    border-radius: 3px;
     color: white;
     border: none;
 }
