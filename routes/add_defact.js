@@ -12,7 +12,7 @@ var deviceToken = token.tokenArray;
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("serviceAccountKey.json");
+var serviceAccount = require("firebaseSDK.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
