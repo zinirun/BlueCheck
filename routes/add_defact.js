@@ -11,15 +11,6 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 var token = require('./token.js');
 var deviceToken = token.tokenArray;
 
-var admin = require("firebase-admin");
-
-var serviceAccount = require("../firebaseSDK.json");
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://bluecheck-37ecc.firebaseio.com"
-});
-
 //-------------------
 
 var loadAddDefact = function (req, res) {
