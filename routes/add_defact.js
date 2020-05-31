@@ -99,8 +99,7 @@ const handlePushTokens = (message) => {
             data: {
                 message
             },
-            priority: 'max',
-            "channelId": "default",
+            channelId: "default",
         })
     }
     let chunks = expo.chunkPushNotifications(notifications);
