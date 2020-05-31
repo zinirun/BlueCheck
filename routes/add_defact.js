@@ -11,13 +11,7 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 //push notification
 var token = require('./token.js');
 var savedPushTokens = token.tokenArray;
-const {
-    Expo
-} = require('expo-server-sdk');
-
-let expo = new Expo();
-
-
+var sendPush = token.sendPush;
 
 //-------------------
 
@@ -72,9 +66,8 @@ var addDefact = function (req, res) {
                 backUrl = '/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room;
 
                 var pushMsg = dong + '동 ' + ho + '호 하자 업로드';
-                handlePushTokens(pushMsg);
-
-                res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
+                sendPush(pushMsg);
+                res.redirect(backUrl);
             }
         });
     } else {
