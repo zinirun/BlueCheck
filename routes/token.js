@@ -5,8 +5,8 @@ let expo = new Expo();
 var token = function (req, res) {
     if(req.body.token){
         var tokenValue = req.body.token;
-        if(!tokenArray.includes(tokenValue)){
-            tokenArray.push(tokenValue);
+        if(!savedPushTokens.includes(tokenValue)){
+            savedPushTokens.push(tokenValue);
         }
         console.log('token: '+tokenValue);
         res.end();
