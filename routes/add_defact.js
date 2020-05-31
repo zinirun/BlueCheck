@@ -3,13 +3,19 @@ var ejs = require('ejs'),
     fs = require('fs'),
     mysql = require('mysql'),
     getCurrentId = require('./img_upload').getCurrentId;
-var request = require('request');
+var request = require('request'),
+    cors = require('cors');
 
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 //push notification
 var token = require('./token.js');
-var tokenArray = token.tokenArray;
+var savedPushTokens = token.tokenArray;
+const {Expo} = require('expo-server-sdk');
+
+let expo = new Expo();
+
+
 
 //-------------------
 
@@ -62,43 +68,11 @@ var addDefact = function (req, res) {
 
                 alertMsg = "하자 등록이 완료되었습니다.";
                 backUrl = '/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room;
-                
-                var pushMsg = dong+'동 '+ho+'호 하자 업로드';
-                
-                var messageArray=[];
-                var message = {
-                    to: '',
-                    sound: 'default',
-                    title: 'Bluecheck',
-                    body: pushMsg,
-                    _displayInForeground: true,
-                    badge:1
-                };
-                
-                tokenArray.forEach(function(element){
-                    message.to = element;
-                    messageArray.push(message);
-                });
-                console.dir(messageArray);
-                request.post({
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    method: 'POST',
-                    uri: 'https://exp.host/--/api/v2/push/send',
-                    body: JSON.stringify(
-                        tokenArray
-                    )
-                }, function (err, response, body) {
-                    if (err)
-                        console.log("Push error>>" + err);
-                    else {
-                        console.log("Succesfully sent..maybe?");
-                        res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
-                    }
-                });
 
+                var pushMsg = dong + '동 ' + ho + '호 하자 업로드';
+                handlePushTokens(pushMsg);
+                
+                res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
             }
         });
     } else {
@@ -108,8 +82,37 @@ var addDefact = function (req, res) {
 
 //-------------------------------푸시알림------
 
+const handlePushTokens = (message) => {
+  let notifications = [];
+  for (let pushToken of savedPushTokens) {
+    if (!Expo.isExpoPushToken(pushToken)) {
+      console.error(`Push token ${pushToken} is not a valid Expo push token`);
+      continue;
+    }
+    notifications.push({
+      to: pushToken,
+      sound: 'default',
+      title: 'Message received!',
+      body: message,
+      data: { message },
+        badge:1
+    })
+  }
+  let chunks = expo.chunkPushNotifications(notifications);
+  (async () => {
+    for (let chunk of chunks) {
+      try {
+        let receipts = await expo.sendPushNotificationsAsync(chunk);
+        console.log(receipts);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  })();
+}
+        //------------------------------------------
 
-//------------------------------------------
-
-module.exports.loadAddDefact = loadAddDefact;
-module.exports.addDefact = addDefact;
+        module.exports.loadAddDefact = loadAddDefact;
+        module.exports.addDefact = addDefact;
+    
+    //res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
