@@ -52,7 +52,7 @@ var defactDetailList = function (req, res) {
         var defactId = req.query.id;
         res.cookie('defactId', defactId);
         var ctype = req.cookies.ctype;
-        var selectDetailSql = 'select d.id, d.img, d.construction_name, d.construction_type, d.info, d.create_date, d.due_date, d.is_solved, d.is_reject, d.room from defact d where d.id = ? and d.construction_type=?';
+        var selectDetailSql = 'select d.id, d.img, d.construction_name, d.construction_type, d.info, d.create_date, d.due_date, d.is_solved, d.is_reject, d.room, d.dong, d.ho from defact d where d.id = ? and d.construction_type=?';
 
         var selectCommentSql = 'select u.name, u.type user_type,  c.comment from comment c, user u where c.defact_id = ? and u.id = c.user_id;';
         mySqlClient.query(selectDetailSql, [defactId, ctype], function (err, row) {
