@@ -9,7 +9,7 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 //push notification
 var token = require('./token.js');
-var deviceToken = token.tokenArray;
+var tokenArray = token.tokenArray;
 
 //-------------------
 
@@ -62,25 +62,24 @@ var addDefact = function (req, res) {
 
                 alertMsg = "하자 등록이 완료되었습니다.";
                 backUrl = '/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room;
-                //                res.send('<script type="text/javascript">alert("' + alertMsg + '"); location.href = "' + backUrl + '";</script>');
-                //                var payload = {
-                //                    notification: {
-                //                        title: "하자 등록 알림",
-                //                        body: dong + "동 " + ho + "호에 새로운 하자가 등록되었습니다."
-                //                    }
-                //                }
-                //                var options = {
-                //                    priority: "normal",
-                //                    timeToLive: 60 * 60
-                //                };
-                //                admin.messaging().sendToDevice(deviceToken, payload, options)
-                //                    .then(function (response) {
-                //                        console.log("Successflly sent message:", response);
-                //                        res.send('<script type="text/javascript">alert("' + alertMsg + '"); location.href = "' + backUrl + '";</script>');
-                //                    })
-                //                    .catch(function (err) {
-                //                        console.log("Error sending message:", err);
-                //                    });
+                
+                var pushMsg = dong+'동 '+ho+'호 하자 업로드';
+                
+                var messageArray=[];
+                var message = {
+                    to: '',
+                    sound: 'default',
+                    title: 'Bluecheck',
+                    body: pushMsg,
+                    _displayInForeground: true,
+                    badge:1
+                };
+                
+                tokenArray.forEach(function(element){
+                    message.to = element;
+                    messageArray.push(message);
+                });
+                console.log(tokenArray);
                 request.post({
                     headers: {
                         Accept: 'application/json',
@@ -88,21 +87,18 @@ var addDefact = function (req, res) {
                     },
                     method: 'POST',
                     uri: 'https://exp.host/--/api/v2/push/send',
-                    body: JSON.stringify({
-                        to: token[0],
-                        sound: 'default',
-                        title: 'The title of your message goes here',
-                        body: 'The body of the message goes here'
-                    })
-                }, function(err, response, body){
-                    if(err)
-                        console.log("Push error>>"+err);
-                    else{
-                        console.log("Succesfully sent>>"+response);
-                        res.redirect('/defact/list?dong='+dong+'&ho='+ho+'&loc='+room);
+                    body: JSON.stringify(
+                        tokenArray
+                    )
+                }, function (err, response, body) {
+                    if (err)
+                        console.log("Push error>>" + err);
+                    else {
+                        console.log("Succesfully sent>>" + response);
+                        res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
                     }
                 });
-                
+
             }
         });
     } else {
