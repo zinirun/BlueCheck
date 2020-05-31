@@ -3,6 +3,7 @@ var ejs = require('ejs'),
 var mysql = require('mysql');
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
+
 var login = function (req, res) {
         var checkId = req.body.id;
         var checkPwd = req.body.password;

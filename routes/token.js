@@ -1,4 +1,4 @@
-var tokenArray = ['ExponentPushToken[7XhEqTDWqZAL9qCcN5jzM5]'];
+var tokenArray = [];
 var token = function (req, res) {
     if(req.body.token){
         var tokenValue = req.body.token;

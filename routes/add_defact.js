@@ -11,7 +11,9 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 //push notification
 var token = require('./token.js');
 var savedPushTokens = token.tokenArray;
-const {Expo} = require('expo-server-sdk');
+const {
+    Expo
+} = require('expo-server-sdk');
 
 let expo = new Expo();
 
@@ -71,7 +73,7 @@ var addDefact = function (req, res) {
 
                 var pushMsg = dong + '동 ' + ho + '호 하자 업로드';
                 handlePushTokens(pushMsg);
-                
+
                 res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
             }
         });
@@ -83,36 +85,39 @@ var addDefact = function (req, res) {
 //-------------------------------푸시알림------
 
 const handlePushTokens = (message) => {
-  let notifications = [];
-  for (let pushToken of savedPushTokens) {
-    if (!Expo.isExpoPushToken(pushToken)) {
-      console.error(`Push token ${pushToken} is not a valid Expo push token`);
-      continue;
+    let notifications = [];
+    for (let pushToken of savedPushTokens) {
+        if (!Expo.isExpoPushToken(pushToken)) {
+            console.error(`Push token ${pushToken} is not a valid Expo push token`);
+            continue;
+        }
+        notifications.push({
+            to: pushToken,
+            sound: 'default',
+            title: 'Bluecheck',
+            body: message,
+            data: {
+                message
+            },
+            badge: 1,
+            priority: 'high'
+        })
     }
-    notifications.push({
-      to: pushToken,
-      sound: 'default',
-      title: 'Message received!',
-      body: message,
-      data: { message },
-        badge:1
-    })
-  }
-  let chunks = expo.chunkPushNotifications(notifications);
-  (async () => {
-    for (let chunk of chunks) {
-      try {
-        let receipts = await expo.sendPushNotificationsAsync(chunk);
-        console.log(receipts);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  })();
+    let chunks = expo.chunkPushNotifications(notifications);
+    (async () => {
+        for (let chunk of chunks) {
+            try {
+                let receipts = await expo.sendPushNotificationsAsync(chunk);
+                console.log(receipts);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    })();
 }
-        //------------------------------------------
+//------------------------------------------
 
-        module.exports.loadAddDefact = loadAddDefact;
-        module.exports.addDefact = addDefact;
-    
-    //res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
+module.exports.loadAddDefact = loadAddDefact;
+module.exports.addDefact = addDefact;
+
+//res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
