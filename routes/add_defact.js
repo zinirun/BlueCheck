@@ -79,7 +79,7 @@ var addDefact = function (req, res) {
                     message.to = element;
                     messageArray.push(message);
                 });
-                console.log(tokenArray);
+                console.dir(messageArray);
                 request.post({
                     headers: {
                         Accept: 'application/json',
@@ -94,7 +94,7 @@ var addDefact = function (req, res) {
                     if (err)
                         console.log("Push error>>" + err);
                     else {
-                        console.log("Succesfully sent>>" + response);
+                        console.log("Succesfully sent..maybe?");
                         res.redirect('/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room);
                     }
                 });
