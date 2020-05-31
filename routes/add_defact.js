@@ -88,7 +88,7 @@ const handlePushTokens = (message) => {
     let notifications = [];
     for (let pushToken of savedPushTokens) {
         if (!Expo.isExpoPushToken(pushToken)) {
-            console.error(`Push token ${pushToken} is not a valid Expo push token`);
+            console.error('Push token ${pushToken} is not a valid Expo push token');
             continue;
         }
         notifications.push({
@@ -99,8 +99,8 @@ const handlePushTokens = (message) => {
             data: {
                 message
             },
-            badge: 1,
-            priority: 'high'
+            priority: 'max',
+            "channelId": "default",
         })
     }
     let chunks = expo.chunkPushNotifications(notifications);
@@ -108,7 +108,7 @@ const handlePushTokens = (message) => {
         for (let chunk of chunks) {
             try {
                 let receipts = await expo.sendPushNotificationsAsync(chunk);
-                console.log(receipts);
+                //console.log(receipts);
             } catch (error) {
                 console.error(error);
             }
