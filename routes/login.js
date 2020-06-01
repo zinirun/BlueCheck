@@ -8,6 +8,7 @@ var login = function (req, res) {
         var checkId = req.body.id;
         var checkPwd = req.body.password;
         var selectPwdSql = "select * from user where user_id = ? && password=?";
+    var setToken = 'update user set token = ? where id=?;';
         mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
             if (err) {
                 console.log("dong/ho select page sql ERROR>>" + err);
@@ -20,8 +21,21 @@ var login = function (req, res) {
                         userName: row[0].name,
                         userType: row[0].type
                     };
-
-                    res.redirect('/select/const/');
+                    if(req.cookies.token){
+                        mySqlClient.query(setToken,[req.cookies.token, row[0].id], function(err, row){
+                           if(err){
+                               console.log('update token error>>'+err);
+                           } 
+                            else{
+                                console.log('토큰 정상 업데이트');
+                                res.redirect('/select/const/');
+                            }
+                        });
+                    }
+                    else{
+                        res.redirect('/select/const/');
+                    }
+                    
                 } else {
                     res.send('<script type="text/javascript">alert("아이디 또는 비밀번호가 일치하지 않습니다."); window.location="/";</script>');
                 }

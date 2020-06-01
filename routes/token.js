@@ -1,15 +1,12 @@
-var savedPushTokens = [];
 const { Expo } = require('expo-server-sdk');
 let expo = new Expo();
+var mysql = require('mysql');
+const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 var token = function (req, res) {
     if(req.body.token){
         var tokenValue = req.body.token;
-        if(!savedPushTokens.includes(tokenValue)){
-            savedPushTokens.push(tokenValue);
-        }
-        console.log('token: '+tokenValue);
-        res.end();
+        res.cookie('token', tokenValue);
     }
     else{
         console.log('There is no token');
@@ -17,7 +14,25 @@ var token = function (req, res) {
     }
 };
 
-const handlePushTokens = (message) => {
+var getUserTokens= function(type,message){
+    var selectTokenSql = 'select token from user where type=?';
+    var savedTokens=[];
+        mySqlClient.query(selectTokenSql,type,function(err,rows){
+           if(err){
+               console.log('select token err>>'+err);
+           }
+            else{
+                rows.forEach(function(e){
+                    savedTokens.push(e);
+                });
+                if(rows){
+                    handlePushTokens(message, savedTokens);
+                }
+            }
+        });
+}
+
+const handlePushTokens = (message, savedPushTokens) => {
     let notifications = [];
     for (let pushToken of savedPushTokens) {
         if (!Expo.isExpoPushToken(pushToken)) {
@@ -48,6 +63,5 @@ const handlePushTokens = (message) => {
     })();
 }
 
-module.exports.sendPush = handlePushTokens;
+module.exports.sendPush = getUserTokens;
 module.exports.addToken = token;
-module.exports.tokenArray = savedPushTokens;
