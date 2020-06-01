@@ -24,7 +24,7 @@ var getUserTokens= function(message, type){
            }
             else{
                 rows.forEach(function(e){
-                    savedTokens.push(e);
+                    savedTokens.push(e.token);
                 });
                 if(rows){
                     console.dir(savedTokens);
