@@ -77,7 +77,7 @@ var registerSubmit = function(req, res) {
 //회원가입 체크 라우터
 function checkInput(params) {
     var result;
-    var pattern_mobile = /^0\d{2}-/;
+    var pattern_mobile = /^[0-9]*$/;
     var pattern_id = /^[0-9a-zA-Z]*$/;
     id = params.user_id;
     tel = params.tel;
