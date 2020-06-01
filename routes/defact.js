@@ -132,7 +132,7 @@ var defactMakeSolved = function (req, res) {
                     dong = req.cookies.dong,
                     loc = req.cookies.loc;
                 const sendMsg = dong+'동 '+ho+'호 하자 보수 완료';
-                sendPush(sendMsg,'반장');
+                sendPush(sendMsg,'기사');
                     res.redirect('/defact/list/?dong=' + dong + '&ho=' + ho + '&loc=' + loc);
             }
         });

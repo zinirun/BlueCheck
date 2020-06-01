@@ -15,7 +15,7 @@ var token = function (req, res) {
     }
 };
 
-var getUserTokens= function(type,message){
+var getUserTokens= function(message, type){
     var selectTokenSql = 'select token from user where type=?';
     var savedTokens=[];
         mySqlClient.query(selectTokenSql,type,function(err,rows){
