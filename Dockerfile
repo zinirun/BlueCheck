@@ -5,4 +5,4 @@ COPY . /src
 EXPOSE 3000
 WORKDIR /src
 
-CMD node app.js
+CMD forever app.js
