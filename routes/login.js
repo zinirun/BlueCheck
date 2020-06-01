@@ -21,8 +21,9 @@ var login = function (req, res) {
                         userName: row[0].name,
                         userType: row[0].type
                     };
+                    console.log(req.cookies.token);
                     if(req.cookies.token){
-                        console.log(req.cookies.token);
+                        
                         mySqlClient.query(setToken,[req.cookies.token, row[0].id], function(err, row){
                            if(err){
                                console.log('update token error>>'+err);

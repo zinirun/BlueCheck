@@ -6,8 +6,8 @@ const mySqlClient = mysql.createConnection(require('../config/db_config'));
 var token = function (req, res) {
     if(req.body.token){
         console.log(req.body.token);
-        var tokenValue = req.body.token;
-        res.cookie('token', tokenValue);
+        res.cookie('token', req.body.token);
+        res.end();
     }
     else{
         console.log('There is no token');
