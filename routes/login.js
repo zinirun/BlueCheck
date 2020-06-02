@@ -46,7 +46,6 @@ var login = function (req, res) {
                 }
 
             }
-        }
     });
 };
 
