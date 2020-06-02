@@ -44,7 +44,7 @@ const handlePushTokens = (message, savedPushTokens) => {
         notifications.push({
             to: pushToken,
             sound: 'default',
-            title: '새로운 하자 등록',
+            title: 'Bluecheck',
             body: message,
             data: {
                 message

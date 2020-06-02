@@ -66,8 +66,8 @@ var addDefact = function (req, res) {
                 backUrl = '/defact/list?dong=' + dong + '&ho=' + ho + '&loc=' + room;
 
                 var pushMsg = dong + '동 ' + ho + '호 하자 업로드';
-                sendPush(alertMsg,'반장');
-                res.redirect(backUrl);
+                sendPush(pushMsg,'반장');
+                res.send('<script type="text/javascript">alert("' + alertMsg + '"); location.href = "'+backUrl+'";</script>');
                 
             }
         });
