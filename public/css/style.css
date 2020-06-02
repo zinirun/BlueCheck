@@ -1,4 +1,4 @@
-@import url('./notosans.css');
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 *{
     cursor: default;
@@ -60,7 +60,7 @@ input[type="button"] {
 
 .div-view {
     width: 320px;
-    margin: 0 auto;
+    margin: 30px auto;
 }
 
 .div-title {

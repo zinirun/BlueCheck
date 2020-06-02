@@ -1,12 +1,15 @@
-var ejs = require('ejs'),
-    fs = require('fs');
-var mysql = require('mysql');
+const ejs = require('ejs'),
+    fs = require('fs'),
+    mysql = require('mysql'),
+    crypto = require('crypto');
+
 const mySqlClient = mysql.createConnection(require('../config/db_config'));
 
 
 var login = function (req, res) {
-        var checkId = req.body.id;
-        var checkPwd = req.body.password;
+
+           let checkId = req.body.id,
+        checkPwd = crypto.createHash('sha512').update(req.body.password).digest('base64');
         var selectPwdSql = "select * from user where user_id = ? && password=?";
     var setToken = 'update user set token = ? where id=?;';
         mySqlClient.query(selectPwdSql, [checkId, checkPwd], function (err, row) {
@@ -41,7 +44,10 @@ var login = function (req, res) {
                 } else {
                     res.send('<script type="text/javascript">alert("아이디 또는 비밀번호가 일치하지 않습니다."); window.location="/";</script>');
                 }
+
             }
-        });
+        }
+    });
 };
+
 module.exports = login;

@@ -1,5 +1,6 @@
+//FOR SERVER
 module.exports = {
-    connectionLimit: 20,
+    connectionLimit: 30,
     host: process.env.DATABASE_HOST,
     user: 'root',
     password: 'q1w2e3r4',
@@ -14,8 +15,9 @@ module.exports = {
 //module.exports = {
 //    connectionLimit: 20,
 //    host: 'localhost',
-//    user: 'bestwayuser',
-//    password: '1234',
+
+//    user: 'root',
+//    password: 'wjswls1',
 //    database: 'bestwaydb',
 //    dateStrings: 'date',
 //    debug: false

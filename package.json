@@ -4,7 +4,7 @@
     "description": "Bestway",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js",
+        "start": "forever app.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": ""
     },
@@ -22,6 +22,7 @@
         "body-parser": "^1.19.0",
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",
+        "crypto": "^1.0.1",
         "csv-writer": "^1.6.0",
         "ejs": "^3.0.2",
         "errorhandler": "^1.5.1",
@@ -33,6 +34,7 @@
         "firebase": "^7.14.5",
         "firebase-admin": "^8.12.1",
         "firebase-functions": "^3.6.1",
+        "forever": "^3.0.0",
         "fs": "0.0.1-security",
         "http": "0.0.1-security",
         "jsonwebtoken": "^8.5.1",
