@@ -117,6 +117,9 @@ var addComment = function (req, res) {
     }
 };
 
+var sendPush = require('./token.js').sendPush;
+
+
 var defactMakeSolved = function (req, res) {
     if (req.session.user) {
         var defactId = req.cookies.defactId;
@@ -128,7 +131,9 @@ var defactMakeSolved = function (req, res) {
                 var ho = req.cookies.ho,
                     dong = req.cookies.dong,
                     loc = req.cookies.loc;
-                res.redirect('/defact/list/?dong=' + dong + '&ho=' + ho + '&loc=' + loc);
+                const sendMsg = dong+'동 '+ho+'호 하자 보수 완료';
+                sendPush(sendMsg,'기사');
+                    res.redirect('/defact/list/?dong=' + dong + '&ho=' + ho + '&loc=' + loc);
             }
         });
     } else {

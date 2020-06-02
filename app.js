@@ -90,6 +90,10 @@ router.route('/defact/add_submit').post(imgUpload.single('img'), addDefact.addDe
 //하자 등록 이동 라우터
 router.route('/defact/add/').get(addDefact.loadAddDefact);
 
+//FCM 처리 사용자 디바이스 토큰 관리 라우터
+var token = require('./routes/token.js');
+router.route('/token').post(token.addToken);
+
 app.use('/', router);
 
 // 404 에러 페이지 처리
@@ -98,6 +102,7 @@ var errorHandler = expressErrorHandler({
         '404': './public/404.html'
     }
 });
+
 
 app.use(expressErrorHandler.httpError(404));
 app.use(errorHandler);

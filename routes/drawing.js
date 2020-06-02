@@ -18,8 +18,6 @@ var drawing = function (req, res) {
 
             res.cookie('ho', selected_ho);
 
-            console.log("Show Cookies.. ctype: " + req.cookies.ctype + "/ dong: " + req.cookies.dong + "/ ho: " + req.cookies.ho);
-
             fs.readFile('./public/view_defact.html', 'utf8', function (error, data) {
                 mySqlClient.query(selectUnsolvedDefactSql, [selected_dong, selected_ho, selected_ctype], function (err, rows) {
                     if (err) {

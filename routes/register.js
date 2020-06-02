@@ -80,14 +80,12 @@ var registerSubmit = function (req, res) {
 //회원가입 체크 라우터
 function checkInput(params) {
     var result;
-    var pattern_eng = /[a-zA-Z]/; //영어 입력 체크 패턴
-    var pattern_num = /[0-9]/; //숫자 입력 체크 
-    var pattern_spc = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
-    var pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
+    var pattern_mobile = /^[0-9]*$/;
+    var pattern_id = /^[0-9a-zA-Z]*$/;
     id = params.user_id;
     tel = params.tel;
-    if ((pattern_num.test(id)) || (pattern_eng.test(id)) && !(pattern_spc.test(id)) && !(pattern_kor.test(id))) { //id검사
-        if ((pattern_num.test(tel)) && !(pattern_eng.test(tel)) && !(pattern_spc.test(tel)) && !(pattern_kor.test(tel))) { //tel검사
+    if (pattern_id.test(id)) { //id검사
+        if (pattern_mobile.test(tel)) { //tel검사
             result = 1; //정상
         } else {
             result = 2; // tel 입력 오류
