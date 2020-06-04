@@ -33,6 +33,9 @@ var login = function (req, res) {
                             console.log('update token error>>' + err);
                         } else {
                             console.log('토큰 정상 업데이트');
+                            res.writeHead(200, {
+                                'Set-Cookie': 'token=; Max-Age:0'
+                            });
                             res.redirect('/select/const/');
                         }
                     });
