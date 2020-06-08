@@ -47,6 +47,7 @@ var defactList = function (req, res) {
     }
 };
 
+// 하자상세 페이지
 var defactDetailList = function (req, res) {
     if (req.session.user) {
         var defactId = req.query.id;
@@ -54,7 +55,7 @@ var defactDetailList = function (req, res) {
         var ctype = req.cookies.ctype;
         var selectDetailSql = 'select d.id, d.img, d.construction_name, d.construction_type, d.info, d.create_date, d.due_date, d.is_solved, d.is_reject, d.room, d.dong, d.ho from defact d where d.id = ? and d.construction_type=?';
 
-        var selectCommentSql = 'select u.name, u.type user_type,  c.comment from comment c, user u where c.defact_id = ? and u.id = c.user_id;';
+        var selectCommentSql = 'select u.name, u.type user_type,  c.comment, c.id from comment c, user u where c.defact_id = ? and u.id = c.user_id;';
         mySqlClient.query(selectDetailSql, [defactId, ctype], function (err, row) {
             if (err) {
                 console.log("select detail sql ERROR>> " + err);
@@ -76,7 +77,8 @@ var defactDetailList = function (req, res) {
                                 commentInfo: commentInfo,
                                 dong: req.cookies.dong,
                                 ho: req.cookies.ho,
-                                loc: req.cookies.loc
+                                loc: req.cookies.loc, 
+                                username: req.session.user.userName
                             }));
                         });
                     }
@@ -105,7 +107,34 @@ var addComment = function (req, res) {
             if (err) {
                 console.log("Comment Sql Error>>" + err);
             } else {
-                //나중에 Ajax로 바꿔볼것!!!!!!
+                res.writeHead(302, {
+                    'Location': '/defact/detail?id=' + defactId
+                });
+                res.end();
+            }
+        });
+    } else {
+        res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
+    }
+};
+
+var editComment = function (req, res) {
+    if (req.session.user) {
+        var user = {
+            userId: req.session.user.id,
+            userType: req.session.user.userType,
+            userName: req.session.user.userName
+        };
+        var defactId = req.body.defact_id;
+        var editComment = req.body.editComment;
+        var insertCommentSql = 'update comment set comment = ? where id = ?';
+
+        var params = [insertCommentSql, commentId];
+        
+        mySqlClient.query(insertCommentSql, params, function (err) {
+            if (err) {
+                console.log("Comment Sql Error>>" + err);
+            } else {
                 res.writeHead(302, {
                     'Location': '/defact/detail?id=' + defactId
                 });

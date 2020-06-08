@@ -6,15 +6,28 @@
     float: left;
 }
 
-.div-wrapper-finish #span-defact-finish-bt, #span-defact-saw-bt{
+.div-wrapper-finish #span-defact-finish-bt{
     position: absolute;
-    margin-top: 5px;
+    margin-top: 7px;
     margin-left: 246px;
     font-size: 16px;
     font-weight: 500;
     color: white;
     padding: 2px 5px 4px 5px;
     background: dodgerblue;
+    border: none;
+    text-align: center;
+}
+
+#span-pdf-bt{
+    position: absolute;
+    margin-top: -25px;
+    margin-left: 246px;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    padding: 2px 4.5px 4px 4.5px;
+    background: #DC6161;
     border: none;
     text-align: center;
 }
@@ -108,4 +121,46 @@ form{
     font-weight: 500;
     padding: 1px 4px;
     border-radius: 0px 0px 4px 0px;
+}
+
+#div_pdf_box{
+    display: none;
+    background: #eee;
+    height: 500px;
+    padding-top: 7px;
+}
+
+#div_pdf_title{
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+    margin-left: 50px;
+}
+
+#div_image_box{
+    margin-top: 10px;
+    background: #ccc;
+    height: 99%;
+}
+
+#span_pdf_close{
+    padding: 3px 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    background: crimson;
+    float: right;
+    margin-right: 5px;
+}
+
+.div-comment-bt-box{
+    float: right;
+    color: #777;
+    font-size: 13px;
+}
+
+.span-comment-edit-bt{
+}
+
+.span-comment-delete-bt{
 }
