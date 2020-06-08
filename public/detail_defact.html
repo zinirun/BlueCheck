@@ -66,14 +66,14 @@
                <hr class="hr-line">
                 <ul class="ul-comment-view-box">
                    <% commentInfo.forEach(function(element){ %>
-                    <li class="li-comment">
+                    <li class="li-comment" id="li_c_<%=element.id%>">
                     <%=element.type%> <%=element.name%>:  <%=element.comment%>
                     <% if (username == element.name) {%>
                     <div class="div-comment-bt-box">
-                    <span class="span-comment-edit-bt" cid="c_<%=element.id%>">
+                    <span class="span-comment-edit-bt" cid="<%=element.id%>">
                         수정
                     </span>
-                    <span class="span-comment-delete-bt" cid="c_<%=element.id%>">
+                    <span class="span-comment-delete-bt" cid="<%=element.id%>">
                         삭제
                         </span></div>
                     <%}%>
