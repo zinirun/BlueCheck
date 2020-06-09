@@ -19,11 +19,12 @@
             </div>
             
             <div class="div-wrapper-pdf-bt">
-                <span id="span-pdf-bt">표준시방서</span>
+                <span id="span-pdf-bt" onclick="if(confirm('새로운 창에서 표준시방서를 열까요?'))window.open('about:blank').location.href = 'https://www.kcsc.re.kr/StandardCode/Viewer/836'; else return false;
+                ">표준시방서</span>
             </div>
             <% if (detailInfo.is_solved==0){%>
             <div class="div-wrapper-finish">
-                <span id="span-defact-finish-bt">보수완료</span>
+                <span id="span-defact-finish-bt" onclick="if(confirm('보수 완료로 변경할까요?'))location.href='/defact/make_solved'; else return false;">보수완료</span>
             </div>
             <% }%>
             
