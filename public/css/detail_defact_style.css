@@ -175,9 +175,12 @@ form{
 }
 
 .edit-commit-bt{
-    font-size: 15px;
-    width: 30px;
-    padding: 3px;
-    margin: 5px;
+    background: dodgerblue;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    padding: 4px;
+    margin: 5px 3px;
     border: none;
+    border-radius: 3px;
 }

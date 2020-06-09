@@ -31,6 +31,7 @@
             <div class="div-title">
                 하자 상세
             </div>
+            <input id="hided_defactId" type="hidden" value="<%= detailInfo.id %>">
             <div class="div-defact-image-box" style="background-image: url('/public/resources/defact_images<%= detailInfo.img %>');">
                <div class="div-defact-due-box">
                     <span class="span-due-title">기한</span><span id="span_due"><%=detailInfo.due_date%></span>
@@ -70,13 +71,16 @@
                     <%=element.type%> <%=element.name%>:  <%=element.comment%>
                     <% if (username == element.name) {%>
                     <div class="div-comment-bt-box">
-                    <span class="span-comment-edit-bt" cid="<%=element.id%>">
+                    <span class="span-comment-edit-bt" cid="<%=element.id%>" val="edit">
                         수정
                     </span>
-                    <span class="span-comment-delete-bt" cid="<%=element.id%>">
+                    <span class="span-comment-delete-bt" cid="<%=element.id%>" val="delete">
                         삭제
-                        </span></div>
+                    </span></div>
                     <%}%>
+                    <div id="div_input_<%=element.id%>">
+                        <!-- Edit Input Here -->
+                    </div>
                     <% }); %>
                 </ul>
                 <div class="div-comment-bt-box">

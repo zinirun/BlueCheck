@@ -120,18 +120,35 @@ var addComment = function (req, res) {
 
 var editComment = function (req, res) {
     if (req.session.user) {
-        var user = {
-            userId: req.session.user.id,
-            userType: req.session.user.userType,
-            userName: req.session.user.userName
-        };
-        var defactId = req.body.defact_id;
+        var defactId = req.body.defactId;
+        var commentId = req.body.commentId;
         var editComment = req.body.editComment;
         var insertCommentSql = 'update comment set comment = ? where id = ?';
 
-        var params = [insertCommentSql, commentId];
+        var params = [editComment, commentId];
         
         mySqlClient.query(insertCommentSql, params, function (err) {
+            if (err) {
+                console.log("Comment Sql Error>>" + err);
+            } else {
+                res.writeHead(302, {
+                    'Location': '/defact/detail?id=' + defactId
+                });
+                res.end();
+            }
+        });
+    } else {
+        res.send('<script type="text/javascript">alert("로그인 후 이용하세요."); window.location="/";</script>');
+    }
+};
+
+var deleteComment = function (req, res) {
+    if (req.session.user) {
+        var defactId = req.query.did;
+        var commentId = req.query.cid;
+        var deleteCommentSql = 'delete from comment where id = ?';
+        
+        mySqlClient.query(deleteCommentSql, commentId, function (err) {
             if (err) {
                 console.log("Comment Sql Error>>" + err);
             } else {
@@ -199,4 +216,6 @@ module.exports.defactMakeSolved = defactMakeSolved;
 module.exports.defactList = defactList;
 module.exports.defactDetailList = defactDetailList;
 module.exports.defactAddComment = addComment;
+module.exports.defactEditComment = editComment;
+module.exports.defactDeleteComment = deleteComment;
 module.exports.rejectOrPass = rejectOrPass;
