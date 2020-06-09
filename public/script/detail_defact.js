@@ -1,12 +1,19 @@
-//document.querySelector("#span-pdf-bt").addEventListener('click',function(e){
-//    document.querySelector(".div-defact-box").style.display = "none";
-//    document.querySelector("#div_pdf_box").style.display = "block";
-//});
-//
-//document.querySelector("#span_pdf_close").addEventListener('click',function(e){
-//    document.querySelector("#div_pdf_box").style.display = "none";
-//    document.querySelector(".div-defact-box").style.display = "block";
-//});
+document.querySelector("#span-pdf-bt").addEventListener('click',function(e){
+    target = document.getElementById('div_image_box');
+    target.innerHTML = '';
+    
+    innerCode = '<iframe src="https://www.kcsc.re.kr/StandardCode/Viewer/836"></iframe>';
+    
+    target.innerHTML = innerCode;
+    
+    document.querySelector(".div-defact-box").style.display = "none";
+    document.querySelector("#div_pdf_box").style.display = "block";
+});
+
+document.querySelector("#span_pdf_close").addEventListener('click',function(e){
+    document.querySelector("#div_pdf_box").style.display = "none";
+    document.querySelector(".div-defact-box").style.display = "block";
+});
 
 let prev_form_cid = 0; // 이전 form의 cid (innerHTML null로 변경)
 
