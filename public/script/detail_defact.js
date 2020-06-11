@@ -1,11 +1,4 @@
 document.querySelector("#span-pdf-bt").addEventListener('click',function(e){
-    target = document.getElementById('div_image_box');
-    target.innerHTML = '';
-    
-    innerCode = '<iframe src="https://www.kcsc.re.kr/StandardCode/Viewer/836"></iframe>';
-    
-    target.innerHTML = innerCode;
-    
     document.querySelector(".div-defact-box").style.display = "none";
     document.querySelector("#div_pdf_box").style.display = "block";
 });
