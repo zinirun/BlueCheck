@@ -37,14 +37,12 @@ var login = function (req, res) {
                                     console.log('make token null err>'+err);
                                 }
                                 else{
-                                    tokenUpdate(setToken, req.cookies.token, id,res);
-                                    res.redirect('/select/const/');
+                                    tokenUpdate(setToken, req.cookies.token, id, res);
                                 }
                             });
                         }
                         else{
-                            tokenUpdate(setToken, req.cookies.token, id,res);
-                            res.redirect('/select/const/');
+                            tokenUpdate(setToken, req.cookies.token, id, res);
                         }
                     });
                 }
