@@ -1,4 +1,5 @@
 //FOR SERVER
+
 module.exports = {
     connectionLimit: 30,
     host: process.env.DATABASE_HOST,
@@ -10,14 +11,16 @@ module.exports = {
     debug: false,
     insecureAuth: true
 }
-//
+
 ////FOR LOCAL TEST
 //module.exports = {
 //    connectionLimit: 20,
 //    host: 'localhost',
 //    user: 'root',
-//    password: 'wjswls1',
+//    password: 'q1w2e3r4',
 //    database: 'bestwaydb',
 //    dateStrings: 'date',
-//    debug: false
-//};
+//    charset  : 'utf8',
+//    debug: false,
+//    insecureAuth: true
+//}
