@@ -41,8 +41,9 @@ var login = function (req, res) {
                                         res.writeHead(200, {
                                             'Set-Cookie': 'token=; Max-Age:0'
                                         });
-                                        res.redirect('/select/const/');
+                                        console.log("200 - Set Cookie Finished");
                                     }
+                                    res.redirect('/select/const/');
                                 }
                             });
                         } else {
