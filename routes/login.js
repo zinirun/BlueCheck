@@ -29,24 +29,32 @@ var login = function (req, res) {
                 if (req.cookies.token) {
                     //token값이 다른 사용자에게서 사용되고 있는지 확인
                     const checkTokenSql = 'select * from user where token=?';
-                    mySqlClient.query(checkTokenSql,req.cookies.token,function(err, row){
-                        if(row[0]){
+                    mySqlClient.query(checkTokenSql, req.cookies.token, function (err, row) {
+                        if (row[0]) {
                             const makeTokenNullSql = 'update user set token=null where id=?';
-                            mySqlClient.query(makeTokenNullSql,row[0].id,function(err,row){
-                                if(err){
-                                    console.log('make token null err>'+err);
-                                }
-                                else{
-                                    tokenUpdate(setToken, req.cookies.token, id, res);
+                            mySqlClient.query(makeTokenNullSql, row[0].id, function (err, row) {
+                                if (err) {
+                                    console.log('make token null err>' + err);
+
+                                } else {
+                                    if (tokenUpdate(setToken, req.cookies.token, id)) {
+                                        res.writeHead(200, {
+                                            'Set-Cookie': 'token=; Max-Age:0'
+                                        });
+                                        res.redirect('/select/const/');
+                                    }
                                 }
                             });
-                        }
-                        else{
-                            tokenUpdate(setToken, req.cookies.token, id, res);
+                        } else {
+                            if (tokenUpdate(setToken, req.cookies.token, id)) {
+                                res.writeHead(200, {
+                                    'Set-Cookie': 'token=; Max-Age:0'
+                                });
+                                res.redirect('/select/const/');
+                            }
                         }
                     });
-                }
-                else {
+                } else {
                     res.redirect('/select/const/');
                 }
             } else {
@@ -57,19 +65,16 @@ var login = function (req, res) {
     });
 };
 
-function tokenUpdate(setToken, token, id,res){
+function tokenUpdate(setToken, token, id) {
     //Token Update
-                    mySqlClient.query(setToken, [token,id], function (err, row) {
-                        if (err) {
-                            console.log('update token error>>' + err);
-                        } else {
-                            console.log('토큰 정상 업데이트');
-                            res.writeHead(200, {
-                                'Set-Cookie': 'token=; Max-Age:0'
-                            });
-                            res.redirect('/select/const/');
-                        }
-                    });
+    mySqlClient.query(setToken, [token, id], function (err, row) {
+        if (err) {
+            console.log('update token error>>' + err);
+        } else {
+            console.log('토큰 정상 업데이트');
+            return true;
+        }
+    });
 }
 
 module.exports = login;
