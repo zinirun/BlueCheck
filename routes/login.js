@@ -43,13 +43,14 @@ var login = function (req, res) {
                             });
                         }
                         else{
-                            tokenUpdate(setToken, req.cookies.token, id,res);res.redirect('/select/const/');
+                            tokenUpdate(setToken, req.cookies.token, id,res);
+                            res.redirect('/select/const/');
                         }
                     });
-  
                 }
-                 res.redirect('/select/const/');
-
+                else {
+                    res.redirect('/select/const/');
+                }
             } else {
                 res.send('<script type="text/javascript">alert("아이디 또는 비밀번호가 일치하지 않습니다."); window.location="/";</script>');
             }
