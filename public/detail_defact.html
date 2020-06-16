@@ -23,6 +23,7 @@
             </div>
             <% if (detailInfo.is_solved==0){%>
             <div class="div-wrapper-finish">
+               <!--make solved to SQL-->
                 <span id="span-defact-finish-bt" onclick="if(confirm('보수 완료로 변경할까요?'))location.href='/defact/make_solved'; else return false;">보수완료</span>
             </div>
             <% }%>
