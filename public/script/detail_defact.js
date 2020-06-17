@@ -27,7 +27,6 @@ document.querySelector(".ul-comment-view-box").addEventListener('click',function
         target.innerHTML += '<form method="post" id="comment_form" action="/defact/edit/comment/"><input class="input-edit" name="editComment" placeholder="수정 내용을 입력하세요."><input type="submit" class="edit-commit-bt" value="수정"><input type="hidden" name="defactId" value="'+defactId+'"><input type="hidden" name="commentId" value="'+cid+'"></form>';
         
         document.getElementsByClassName("input-edit")[0].focus();
-        // 코멘트 아이디, 수정 내용 받아서 /defact 쪽 라우터 넘기면됨
     }
     
     //삭제 버튼
