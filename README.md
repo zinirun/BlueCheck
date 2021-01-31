@@ -1,6 +1,5 @@
 ## BlueCheck
-🔨아파트 유지보수 시스템 (아웃소싱 프로젝트)
-Apartment Maintenance System
+🔨아파트 유지보수 시스템 (아웃소싱 프로젝트) / Apartment Maintenance System
 
 ## Preview
 
