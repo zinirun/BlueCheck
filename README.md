@@ -1,11 +1,22 @@
 ## BlueCheck
 🔨아파트 유지보수 시스템  
-Apartment Hot-Fix System
+Apartment Maintenance System
+
+## Preview
+
+- Manager (기사)
+
+    ![](.github/gisa.gif)
+
+- Repairman (작업반장)
+
+    ![](.github/banjang.gif)
 
 
-### Stack used
+## Stack
 `Node.js` `VanillaJS` `HTML5/CSS3` `MySQL` `Docker` `React-native` `Firebase`
 
+## Usage
 
 ### Requirement
 > `git` `Docker` `MySQL(or Maria) Database Docker`
