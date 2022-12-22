@@ -37,7 +37,7 @@
         "forever": "^3.0.0",
         "fs": "0.0.1-security",
         "http": "0.0.1-security",
-        "jsonwebtoken": "^8.5.1",
+        "jsonwebtoken": "^9.0.0",
         "multer": "^1.4.2",
         "mysql": "^2.18.1",
         "path": "^0.12.7",
